@@ -1,0 +1,1438 @@
+﻿body {
+}
+/* ================================================= */
+/* ------------------ General CSS ------------------ */
+/* ================================================= */
+.button_header{
+    background-color: #003A64;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+    .button_header:hover {
+        background-color: white;
+        color: #003A64;
+    }
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    color:;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    background: #F7F5EF;
+}
+
+a {
+    transition: 0.5s;
+}
+
+    a:hover,
+    a:active,
+    a:focus { 
+        color: #003A64;
+        outline: none;
+        text-decoration: none;
+    }
+
+p {
+    color: #003A64;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 0;
+    margin: 0 0 15px 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+    color: #003A64;
+    font-weight: 500;
+}
+
+@media (max-width: 767.98px) {
+    h2 {
+        font-size: 26px;
+        font-weight: 600;
+    }
+}
+
+@media (max-width: 575.98px) {
+    h2 {
+        font-size: 15px;
+        font-weight: 400;
+    }
+}
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    background: #003A64;
+    color: wheat;
+    width: 44px;
+    height: 44px;
+    text-align: center;
+    line-height: 1;
+    font-size: 18px;
+    border-radius: 0;
+    right: 15px;
+    bottom: 15px;
+    transition: background 0.5s;
+    z-index: 11;
+}
+
+    .back-to-top:hover {
+        color: #F7F5EF;
+        background: #003A64;
+    }
+
+    .back-to-top i {
+        padding-top: 10px;
+    }
+
+/* ================================================= */
+/* ---------------- Nav Header CSS ----------------- */
+/* ================================================= */
+
+#header {
+    background: #003A64;
+    position: relative;
+    height: 60px;
+    color:white;
+}
+
+    #header .logo {
+        padding-left: 25px;
+        left: 0;
+        display: inline-block;
+        position: absolute;
+        line-height: 55px;
+    }
+
+        #header .logo img {
+            max-height: 50px;
+        }
+
+.main-menu {
+    width: 100%;
+}
+
+    .main-menu ul {
+        list-style-type: none;
+        padding: 0;
+        float: right;
+    }
+
+        .main-menu ul li {
+            display: inline-block;
+        }
+
+            .main-menu ul li:hover a,
+            .main-menu ul li.active a {
+                color: #003A64;
+            }
+
+            .main-menu ul li a {
+                color: #003A64;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-weight: 200;
+                padding: 0 10px;
+                line-height: 60px;
+                display: block;
+                transition: color .25s ease, background-color .25s ease;
+            }
+
+
+
+
+@media (max-width: 575.98px) {
+    #header .logo {
+        padding-left: 5px;
+    }
+
+    #header .phone {
+        display: none;
+    }
+
+    #header .mobile-menu-btn {
+        padding-right: 5px;
+        display: block;
+        text-align: right;
+        font-size: 20px;
+        line-height: 55px;
+    }
+
+    .main-menu {
+        padding: 0 30px;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .main-menu {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+}
+
+/* ================================================= */
+/* --------------- Header Slider CSS --------------- */
+/* ================================================= */
+
+#headerSlider {
+    position: relative;
+    max-width: 100%;
+    max-height: calc(100vh - 60px);
+    margin: 0 auto;
+    text-align: center;
+}
+
+    #headerSlider img {
+        width: 100%;
+    }
+
+    #headerSlider .carousel-caption {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        height: 100px;
+        background: rgba(0,0,0,.5);
+        z-index: 1;
+    }
+
+        #headerSlider .carousel-caption h1 {
+            color: #003A64;
+            font-size: 50px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+@media (max-width: 767.98px) {
+    #headerSlider .carousel-caption h1 {
+        font-size: 35px;
+        font-weight: 700;
+        letter-spacing: 3px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    #headerSlider .carousel-caption h1 {
+        font-size: 25px;
+        font-weight: 500;
+        letter-spacing: 1;
+    }
+}
+
+#headerSlider .animated {
+    -webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
+}
+
+/* ================================================= */
+/* ----------------- Search Style ------------------ */
+/* ================================================= */
+
+#search {
+    position: relative;
+    background: #F7F5EF;
+    padding: 30px 0 20px 0;
+}
+
+@media (max-width: 767.98px) {
+    #search {
+        padding: 30px 0 35px 0;
+    }
+}
+
+@media (max-width: 575.98px) {
+    #search {
+        padding: 30px 0 35px 0;
+    }
+
+        #search .kid {
+            margin-top: 15px;
+        }
+}
+
+#search label {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#search .input-group-text {
+    border-radius: 0;
+}
+
+#search input,
+#search select,
+#search button {
+    box-shadow: none;
+    border-radius: 0;
+}
+
+    #search input:focus,
+    #search select:focus,
+    #search button:focus {
+        border-color: #003A64;
+    }
+
+#search .btn {
+    margin-top: 31px;
+    color: #F7F5EF;
+    background-color: #003A64;
+    border-color: #F7F5EF;
+}
+
+    #search .btn:hover {
+        color: #F7F5EF;
+        background: #003A64;
+        border-color: #003A64;
+    }
+
+#search .dropdown-menu {
+    width: 200px;
+}
+
+@media (max-width: 767.98px) {
+    #search .btn {
+        margin-top: 15px;
+    }
+
+    #search .kid {
+        margin-top: 15px;
+    }
+}
+
+/* ================================================= */
+/* ---------------- Welcome Section ---------------- */
+/* ================================================= */
+
+#welcome {
+    position: relative;
+    padding: 45px 0 60px 0;
+    background: #F7F5EF;
+    text-align: center;
+}
+
+    #welcome h3 {
+        font-size: 50px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+    }
+
+    #welcome p {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 30px;
+        margin-bottom: 25px;
+    }
+
+@media (max-width: 767.98px) {
+    #welcome h3 {
+        font-size: 40px;
+        font-weight: 700;
+    }
+
+    #welcome p {
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 28px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    #welcome h3 {
+        font-size: 30px;
+        font-weight: 600;
+        letter-spacing: 0;
+    }
+
+    #welcome p {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 26px;
+    }
+}
+
+#welcome a {
+    display: inline-block;
+    padding: 7px 30px;
+    color: #003A64;
+    background: #F7F5EF;
+}
+
+    #welcome a:hover {
+        color: #F7F5EF;
+        background: #003A64;
+    }
+
+/* ================================================= */
+/* -------------- Section Header Style ------------- */
+/* ================================================= */
+
+.section-header {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+    .section-header h2 {
+        font-size: 45px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+    }
+
+    .section-header p {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 25px;
+    }
+
+@media (max-width: 767.98px) {
+    .section-header h2 {
+        font-size: 35px;
+        font-weight: 700;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .section-header h2 {
+        font-size: 25px;
+        font-weight: 600;
+        letter-spacing: 0;
+    }
+}
+
+
+/* ================================================= */
+/* ----------------- Amenities Style --------------- */
+/* ================================================= */
+#amenities {
+    position: relative;
+    padding: 45px 0 15px 0;
+    text-align: center;
+}
+
+    #amenities.home-amenities {
+        max-height: 100%;
+        background-image: url(../img/amenities-bg.jpg);
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #ffffff;
+    }
+
+        #amenities.home-amenities:after {
+            content: '';
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+        }
+
+    #amenities .container {
+        position: relative;
+        z-index: 1;
+    }
+
+    #amenities.home-amenities h2,
+    #amenities.home-amenities h3,
+    #amenities.home-amenities p {
+        color: #ffffff;
+    }
+
+    #amenities h3 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    #amenities .icons {
+        margin-bottom: 30px;
+    }
+
+    #amenities .icon {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        margin-bottom: 15px;
+        cursor: pointer;
+        background-repeat: no-repeat;
+        background-size: contain;
+        transition: 0.5s;
+    }
+
+        #amenities .icon.icon-1 {
+            background-image: url(../img/icon/shield-hover.png);
+        }
+
+            #amenities .icon.icon-1:hover {
+                background-image: url(../img/icon/shield.png);
+            }
+
+        #amenities .icon.icon-2 {
+            background-image: url(../img/icon/air-conditioner-hover.png);
+        }
+
+            #amenities .icon.icon-2:hover {
+                background-image: url(../img/icon/air-conditioner.png);
+            }
+
+        #amenities .icon.icon-3 {
+            background-image: url(../img/icon/bathtub-hover.png);
+        }
+
+            #amenities .icon.icon-3:hover {
+                background-image: url(../img/icon/bathtub.png);
+            }
+
+        #amenities .icon.icon-4 {
+            background-image: url(../img/icon/shower-hover.png);
+        }
+
+            #amenities .icon.icon-4:hover {
+                background-image: url(../img/icon/shower.png);
+            }
+
+        #amenities .icon.icon-5 {
+            background-image: url(../img/icon/towel-hover.png);
+        }
+
+            #amenities .icon.icon-5:hover {
+                background-image: url(../img/icon/towel.png);
+            }
+
+        #amenities .icon.icon-6 {
+            background-image: url(../img/icon/television-hover.png);
+        }
+
+            #amenities .icon.icon-6:hover {
+                background-image: url(../img/icon/television.png);
+            }
+
+        #amenities .icon.icon-7 {
+            background-image: url(../img/icon/wifi-hover.png);
+        }
+
+            #amenities .icon.icon-7:hover {
+                background-image: url(../img/icon/wifi.png);
+            }
+
+        #amenities .icon.icon-8 {
+            background-image: url(../img/icon/call-hover.png);
+        }
+
+            #amenities .icon.icon-8:hover {
+                background-image: url(../img/icon/call.png);
+            }
+
+        #amenities .icon.icon-9 {
+            background-image: url(../img/icon/minibar-hover.png);
+        }
+
+            #amenities .icon.icon-9:hover {
+                background-image: url(../img/icon/minibar.png);
+            }
+
+        #amenities .icon.icon-10 {
+            background-image: url(../img/icon/kitchen-hover.png);
+        }
+
+            #amenities .icon.icon-10:hover {
+                background-image: url(../img/icon/kitchen.png);
+            }
+
+/* ================================================= */
+/* ------------------ About Style ------------------ */
+/* ================================================= */
+
+#about {
+    position: relative;
+    padding: 45px 0 60px 0;
+    background: #f2f2f2;
+}
+
+    #about hr {
+        width: 50%;
+        margin: 45px auto;
+    }
+
+    #about .img-cols,
+    #about .content-cols {
+        padding: 0;
+    }
+
+    #about .content-cols {
+        background: #F7F5EF;
+    }
+
+    #about .img-col,
+    #about .content-col {
+        position: relative;
+        top: 50%;
+        -moz-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    #about .content-col {
+        background: #F7F5EF;
+        padding: 30px
+    }
+
+    #about .img-col {
+        overflow: hidden;
+    }
+
+        #about .img-col img {
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        #about .img-col:hover img {
+            -ms-transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+
+    #about .content-col h3 {
+        color: #003A64;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+@media (max-width: 767.98px) {
+    #about .content-col {
+        text-align: center;
+    }
+
+        #about .content-col h3 {
+            font-weight: 400;
+            margin-top: 15px;
+        }
+}
+
+#about .content-col p {
+    color: black;
+    font-size: 16px;
+    line-height: 25px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+#about .content-col a {
+    display: inline-block;
+    background: #003A64;
+    font-weight: 400;
+    color: #F7F5EF;
+    padding: 10px 30px;
+}
+
+    #about .content-col a:hover {
+        background: #ffffff;
+        color: #003A64;
+    }
+
+    #about .content-col a:focus {
+        color: #fff;
+    }
+
+/* ================================================= */
+/* ------------------ Rooms Style ------------------ */
+/* ================================================= */
+
+#rooms {
+    position: relative;
+    padding: 45px 0 60px 0;
+}
+
+    #rooms .room-img,
+    #rooms .room-des,
+    #rooms .room-rate {
+        position: relative;
+        top: 50%;
+        -moz-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    #rooms .room-des {
+        width: 100%;
+        text-align: center;
+    }
+
+    #rooms .room-img {
+        overflow: hidden;
+    }
+
+        #rooms .room-img img {
+            transition: 0.3s;
+        }
+
+        #rooms .room-img:hover img {
+            -ms-transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+
+.box12 .icon li a {
+    margin-right: 0;
+}
+
+#rooms h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+#rooms .room-size {
+    margin: 0 0 25px 0;
+    padding: 0;
+}
+
+    #rooms .room-size li {
+        display: inline-block;
+        font-size: 14px;
+        margin-right: 15px;
+        list-style-type: none;
+    }
+
+        #rooms .room-size li i {
+            margin-right: 6px;
+        }
+
+#rooms .room-icon {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 100%;
+}
+
+    #rooms .room-icon li {
+        list-style-type: none;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        margin-right: 15px;
+        margin-bottom: 15px;
+        cursor: pointer;
+        background-repeat: no-repeat;
+        background-size: contain;
+        transition: 0.5s;
+    }
+
+@media (max-width: 575.98px) {
+    #rooms .room-icon li {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+#rooms .room-icon li.icon-1 {
+    background-image: url(../img/icon/shield.png);
+}
+
+    #rooms .room-icon li.icon-1:hover {
+        background-image: url(../img/icon/shield-hover.png);
+    }
+
+#rooms .room-icon li.icon-2 {
+    background-image: url(../img/icon/air-conditioner.png);
+}
+
+    #rooms .room-icon li.icon-2:hover {
+        background-image: url(../img/icon/air-conditioner-hover.png);
+    }
+
+#rooms .room-icon li.icon-3 {
+    background-image: url(../img/icon/bathtub.png);
+}
+
+    #rooms .room-icon li.icon-3:hover {
+        background-image: url(../img/icon/bathtub-hover.png);
+    }
+
+#rooms .room-icon li.icon-4 {
+    background-image: url(../img/icon/shower.png);
+}
+
+    #rooms .room-icon li.icon-4:hover {
+        background-image: url(../img/icon/shower-hover.png);
+    }
+
+#rooms .room-icon li.icon-5 {
+    background-image: url(../img/icon/towel.png);
+}
+
+    #rooms .room-icon li.icon-5:hover {
+        background-image: url(../img/icon/towel-hover.png);
+    }
+
+#rooms .room-icon li.icon-6 {
+    background-image: url(../img/icon/television.png);
+}
+
+    #rooms .room-icon li.icon-6:hover {
+        background-image: url(../img/icon/television-hover.png);
+    }
+
+#rooms .room-icon li.icon-7 {
+    background-image: url(../img/icon/wifi.png);
+}
+
+    #rooms .room-icon li.icon-7:hover {
+        background-image: url(../img/icon/wifi-hover.png);
+    }
+
+#rooms .room-icon li.icon-8 {
+    background-image: url(../img/icon/call.png);
+}
+
+    #rooms .room-icon li.icon-8:hover {
+        background-image: url(../img/icon/call-hover.png);
+    }
+
+#rooms .room-icon li.icon-9 {
+    background-image: url(../img/icon/minibar.png);
+}
+
+    #rooms .room-icon li.icon-9:hover {
+        background-image: url(../img/icon/minibar-hover.png);
+    }
+
+#rooms .room-icon li.icon-10 {
+    background-image: url(../img/icon/kitchen.png);
+}
+
+    #rooms .room-icon li.icon-10:hover {
+        background-image: url(../img/icon/kitchen-hover.png);
+    }
+
+#rooms .room-rate {
+    text-align: center;
+}
+
+    #rooms .room-rate h3 {
+        color: #003A64;
+        font-size: 18px;
+        font-weight: 600;
+        padding: 15px 0;
+        background: #F7F5EF;
+        margin: 0;
+        text-transform: uppercase;
+    }
+
+    #rooms .room-rate h1 {
+        color: #003A64;
+        font-size: 50px;
+        font-weight: 900;
+        padding: 15px 0;
+        background: white;
+    }
+
+    #rooms .room-rate a {
+        display: block;
+        padding: 7px 30px;
+        color: #003A64;
+        background: #F7F5EF;
+    }
+
+        #rooms .room-rate a:hover {
+            color: #F7F5EF;
+            background: #003A64;
+        }
+
+#rooms hr {
+    width: 300px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.modal .modal-header button {
+    margin: 0 auto;
+    padding: 0px 8px 5px 8px;
+    font-size: 25px;
+    border-radius: 20px;
+    background: #003A64;
+    color: #fff;
+}
+
+.modal .modal-body img {
+    height: 100%;
+    width: 100%;
+}
+
+.modal .modal-body h2 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.modal .modal-body p {
+    margin-bottom: 15px;
+}
+
+.modal .modal-body .modal-link {
+    position: relative;
+    text-align: center;
+}
+
+.modal .modal-body a {
+    display: inline-block;
+    margin: 0 auto;
+    padding: 8px 30px;
+    background: #F7F5EF;
+    color: #003A64;
+    cursor: pointer;
+    border: none;
+}
+
+    .modal .modal-body a:hover {
+        color: #F7F5EF;
+        background: #003A64;
+    }
+
+.modal .port-slider-nav .slick-track {
+    padding: 30px 0 15px 0;
+}
+
+.modal .port-slider-nav .slick-center img {
+    -ms-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+/* ================================================= */
+/* ---------------- Subscribe Style ---------------- */
+/* ================================================= */
+
+#subscribe {
+    position: relative;
+    text-align: center;
+    padding: 45px 0 60px 0;
+    background: #f2f2f2;
+}
+
+    #subscribe .section-header::after {
+        background: #f2f2f2;
+    }
+
+    #subscribe .subscribe-form {
+        position: relative;
+        max-width: 525px;
+        width: 100%;
+        margin: auto;
+    }
+
+        #subscribe .subscribe-form input[type="email"] {
+            width: 100%;
+            border: 1px solid #666;
+            height: 50px;
+            line-height: 24px;
+            padding: 12px 30px;
+            background-color: transparent;
+            color: #666;
+            font-size: 16px;
+        }
+
+            #subscribe .subscribe-form input[type="email"]:focus {
+                box-shadow: none;
+                outline: 0 none;
+            }
+
+@media only screen and (max-width: 479px) {
+    #subscribe .subscribe-form input[type="email"] {
+        text-align: center;
+    }
+}
+
+input::-webkit-input-placeholder,
+input:-moz-placeholder,
+input::-moz-placeholder,
+input:-ms-input-placeholder,
+input::-ms-input-placeholder {
+    color: white;
+}
+
+#subscribe .subscribe-form button {
+    font-size: 22px;
+    color: #003A64;
+    height: 50px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    line-height: 1px;
+    padding: 6px 30px;
+    margin-right: -1px;
+    background: #F7F5EF;
+    border: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+    #subscribe .subscribe-form button:hover {
+        color: #F7F5EF;
+        background: #003A64;
+    }
+
+    #subscribe .subscribe-form button:focus {
+        box-shadow: none;
+        outline: 0 none;
+    }
+
+
+@media only screen and (max-width: 479px) {
+    #subscribe .subscribe-form button {
+        position: static;
+        margin-top: 15px;
+        width: 100%;
+    }
+}
+
+/* ================================================= */
+/* ----------------- Booking Style ----------------- */
+/* ================================================= */
+
+#booking {
+    position: relative;
+    padding: 45px 0 60px 0;
+}
+
+    #booking .container {
+        max-width: 990px;
+    }
+
+    #booking label {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    #booking .form-control {
+        height: 35px;
+        border: 1px solid #ddd;
+        border-radius: 0;
+        line-height: 24px;
+        padding: 5px 20px;
+        background-color: transparent;
+        color: #F7F5EF;
+        font-size: 16px;
+        font-weight: 200;
+    }
+
+        #booking .form-control:focus {
+            border-color: #003A64;
+            box-shadow: none;
+            outline: 0 none;
+        }
+
+    #booking .button button {
+        display: inline-block;
+        font-size: 16px;
+        color: #003A64;
+        line-height: 24px;
+        padding: 10px 30px 8px 30px;
+        border-radius: 0;
+        background: #F7F5EF;
+        border: none;
+        font-weight: 400;
+        cursor: pointer;
+        transition: all .3s;
+    }
+
+        #booking .button button:hover {
+            color: #F7F5EF;
+            background: #003A64;
+        }
+
+    #booking .help-block ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    #booking .dropdown-menu {
+        width: 230px;
+    }
+
+/* ================================================= */
+/* ----------------- Call Us Style ----------------- */
+/* ================================================= */
+
+#call-us {
+    position: relative;
+    text-align: center;
+    padding: 45px 0 60px 0;
+    background-color: white;
+}
+
+    #call-us .section-header::after {
+        background: #f2f2f2;
+    }
+
+    #call-us a {
+        display: inline-block;
+        padding: 15px 30px;
+        background: #F7F5EF;
+        color: #003A64;
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: 2px;
+    }
+
+        #call-us a:hover {
+            color: #F7F5EF;
+            background: #003A64;
+        }
+
+@media (max-width: 575.98px) {
+    #call-us a {
+        padding: 10px 30px;
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+}
+
+/* ================================================= */
+/* ------------------ Contact Style ---------------- */
+/* ================================================= */
+
+#contact {
+    position: relative;
+    padding: 45px 0;
+}
+
+    #contact .container {
+        max-width: 900px;
+    }
+
+    #contact .contact-info {
+        margin-bottom: 30px;
+    }
+
+        #contact .contact-info .info-item {
+            position: relative;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+            #contact .contact-info .info-item p {
+                font-size: 18px;
+                font-weight: 600;
+            }
+
+            #contact .contact-info .info-item i {
+                color: #003A64;
+                font-size: 22px;
+                margin-right: 8px;
+            }
+
+            #contact .contact-info .info-item h3 {
+                font-size: 18px;
+                font-weight: 600;
+                margin-bottom: 5px;
+            }
+
+            #contact .contact-info .info-item p {
+                margin: 0;
+            }
+
+    #contact .contact-form {
+        position: relative;
+    }
+
+    #contact label {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    #contact .contact-form input[type="text"],
+    #contact .contact-form input[type="email"] {
+        height: 35px;
+        font-size: 16px;
+        font-weight: 200;
+        box-shadow: none;
+        border: 1px solid #ddd;
+        border-radius: 0;
+    }
+
+    #contact .contact-form textarea {
+        font-size: 16px;
+        font-weight: 200;
+        box-shadow: none;
+        border: 1px solid #ddd;
+        border-radius: 0;
+    }
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    textarea:focus,
+    input:focus {
+        font-size: 16px;
+        background: #fff;
+    }
+}
+
+#contact .contact-form input[type="text"]:focus,
+#contact .contact-form input[type="email"]:focus,
+#contact .contact-form textarea:focus {
+    border-color: #003A64;
+}
+
+#contact .contact-form button {
+    display: inline-block;
+    padding: 8px 30px;
+    background: #F7F5EF;
+    color: #003A64;
+    font-size: 18px;
+    font-weight: 400;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+    #contact .contact-form button:hover {
+        color: #F7F5EF;
+        background: #003A64;
+    }
+
+#contact .help-block ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+/* ================================================= */
+/* ------------------ Login Style ------------------ */
+/* ================================================= */
+
+#login {
+    position: relative;
+    padding: 45px 0;
+}
+
+    #login .container {
+        max-width: 900px;
+    }
+
+@media (max-width: 767.98px) {
+    #login .container .col-md-6:first-child {
+        margin-bottom: 30px;
+    }
+}
+
+#login .login-form {
+    position: relative;
+}
+
+    #login .login-form .control-group {
+        margin-bottom: 15px;
+    }
+
+    #login .login-form label {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    #login .login-form input[type="text"],
+    #login .login-form input[type="email"],
+    #login .login-form input[type="password"] {
+        height: 35px;
+        font-size: 16px;
+        font-weight: 200;
+        box-shadow: none;
+        border: 1px solid #ddd;
+        border-radius: 0;
+    }
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    input:focus {
+        font-size: 16px;
+        background: #fff;
+    }
+}
+
+#login .login-form input[type="text"]:focus,
+#login .login-form input[type="email"]:focus,
+#login .login-form input[type="password"]:focus {
+    border-color: #003A64;
+}
+
+#login .login-form button {
+    display: inline-block;
+    padding: 8px 30px;
+    background: #F7F5EF;
+    color: #003A64;
+    font-size: 18px;
+    font-weight: 400;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+    #login .login-form button:hover {
+        color: #F7F5EF;
+        background: #003A64;
+    }
+
+/* ================================================= */
+/* ------------------ Footer Style ----------------- */
+/* ================================================= */
+#widget-title {
+    color: #003A64;
+}
+#footer {
+    position: relative;
+    padding: 30px 0 25px 0;
+    text-align: center;
+    background: #F7F5EF;
+}
+
+    #footer .social {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    #footer a {
+        color: #003A64;
+    }
+
+        #footer a:hover {
+            color: #ffffff;
+        }
+
+    #footer .social a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        padding: 5px 10px;
+        background: #003A64;
+        color: #F7F5EF;
+        font-size: 20px;
+    }
+
+        #footer .social a:hover {
+            background: #ffffff;
+            color: #003A64;
+        }
+
+    #footer p {
+        margin: 0;
+        font-size: 18px;
+    }
+
+
+
+#header {
+    background: #F7F5EF;
+    position: relative;
+    height: 60px;
+}
+
+    #header .logo {
+        padding-left: 25px;
+        left: 0;
+        display: inline-block;
+        position: absolute;
+        line-height: 55px;
+    }
+
+        #header .logo img {
+            max-height: 50px;
+        }
+
+.main-menu {
+    width: 100%;
+}
+
+    .main-menu ul {
+        list-style-type: none;
+        padding: 0;
+        float: right;
+    }
+
+        .main-menu ul li {
+            display: inline-block;
+        }
+
+            .main-menu ul li:hover a,
+            .main-menu ul li.active a {
+                color: #003A64;
+            }
+
+            .main-menu ul li a {
+                color: #326183;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-weight: 200;
+                padding: 0 10px;
+                line-height: 60px;
+                display: block;
+                transition: color .25s ease, background-color .25s ease;
+            }
+
+
+
+
+@media (max-width: 575.98px) {
+    #header .logo {
+        padding-left: 5px;
+    }
+
+    #header .phone {
+        display: none;
+    }
+
+    #header .mobile-menu-btn {
+        padding-right: 5px;
+        display: block;
+        text-align: right;
+        font-size: 20px;
+        line-height: 55px;
+    }
+
+    .main-menu {
+        padding: 0 30px;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .main-menu {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+}

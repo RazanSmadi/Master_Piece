@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title> sign up</title>
+    <link rel="stylesheet" media="all" href="../css/reg.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="frame">
+            <div class="nav">
+                <ul class="links">
+                    <li class="signin-inactive"><a class="btn" href="log.html">Sign in</a></li>
+                    <li class="signup-active"><a class="btn" href="reg.html">Sign up </a></li>
+                </ul>
+            </div>
+            <div ng-app ng-init="checked = false">
+                <form class="form-signin" method="post" name="form">
+                    <label for="username">Username</label>
+                    <input class="form-styling" type="text" name="username" placeholder="" />
+                    <label for="email">Email</label>
+                    <input class="form-styling" type="text" name="email" placeholder="" />
+                    <label for="password">Password</label>
+                    <input class="form-styling" type="text" name="password" />
+                    <label for="conpassword">confirm password</label>
+                    <input class="form-styling" type="text" name="conpassword" />
+                    <input class="form-check-input" type="radio" name="user" id="user" />
+                    <label class="form-check-label" for="user">user</label>
+                    <input class="form-check-input" type="radio" name="host" id="host" />
+                    <label class="form-check-label" for="host">host</label>
+
+
+                    <div class="btn-animate">
+                        <a class="btn-signin">Sign Up</a>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+
+
+    </div>
+</body>
+</html>

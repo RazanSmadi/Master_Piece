@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>
+
+        booking
+    </title>
+    <link rel="stylesheet" media="all" href="../css/booking.css" />
+
+</head>
+<body>
+    <div class="container">
+        <div class="frame">
+            <br />   <h3>Booking </h3>
+            <div ng-app ng-init="checked = false">
+                <form class="form-signin" method="post" name="form">
+                    <label for="username">Username</label>
+                    <input class="form-styling" type="text" name="username" placeholder="" />
+                    <label for="email">Email</label>
+                    <input class="form-styling" type="text" name="email" placeholder="" />
+                    <label for="adate">arrival Date</label>
+                    <input class="form-styling" type="date" name="adate" placeholder="" />
+                    <label for="ddate">departure date</label>
+                    <input class="form-styling" type="date" name="ddate" placeholder="" />
+
+                    <label for="adult"># of Adults</label>
+                    <input class="form-styling" type="number" min="1" name="adult" placeholder="" />
+
+                    <label for="Children"># of Children</label>
+                    <input class="form-styling" type="number" min="1" name="Children" placeholder="" />
+
+
+
+                    <div class="btn-animate">
+                        <button class="btn-signin" style="background-color:lightskyblue;color:white;">Submit</button>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+
+
+    </div>
+</body>
+</html>
