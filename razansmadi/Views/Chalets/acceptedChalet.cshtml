@@ -1,0 +1,95 @@
+﻿@model IEnumerable<razansmadi.Models.Chalet>
+
+@{
+    @Html.ActionLink("Create New", "Create")
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title"> Chalets Requests </h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Chalets</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="datatable table table-hover table-center mb-0">
+
+                                <tr>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Description
+                                    </th>
+                                    <th>
+                                        Address
+                                    </th>
+                                    <th>
+                                        Price Per Night
+                                    </th>
+                                    <th>
+                                        owner name
+                                    </th>
+                                    <th>
+                                        Main Image
+                                    </th>
+                                    <th></th>
+                                </tr>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Chalet_Name)
+                                        </td>
+                                        <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+
+                                            @Html.DisplayFor(modelItem => item.Chalet_Description)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Chalet_Address)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PricePerNight)
+                                        </td>
+                                       
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.AspNetUser.FirstName)  @Html.DisplayFor(modelItem => item.AspNetUser.LastName)
+
+
+                                        </td>
+
+                                        <td>
+                                            <img src="~/images/@Html.DisplayFor(modelItem => item.Image.MainImage)" height:"50px" width:"60px" />
+
+                                        </td>
+
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.ChaletID })
+                                            @Html.ActionLink("Details", "acceptedDetail", new { id = item.ChaletID })
+                                        </td>
+                                    </tr>
+                                }
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

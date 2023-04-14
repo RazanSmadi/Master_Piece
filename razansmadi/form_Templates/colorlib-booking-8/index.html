@@ -1,0 +1,129 @@
+@model razansmadi.Models.Booking
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Booking</title>
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="~/form_Templates/colorlib-booking-8/css/bootstrap.min.css" />
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="~/form_Templates/colorlib-booking-8/css/style.css">
+
+</head>
+<body>
+    <div id="booking" class="section">
+        <div class="section-center">
+            <div class="container">
+                <div class="row">
+                    <div class="booking-form">
+                        <div class="form-header">
+                            <h1>Make your reservation</h1>
+                        </div>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            @*<div class="form-group">
+                @Html.LabelFor(model => model.ChaletID, "ChaletID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ChaletID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ChaletID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.id, "id", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("id", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.id, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+                            @Html.HiddenFor(model => model.ChaletID)
+                            @Html.HiddenFor(model => model.id)
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.EditorFor(model => model.CheckInDate, new { htmlAttributes = new { @class = "form-control", required = "required", type = "date" } })
+                                        @Html.ValidationMessageFor(model => model.CheckInDate, "", new { @class = "text-danger" })
+                                        <span class="form-label">Check In</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.DropDownList("CheckInTime", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.CheckInTime, "", new { @class = "text-danger" })
+                                        <span class="select-arrow"></span>
+                                        <span class="form-label">CheckIn Time</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.DropDownList("NumOfAdult", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.NumOfAdult, "", new { @class = "text-danger" })
+                                        <span class="select-arrow"></span>
+                                        <span class="form-label">Adults</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+
+                                        @Html.DropDownList("NumOfKids", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.NumOfKids, "", new { @class = "text-danger" })
+                                        <span class="select-arrow"></span>
+                                        <span class="form-label">Kids</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.EditorFor(model => model.TotalPrice, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Total Price" } })
+                                        @Html.ValidationMessageFor(model => model.TotalPrice, "", new { @class = "text-danger" })
+                                        <span class="form-label"> Total Price </span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.EditorFor(model => model.PaymentStatus, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.PaymentStatus, "", new { @class = "text-danger" })
+                                        <span class="form-label">  Payment Status </span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-btn">
+                                    <input type="submit" value="Book Now" class="submit-btn" />
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

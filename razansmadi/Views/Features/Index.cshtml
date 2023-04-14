@@ -1,0 +1,300 @@
+﻿@model IEnumerable<razansmadi.Models.Feature>
+
+@{
+    Layout = "~/Views/Shared/_OwnersLayout.cshtml";
+}
+<!DOCTYPE html>
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item active"> All Features</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label class="form-control">
+                        @Html.DisplayFor(modelItem => item.Carpark) Carpark Available
+                    </label>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="datatable table table-hover table-center mb-0">
+                                    <tr></tr>
+
+                                    <tr class="col-3">
+                                        <th>
+                                            Air conditioning
+                                        </th>
+                                        @{
+                                            if (Convert.ToBoolean(item.Air_conditioning))
+                                            {
+
+                                                <td> Available</td>
+                                            }
+                                            else
+                                            {
+                                                <td> Not Available </td>
+                                            }
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Laundry
+                                        </th>
+                                        @{
+                                            if (Convert.ToBoolean(item.Laundry))
+                                            {
+
+                                                <td> Available</td>
+                                            }
+                                            else
+                                            {
+                                                <td> Not Available </td>
+                                            }
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Refrigerator
+                                        </th>
+                                        @{
+                                            if (Convert.ToBoolean(item.Refrigerator))
+                                            {
+
+                                                <td> Available</td>
+                                            }
+                                            else
+                                            {
+                                                <td> Not Available </td>
+                                            }
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Washer
+                                        </th>
+                                        @{
+                                            if (Convert.ToBoolean(item.Washer))
+                                            {
+
+                                                <td> Available</td>
+                                            }
+                                            else
+                                            {
+                                                <td> Not Available </td>
+                                            }
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Barbeque
+                                        </th>
+                                        @{
+                                            if (Convert.ToBoolean(item.Barbeque))
+                                            {
+
+                                                <td> Available</td>
+                                            }
+                                            else
+                                            {
+                                                <td> Not Available </td>
+                                            }
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Sauna
+                                        </th>
+                                        @{
+                                            if (Convert.ToBoolean(item.Sauna))
+                                            {
+
+                                                <td> Available</td>
+                                            }
+                                            else
+                                            {
+                                                <td> Not Available </td>
+                                            }
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Wifi
+                                        </th>
+                                        @{
+                                            if (Convert.ToBoolean(item.Wifi))
+                                            {
+
+                                                <td> Available</td>
+                                            }
+                                            else
+                                            {
+                                                <td> Not Available </td>
+                                            }
+                                        }
+
+                                    </tr>
+
+
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="datatable table table-hover table-center mb-0">
+                                    <tr></tr>
+                                    <tr>
+                                        <th>
+                                            indoor Pool
+                                        </th>   @{
+                                            if (Convert.ToBoolean(item.indoorSwimmingPool))
+                                            {
+
+                                                <td> Available</td>
+                                            }
+                                            else
+                                            {
+                                                <td> Not Available </td>
+                                            }
+                                        }
+
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Microwave
+                                        </th>
+                                        @{
+                                            if (Convert.ToBoolean(item.Microwave))
+                                            {
+
+                                                <td> Available</td>
+                                            }
+                                            else
+                                            {
+                                                <td> Not Available </td>
+                                            }
+                                        }
+
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Outdor Pool
+                                        </th>
+                                        @{
+                                            if (Convert.ToBoolean(item.SwimmingPool))
+                                            {
+
+                                                <td> Available</td>
+                                            }
+                                            else
+                                            {
+                                                <td> Not Available </td>
+                                            }
+                                        }
+
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            YouthGames
+                                        </th>
+                                        @{
+                                            if (Convert.ToBoolean(item.YouthGames))
+                                            {
+
+                                                <td> Available</td>
+                                            }
+                                            else
+                                            {
+                                                <td> Not Available </td>
+                                            }
+                                        }
+
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            KidsGames
+                                        </th>
+                                        @{
+                                            if (Convert.ToBoolean(item.KidsGames))
+                                            {
+
+                                                <td> Available</td>
+                                            }
+                                            else
+                                            {
+                                                <td> Not Available </td>
+                                            }
+                                        }
+
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            OutdoorShower
+                                        </th>
+                                        @{
+                                            if (Convert.ToBoolean(item.OutdoorShower))
+                                            {
+
+                                                <td> Available</td>
+                                            }
+                                            else
+                                            {
+                                                <td> Not Available </td>
+                                            }
+                                        }
+
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Tv_Cable
+                                        </th>
+                                        @{
+                                            if (Convert.ToBoolean(item.Tv_Cable))
+                                            {
+
+                                                <td> Available</td>
+                                            }
+                                            else
+                                            {
+                                                <td> Not Available </td>
+                                            }
+                                        }
+
+                                    </tr>
+
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-12 justify-content-center">
+                <a href="~/SubAdminChalets/Index" class="btn btn-secondary">Back to list</a>
+                &nbsp; &nbsp;
+                @Html.ActionLink("Edit", "Edit", new { id = item.Features_ID }, new { @class = "btn btn-primary" })
+            </div>
+         
+
+        }
+    </div>
+                        </div>

@@ -1,0 +1,127 @@
+﻿@model razansmadi.Models.Image
+
+@{
+    Layout = null;
+}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title"> Chalet </h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Chalet</a></li>
+                        <li class="breadcrumb-item active">Images</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <dl class="datatable table table-hover table-center mb-0">
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.MainImage)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.MainImage)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.poolImage)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.poolImage)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.gardenImage)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.gardenImage)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.playGroundImage)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.playGroundImage)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.roomImage)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.roomImage)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.kitchenImage)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.kitchenImage)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.livingRoomImage)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.livingRoomImage)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.bathroomImage)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.bathroomImage)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.viewImage)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.viewImage)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.randomImage)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.randomImage)
+                            </dd>
+
+
+
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-actions no-color">
+                                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                                    @Html.ActionLink("Back to List", "Index")
+                                </div>
+
+                            }
+                            </dl>
+                        </div>             
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>

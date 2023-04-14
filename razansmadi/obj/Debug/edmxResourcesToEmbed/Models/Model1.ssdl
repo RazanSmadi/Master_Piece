@@ -1,0 +1,550 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MasterPieceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="note" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="Customer_Img" Type="varchar" MaxLength="255" />
+    <Property Name="Phone" Type="int" />
+  </EntityType>
+  <EntityType Name="Bookings">
+    <Key>
+      <PropertyRef Name="BookingID" />
+    </Key>
+    <Property Name="BookingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChaletID" Type="int" />
+    <Property Name="id" Type="nvarchar" MaxLength="128" />
+    <Property Name="CheckInDate" Type="date" />
+    <Property Name="CheckOutDate" Type="date" />
+    <Property Name="CheckInTime" Type="int" />
+    <Property Name="TotalPrice" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="PaymentStatus" Type="varchar" MaxLength="50" />
+    <Property Name="NumOfAdult" Type="int" />
+    <Property Name="NumOfKids" Type="int" />
+  </EntityType>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Category_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Category_Img" Type="varchar" MaxLength="255" />
+    <Property Name="Category_Description" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="CategoriesChalets">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryID" Type="int" />
+    <Property Name="ChaletID" Type="int" />
+    <Property Name="note" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Chalets">
+    <Key>
+      <PropertyRef Name="ChaletID" />
+    </Key>
+    <Property Name="ChaletID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="nvarchar" MaxLength="128" />
+    <Property Name="Chalet_Name" Type="varchar" MaxLength="255" />
+    <Property Name="Chalet_Description" Type="varchar(max)" />
+    <Property Name="Chalet_Address" Type="varchar" MaxLength="255" />
+    <Property Name="AvailabilityFlag" Type="int" />
+    <Property Name="NnmberOfAdult" Type="int" />
+    <Property Name="NnmberOfkid" Type="int" />
+    <Property Name="PricePerNight" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Images_ID" Type="int" />
+    <Property Name="Features_ID" Type="int" />
+    <Property Name="isAccepted" Type="bit" />
+    <Property Name="bedroom" Type="int" />
+    <Property Name="bathroom" Type="int" />
+    <Property Name="area" Type="float" />
+    <Property Name="super" Type="bit" />
+    <Property Name="map" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="Comment_ID" />
+    </Key>
+    <Property Name="Comment_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="nvarchar" MaxLength="128" />
+    <Property Name="comment" Type="varchar(max)" />
+    <Property Name="Comment_Date" Type="date" />
+    <Property Name="ChaletID" Type="int" />
+  </EntityType>
+  <EntityType Name="Faves">
+    <Key>
+      <PropertyRef Name="favID" />
+    </Key>
+    <Property Name="favID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="nvarchar" MaxLength="128" />
+    <Property Name="ChaletID" Type="int" />
+  </EntityType>
+  <EntityType Name="Features">
+    <Key>
+      <PropertyRef Name="Features_ID" />
+    </Key>
+    <Property Name="Features_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Air_conditioning" Type="bit" />
+    <Property Name="Laundry" Type="bit" />
+    <Property Name="Refrigerator" Type="bit" />
+    <Property Name="Washer" Type="bit" />
+    <Property Name="Barbeque" Type="bit" />
+    <Property Name="Sauna" Type="bit" />
+    <Property Name="Wifi" Type="bit" />
+    <Property Name="indoorSwimmingPool" Type="bit" />
+    <Property Name="Microwave" Type="bit" />
+    <Property Name="SwimmingPool" Type="bit" />
+    <Property Name="YouthGames" Type="bit" />
+    <Property Name="KidsGames" Type="bit" />
+    <Property Name="OutdoorShower" Type="bit" />
+    <Property Name="Tv_Cable" Type="bit" />
+    <Property Name="Carpark" Type="int" />
+    <Property Name="Features1" Type="bit" />
+    <Property Name="Features2" Type="bit" />
+  </EntityType>
+  <EntityType Name="Images">
+    <Key>
+      <PropertyRef Name="Images_ID" />
+    </Key>
+    <Property Name="Images_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MainImage" Type="varchar" MaxLength="255" />
+    <Property Name="poolImage" Type="varchar" MaxLength="255" />
+    <Property Name="gardenImage" Type="varchar" MaxLength="255" />
+    <Property Name="playGroundImage" Type="varchar" MaxLength="255" />
+    <Property Name="roomImage" Type="varchar" MaxLength="255" />
+    <Property Name="kitchenImage" Type="varchar" MaxLength="255" />
+    <Property Name="livingRoomImage" Type="varchar" MaxLength="255" />
+    <Property Name="bathroomImage" Type="varchar" MaxLength="255" />
+    <Property Name="viewImage" Type="varchar" MaxLength="255" />
+    <Property Name="randomImage" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="transactions">
+    <Key>
+      <PropertyRef Name="transactionId" />
+    </Key>
+    <Property Name="transactionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="nvarchar" MaxLength="128" />
+    <Property Name="ChaletID" Type="int" />
+    <Property Name="amount" Type="float" />
+  </EntityType>
+  <EntityType Name="votes">
+    <Key>
+      <PropertyRef Name="vote_id" />
+    </Key>
+    <Property Name="vote_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChaletID" Type="int" />
+    <Property Name="vote_value" Type="int" />
+    <Property Name="userid" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <Association Name="FK__Bookings__Chalet__03F0984C">
+    <End Role="Chalets" Type="Self.Chalets" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Chalets">
+        <PropertyRef Name="ChaletID" />
+      </Principal>
+      <Dependent Role="Bookings">
+        <PropertyRef Name="ChaletID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bookings__id__04E4BC85">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bookings">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Categorie__Categ__00200768">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CategoriesChalets" Type="Self.CategoriesChalets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="CategoriesChalets">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Categorie__Chale__01142BA1">
+    <End Role="Chalets" Type="Self.Chalets" Multiplicity="0..1" />
+    <End Role="CategoriesChalets" Type="Self.CategoriesChalets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Chalets">
+        <PropertyRef Name="ChaletID" />
+      </Principal>
+      <Dependent Role="CategoriesChalets">
+        <PropertyRef Name="ChaletID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Chalets__Feature__75A278F5">
+    <End Role="Features" Type="Self.Features" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Chalets" Type="Self.Chalets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Features">
+        <PropertyRef Name="Features_ID" />
+      </Principal>
+      <Dependent Role="Chalets">
+        <PropertyRef Name="Features_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Chalets__Images___74AE54BC">
+    <End Role="Images" Type="Self.Images" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Chalets" Type="Self.Chalets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Images">
+        <PropertyRef Name="Images_ID" />
+      </Principal>
+      <Dependent Role="Chalets">
+        <PropertyRef Name="Images_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Chalets__userid__73BA3083">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Chalets" Type="Self.Chalets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Chalets">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comments__Chalet__17F790F9">
+    <End Role="Chalets" Type="Self.Chalets" Multiplicity="0..1" />
+    <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Chalets">
+        <PropertyRef Name="ChaletID" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="ChaletID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comments__userid__07C12930">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Faves__ChaletID__7D439ABD">
+    <End Role="Chalets" Type="Self.Chalets" Multiplicity="0..1" />
+    <End Role="Faves" Type="Self.Faves" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Chalets">
+        <PropertyRef Name="ChaletID" />
+      </Principal>
+      <Dependent Role="Faves">
+        <PropertyRef Name="ChaletID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Faves__userid__7C4F7684">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Faves" Type="Self.Faves" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Faves">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__transacti__Chale__0B91BA14">
+    <End Role="Chalets" Type="Self.Chalets" Multiplicity="0..1" />
+    <End Role="transactions" Type="Self.transactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Chalets">
+        <PropertyRef Name="ChaletID" />
+      </Principal>
+      <Dependent Role="transactions">
+        <PropertyRef Name="ChaletID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__transacti__useri__0A9D95DB">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="transactions" Type="Self.transactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="transactions">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__votes__ChaletID__787EE5A0">
+    <End Role="Chalets" Type="Self.Chalets" Multiplicity="0..1" />
+    <End Role="votes" Type="Self.votes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Chalets">
+        <PropertyRef Name="ChaletID" />
+      </Principal>
+      <Dependent Role="votes">
+        <PropertyRef Name="ChaletID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__votes__userid__797309D9">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="votes" Type="Self.votes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="votes">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MasterPieceModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bookings" EntityType="Self.Bookings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CategoriesChalets" EntityType="Self.CategoriesChalets" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Chalets" EntityType="Self.Chalets" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Faves" EntityType="Self.Faves" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Features" EntityType="Self.Features" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="transactions" EntityType="Self.transactions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="votes" EntityType="Self.votes" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Bookings__Chalet__03F0984C" Association="Self.FK__Bookings__Chalet__03F0984C">
+      <End Role="Chalets" EntitySet="Chalets" />
+      <End Role="Bookings" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bookings__id__04E4BC85" Association="Self.FK__Bookings__id__04E4BC85">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Bookings" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Categorie__Categ__00200768" Association="Self.FK__Categorie__Categ__00200768">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="CategoriesChalets" EntitySet="CategoriesChalets" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Categorie__Chale__01142BA1" Association="Self.FK__Categorie__Chale__01142BA1">
+      <End Role="Chalets" EntitySet="Chalets" />
+      <End Role="CategoriesChalets" EntitySet="CategoriesChalets" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Chalets__Feature__75A278F5" Association="Self.FK__Chalets__Feature__75A278F5">
+      <End Role="Features" EntitySet="Features" />
+      <End Role="Chalets" EntitySet="Chalets" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Chalets__Images___74AE54BC" Association="Self.FK__Chalets__Images___74AE54BC">
+      <End Role="Images" EntitySet="Images" />
+      <End Role="Chalets" EntitySet="Chalets" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Chalets__userid__73BA3083" Association="Self.FK__Chalets__userid__73BA3083">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Chalets" EntitySet="Chalets" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comments__Chalet__17F790F9" Association="Self.FK__Comments__Chalet__17F790F9">
+      <End Role="Chalets" EntitySet="Chalets" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comments__userid__07C12930" Association="Self.FK__Comments__userid__07C12930">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Faves__ChaletID__7D439ABD" Association="Self.FK__Faves__ChaletID__7D439ABD">
+      <End Role="Chalets" EntitySet="Chalets" />
+      <End Role="Faves" EntitySet="Faves" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Faves__userid__7C4F7684" Association="Self.FK__Faves__userid__7C4F7684">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Faves" EntitySet="Faves" />
+    </AssociationSet>
+    <AssociationSet Name="FK__transacti__Chale__0B91BA14" Association="Self.FK__transacti__Chale__0B91BA14">
+      <End Role="Chalets" EntitySet="Chalets" />
+      <End Role="transactions" EntitySet="transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__transacti__useri__0A9D95DB" Association="Self.FK__transacti__useri__0A9D95DB">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="transactions" EntitySet="transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__votes__ChaletID__787EE5A0" Association="Self.FK__votes__ChaletID__787EE5A0">
+      <End Role="Chalets" EntitySet="Chalets" />
+      <End Role="votes" EntitySet="votes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__votes__userid__797309D9" Association="Self.FK__votes__userid__797309D9">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="votes" EntitySet="votes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

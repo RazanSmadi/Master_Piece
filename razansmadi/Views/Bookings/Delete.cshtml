@@ -1,0 +1,104 @@
+﻿@model razansmadi.Models.Booking
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Booking</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CheckInDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CheckInDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CheckOutDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CheckOutDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CheckInTime)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CheckInTime)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TotalPrice)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TotalPrice)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PaymentStatus)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PaymentStatus)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.NumOfAdult)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NumOfAdult)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.NumOfKids)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NumOfKids)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AspNetUser.Email)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AspNetUser.Email)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Chalet.userid)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Chalet.userid)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>
