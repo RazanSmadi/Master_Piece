@@ -1,0 +1,107 @@
+﻿@model IEnumerable<razansmadi.Models.Image>
+
+@{
+    Layout = "~/Views/Shared/_OwnersLayout.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title"> Chalet </h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item active">All Images</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="datatable table table-hover table-center mb-0">
+
+                                <tr>
+                                    <th>
+                                        Main 
+                                    </th>
+                                    <th>
+                                        pool 
+                                    </th>
+                                    <th>
+                                        Garden 
+                                    </th>
+                                    <th>
+                                        PlayGround 
+                                    </th>
+                                    <th>
+                                        Room 
+                                    </th>
+                                    <th>
+                                        Kitchen 
+                                    </th>
+                                    <th>
+                                        Livingroom 
+                                    </th>
+                                    <th>
+                                        bathroom 
+                                    </th>
+                                    <th>
+                                        view 
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                </tr>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MainImage)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.poolImage)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.gardenImage)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.playGroundImage)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.roomImage)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.kitchenImage)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.livingRoomImage)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.bathroomImage)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.viewImage)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.Images_ID }, new { @class = "btn btn-primary" })
+
+                                        </td>
+                                    </tr>
+                                }
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="ml-5" href="~/SubAdminChalets/Index/0dfcd31a-12ff-430c-a1a0-a24170377bc9">Back to list</a>
+
+</div>
+

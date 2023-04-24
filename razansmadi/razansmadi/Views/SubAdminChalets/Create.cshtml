@@ -1,0 +1,115 @@
+﻿@model razansmadi.Models.Chalet
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_OwnersLayout.cshtml";
+}
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title">Create New Chalet</h3>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        @using (Html.BeginForm(new { id = "myForm" }))
+                        {
+
+
+
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(model => model.userid)
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <a href="/SubAdminChalets/CreateDetails">Add Detals For Your Chalet</a>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <a href="/Images/Create">Add Images For Your Chalet</a>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-10 form-group">
+                                    <a href="/Features/Create">Add Features For Your Chalet</a>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Create" class="btn btn-default" />
+                                </div>
+                            </div>
+
+                            <a href="~/SubAdminChalets/Index">Back to list</a>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<script>
+    const myForm = document.getElementById('myForm');
+    myForm.addEventListener('submit', function (event) {
+    event.preventDefault(); // prevent form submission to server
+            // save form inputs to local storage
+            localStorage.setItem('chalet_name', myForm.elements.chalet_name.value);
+            localStorage.setItem('location', myForm.elements.location.value);
+            localStorage.setItem('Chalet_Description', myForm.elements.Chalet_Description.value);
+            localStorage.setItem('NnmberOfAdult', myForm.elements.NnmberOfAdult.value);
+            localStorage.setItem('map', myForm.elements.map.value);
+            localStorage.setItem('area', myForm.elements.area.value);
+            localStorage.setItem('bathroom', myForm.elements.bathroom.value);
+            localStorage.setItem('bedroom', myForm.elements.bedroom.value);
+            localStorage.setItem('PricePerNight', myForm.elements.PricePerNight.value);
+            localStorage.setItem('NnmberOfkid', myForm.elements.NnmberOfkid.value);
+
+            window.location.href = '/Features/Create';
+            window.location.href = '/Images/Create';
+        });
+        // set input values from local storage when page loads
+        myForm.elements.chalet_name.value = localStorage.getItem('chalet_name');
+        myForm.elements.location.value = localStorage.getItem('location');
+        myForm.elements.Chalet_Description.value = localStorage.getItem('Chalet_Description');
+        myForm.elements.NnmberOfAdult.value = localStorage.getItem('NnmberOfAdult');
+        myForm.elements.map.value = localStorage.getItem('map');
+        myForm.elements.area.value = localStorage.getItem('area');
+        myForm.elements.bathroom.value = localStorage.getItem('bathroom');
+        myForm.elements.bedroom.value = localStorage.getItem('bedroom');
+        myForm.elements.PricePerNight.value = localStorage.getItem('PricePerNight');
+        myForm.elements.NnmberOfkid.value = localStorage.getItem('NnmberOfkid');
+    </script>*@
+@*<script>
+    var formData = JSON.parse(localStorage.getItem("formData"));
+    if (formData) {
+        document.getElementById("Chalet_Name").value = formData.Chalet_Name;
+        document.getElementById("Chalet_Description").value = formData.Chalet_Description;
+        // add code to populate the rest of the form fields from formData as needed
+    }
+
+    var myForm = document.getElementById("myForm");
+    myForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        formData.Chalet_Name = document.getElementById("Chalet_Name").value;
+        formData.Chalet_Description = document.getElementById("Chalet_Description").value;
+        // add the rest of the form values to formData as needed
+        localStorage.setItem("formData", JSON.stringify(formData));
+        window.location.href = event.submitter.id === "submitButton" ? "/Images/Create" : "/Features/Create";
+    });
+</script>
+
+<script>
+    var formData = JSON.parse(localStorage.getItem("formData"));
+    // use the formData object to populate the form fields on the next page as needed
+</script>*@
+
+
+

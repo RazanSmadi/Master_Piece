@@ -1,0 +1,50 @@
+﻿@model razansmadi.Models.transaction
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>transaction</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.amount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.amount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AspNetUser.Email)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AspNetUser.Email)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Chalet.userid)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Chalet.userid)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.transactionId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/appointment-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:46 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/admin/assets/css/bootstrap.min.css">
+
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="~/admin/assets/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a8b56cb52b.js" crossorigin="anonymous"></script>
+    <!-- Feathericon CSS -->
+    <link rel="stylesheet" href="~/admin/assets/css/feathericon.min.css">
+
+    <!-- Datatables CSS -->
+    <link rel="stylesheet" href="~/admin/assets/plugins/datatables/datatables.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="~/admin/assets/css/style.css">
+
+    <!--[if lt IE 9]>
+        <script src="assets/js/html5shiv.min.js"></script>
+        <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+
+        <!-- Header -->
+        <div class="header">
+
+            <!-- Logo -->
+            <div class="header-left">
+                <a href="index.html" class="logo">
+                    <span style="font-family: 'Babylonica', cursive; font-weight: bolder; font-size: 30px; color: black;">Royal Chalets</span>
+                </a>
+                <a href="index.html" class="logo logo-small">
+                    <span style="font-family: 'Babylonica', cursive;font-weight: bolder;font-size:30px;color:black;">Royal Chalets</span>
+                </a>
+            </div>
+            <!-- /Logo -->
+
+            <a href="javascript:void(0);" id="toggle_btn">
+                <i class="fe fe-text-align-left"></i>
+            </a>
+
+            <div class="top-nav-search">
+                <form>
+                    <input type="text" class="form-control" placeholder="Search here">
+                    <button class="btn" type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <a class="mobile_btn" id="mobile_btn">
+                <i class="fa fa-bars"></i>
+            </a>
+            <!-- /Mobile Menu Toggle -->
+            <!-- Header Right Menu -->
+
+        </div>
+        <!-- /Header -->
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li>
+                            <a href="/SubAdminChalets/Statistics"><i class="fa-solid fa-chart-simple"></i><span>Statistics</span></a>
+                        </li>
+                        <li>
+                            <a href="/AspNetUsers/OwnersProfile"><i class="fe fe-users"></i><span>Profile</span></a>
+                        </li>
+
+                        <li>
+                            <a href="/SubAdminChalets/Index"><i class="fe fe-home"></i> <span>Chaletes</span></a>
+                        </li>
+                        <li style="text-decoration:none; text-decoration-color:white;">
+                            @Html.Partial("_LoginPartial")
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /Sidebar -->
+
+        <div>
+            @RenderBody()
+        </div>
+    </div>
+    <!-- /Main Wrapper -->
+    <!-- jQuery -->
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+
+    <!-- Bootstrap Core JS -->
+    <script src="~/admin/assets/js/popper.min.js"></script>
+    <script src="~/admin/assets/js/bootstrap.min.js"></script>
+
+    <!-- Slimscroll JS -->
+    <script src="~/admin/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Datatables JS -->
+    <script src="~/admin/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/admin/assets/plugins/datatables/datatables.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="~/admin/assets/js/script.js"></script>
+
+
+</body>
+</html>

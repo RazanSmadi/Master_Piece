@@ -1,0 +1,287 @@
+﻿@model razansmadi.Models.Feature
+
+@{
+    Layout = "~/Views/Shared/_OwnersLayout.cshtml";
+}
+<!DOCTYPE html>
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item active"> Edit Features</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Features_ID)
+
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-md-3">
+                    @Html.EditorFor(model => model.Carpark, new { htmlAttributes = new { @class = "form-control", min = 0, PlaceHolder = "Car park", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.Carpark, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="datatable table table-hover table-center mb-0">
+                                    <tr></tr>
+
+                                    <tr class="col-3">
+                                        <th>
+                                            Air conditioning
+                                        </th>
+
+                                        <td>
+                                            @Html.DropDownListFor(model => model.Air_conditioning, new List<SelectListItem>
+                                            {
+                                                new SelectListItem { Text = "Not Available", Value = "false" },
+                                                new SelectListItem { Text = "Available", Value = "true" },
+                                            }, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Air_conditioning, "", new { @class = "text-danger" })
+                                        </td>
+
+
+
+
+
+
+                                    </tr>
+
+                                    <tr class="col-3">
+                                        <th>
+                                            Laundry
+                                        </th>
+                                        <td>
+                                            @Html.DropDownListFor(model => model.Laundry, new List<SelectListItem>
+                                           {
+                                               new SelectListItem { Text = "Not Available", Value = "false" },
+                                               new SelectListItem { Text = "Available", Value = "true" },
+                                             }, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Laundry, "", new { @class = "text-danger" })
+                                        </td>
+                                    </tr>
+
+                                    <tr class="col-3">
+                                        <th>
+                                            Refrigerator
+                                        </th>
+                                        <td>
+                                            @Html.DropDownListFor(model => model.Refrigerator, new List<SelectListItem>
+                                           {
+                                               new SelectListItem { Text = "Not Available", Value = "false" },
+                                               new SelectListItem { Text = "Available", Value = "true" },
+                                           }, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Refrigerator, "", new { @class = "text-danger" })
+
+                                        </td>
+                                    </tr>
+                                    <tr class="col-3">
+                                        <th>
+                                            Washer
+                                        </th>
+                                        <td>
+                                            @Html.DropDownListFor(model => model.Washer, new List<SelectListItem>
+                                      {
+                                          new SelectListItem { Text = "Not Available", Value = "false" },
+                                          new SelectListItem { Text = "Available", Value = "true" },
+                                      }, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Washer, "", new { @class = "text-danger" })
+
+
+                                        </td>
+                                    </tr>
+                                    <tr class="col-3">
+                                        <th>
+                                            Barbeque
+                                        </th>
+                                        <td>
+                                            @Html.DropDownListFor(model => model.Barbeque, new List<SelectListItem>
+                                       {
+                                           new SelectListItem { Text = "Not Available", Value = "false" },
+                                           new SelectListItem { Text = "Available", Value = "true" },
+                                       }, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Barbeque, "", new { @class = "text-danger" })
+
+                                        </td>
+                                    </tr>
+                                    <tr class="col-3">
+                                        <th>
+                                            Sauna
+                                        </th>
+                                        <td>
+                                            @Html.DropDownListFor(model => model.Sauna, new List<SelectListItem>
+                                                                                  {
+                                                                                      new SelectListItem { Text = "Not Available", Value = "false" },
+                                                                                      new SelectListItem { Text = "Available", Value = "true" },
+                                                                                  }, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Sauna, "", new { @class = "text-danger" })
+
+                                        </td>
+                                    </tr>
+                                    <tr class="col-3">
+                                        <th>
+                                            Wifi
+                                        </th>
+                                        <td>
+                                            @Html.DropDownListFor(model => model.Wifi, new List<SelectListItem>
+                                       {
+                                           new SelectListItem { Text = "Not Available", Value = "false" },
+                                           new SelectListItem { Text = "Available", Value = "true" },
+                                       }, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Wifi, "", new { @class = "text-danger" })
+
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="datatable table table-hover table-center mb-0">
+                                    <tr></tr>
+
+                                    <tr class="col-3">
+                                        <th>
+                                            Indoor Pool
+                                        </th>
+                                        <td>
+                                            @Html.DropDownListFor(model => model.indoorSwimmingPool, new List<SelectListItem>
+                                      {
+                                          new SelectListItem { Text = "Not Available", Value = "false" },
+                                          new SelectListItem { Text = "Available", Value = "true" },
+                                      }, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.indoorSwimmingPool, "", new { @class = "text-danger" })
+
+                                        </td>
+                                    </tr>
+
+                                    <tr class="col-3">
+                                        <th>
+                                            Microwave
+                                        </th>
+                                        <td>
+                                            @Html.DropDownListFor(model => model.Microwave, new List<SelectListItem>
+                                       {
+                                           new SelectListItem { Text = "Not Available", Value = "false" },
+                                           new SelectListItem { Text = "Available", Value = "true" },
+                                       }, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Microwave, "", new { @class = "text-danger" })
+
+
+                                        </td>
+                                    </tr>
+
+                                    <tr class="col-3">
+                                        <th>
+                                            Outdoor Pool
+                                        </th>
+                                        <td>
+                                            @Html.DropDownListFor(model => model.SwimmingPool, new List<SelectListItem>
+                                       {
+                                           new SelectListItem { Text = "Not Available", Value = "false" },
+                                           new SelectListItem { Text = "Available", Value = "true" },
+                                       }, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.SwimmingPool, "", new { @class = "text-danger" })
+
+
+                                        </td>
+                                    </tr>
+                                    <tr class="col-3">
+                                        <th>
+                                            Youth Games
+                                        </th>
+                                        <td>
+
+                                            @Html.DropDownListFor(model => model.YouthGames, new List<SelectListItem>
+                                       {
+                                           new SelectListItem { Text = "Not Available", Value = "false" },
+                                           new SelectListItem { Text = "Available", Value = "true" },
+                                       }, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.YouthGames, "", new { @class = "text-danger" })
+
+
+                                        </td>
+                                    </tr>
+                                    <tr class="col-3">
+                                        <th>
+                                            Kids Games
+                                        </th>
+                                        <td>
+                                            @Html.DropDownListFor(model => model.KidsGames, new List<SelectListItem>
+                                         {
+                                             new SelectListItem { Text = "Not Available", Value = "false" },
+                                             new SelectListItem { Text = "Available", Value = "true" },
+                                         }, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.KidsGames, "", new { @class = "text-danger" })
+
+                                        </td>
+                                    </tr>
+                                    <tr class="col-3">
+                                        <th>
+                                            Outdoor Shower
+                                        </th>
+                                        <td>
+                                            @Html.DropDownListFor(model => model.OutdoorShower, new List<SelectListItem>
+                                        {
+                                            new SelectListItem { Text = "Not Available", Value = "false" },
+                                            new SelectListItem { Text = "Available", Value = "true" },
+                                        }, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.OutdoorShower, "", new { @class = "text-danger" })
+
+                                        </td>
+                                    </tr>
+                                    <tr class="col-3">
+                                        <th>
+                                            Tv Cable
+                                        </th>
+                                        <td>
+                                            @Html.DropDownListFor(model => model.Tv_Cable, new List<SelectListItem>
+                                       {
+                                           new SelectListItem { Text = "Not Available", Value = "false" },
+                                           new SelectListItem { Text = "Available", Value = "true" },
+                                       }, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Tv_Cable, "", new { @class = "text-danger" })
+
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <div class="row col-12 justify-content-center">
+                    <a href="~/Features/Index/@Model.Features_ID" class="btn btn-primary p-2">Cancel</a>
+                    &nbsp; &nbsp;
+                    <input type="submit" value="Save" class="btn btn-success p-2" />
+                </div>
+            </div>
+  
+         }
+
+
+    </div>
+</div>

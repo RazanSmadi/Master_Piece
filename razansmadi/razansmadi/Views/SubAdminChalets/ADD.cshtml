@@ -1,0 +1,55 @@
+﻿@model razansmadi.Models.Chalet
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_OwnersLayout.cshtml";
+}
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title">Create New Chalet</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        @using (Html.BeginForm("ADD", "SubAdminChalets", new { id = Model.ChaletID }, FormMethod.Post))
+                        {
+                            
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <a href="/SubAdminChalets/CreateDetails">Add Detals For Your Chalet</a>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <a href="/Images/Create">Add Images For Your Chalet</a>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-10 form-group">
+                                    <a href="/Features/Create">Add Features For Your Chalet</a>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Create" class="btn btn-default" />
+                                </div>
+                            </div>
+
+                            <a href="~/SubAdminChalets/Index">Back to list</a>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

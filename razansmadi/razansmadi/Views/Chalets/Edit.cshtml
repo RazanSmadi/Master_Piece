@@ -1,0 +1,72 @@
+﻿@model razansmadi.Models.Chalet
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="d-flex flex-column" >
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Accepted Chalet</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.ChaletID)
+                    @Html.HiddenFor(model => model.userid)
+                    @Html.HiddenFor(model => model.Features_ID)
+                    @Html.HiddenFor(model => model.AvailabilityFlag)
+                    @Html.HiddenFor(model => model.bathroom)
+                    @Html.HiddenFor(model => model.bedroom)
+                    @Html.HiddenFor(model => model.Chalet_Address)
+                    @Html.HiddenFor(model => model.Chalet_Description)
+                    @Html.HiddenFor(model => model.Chalet_Name)
+                    @Html.HiddenFor(model => model.Images_ID)
+                    @Html.HiddenFor(model => model.super)
+                    @Html.HiddenFor(model => model.map)
+                    @Html.HiddenFor(model => model.NnmberOfAdult)
+                    @Html.HiddenFor(model => model.NnmberOfkid)
+                    @Html.HiddenFor(model => model.PricePerNight)
+                    @Html.HiddenFor(model => model.area)
+
+
+                    <div class="d-flex form-group">
+                        <div>
+                            Accepted or Reject
+                        </div>
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                <select name="isAccepted">
+                                    <option value="false">
+                                        Rejected
+                                    </option>
+                                    <option value="true">
+                                        Accepted
+                                    </option>
+
+                                </select>                    @Html.ValidationMessageFor(model => model.isAccepted, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="d-flex col-3 justify-content-between">
+                            <input type="submit" value="Save" class="btn btn-success" /><br />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

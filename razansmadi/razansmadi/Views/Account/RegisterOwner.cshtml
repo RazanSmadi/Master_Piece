@@ -1,0 +1,72 @@
+﻿@model razansmadi.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- MATERIAL DESIGN ICONIC FONT -->
+    <link rel="stylesheet" href="~/reg_temp/colorlib-regform-18/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="~/reg_temp/colorlib-regform-18/css/style.css">
+
+</head>
+
+<body>
+    <div class="wrapper" style="background-image: url('../../img/Category/evet.jpg');">
+        <div class="inner">
+            @using (Html.BeginForm("RegisterOwner", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <h3 style="color:green">Register As Owner</h3>
+                <div class="form-group">
+                    <div class="form-wrapper">
+                        <label for="">First Name</label>
+                        <input type="text" id="FirstName" name="FirstName" class="form-control" required>
+
+                    </div>
+                    <div class="form-wrapper">
+                        <label for="">Last Name</label>
+                        <input type="text" id="LastName" name="LastName" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-wrapper">
+                    <label for="">Email</label>
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", required = "required", type = "email" })
+                </div>
+                <div class="form-wrapper">
+                    <label for="">Phone Number</label>
+                    <input id="Phone" name="Phone" class="form-control" type="tel" required>
+
+                </div>
+                <div class="form-wrapper">
+                    <label for="photo">Upload Photo</label>
+                    <input type="file" id="Customer_Img" name="Customer_Img" required accept="image/*"  class = " form-control">
+                </div>
+
+                <div class="form-wrapper">
+                    <label for="">Password</label>
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", required = "required" })
+                </div>
+                <div class="form-wrapper">
+                    <label for="">Confirm Password</label>
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", required = "required" })
+                </div>
+                <div class="form-group">
+                    <p class="w-90 text-center">Already Have An Account ? <a href="Login" style="color:#0A6506; " ; font-weight: bolder;"> Login</a></p>
+                </div>
+                <button type="submit" class="btn btn-default" value="Register">Register Now</button>
+            }
+        </div>
+    </div>
+
+</body>
+</html>

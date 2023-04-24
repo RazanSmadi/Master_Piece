@@ -1,0 +1,64 @@
+﻿@using razansmadi.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- MATERIAL DESIGN ICONIC FONT -->
+    <link rel="stylesheet" href="~/reg_temp/colorlib-regform-18/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="~/reg_temp/colorlib-regform-18/css/style.css">
+
+</head>
+
+<body>
+    <div class="wrapper" style="background-image: url('../../img/Category/evet.jpg');">
+        <div class="inner">
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { enctype = "multipart/form-data", @class = "my-form-class mx-auto" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <h3 style="color:green">Log IN </h3>
+    <div class="form-wrapper row justify-content-center">
+        <div class="col-md-6">
+            <label for="">Email</label>
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", required = "required", type = "email" })
+        </div>
+        <div class="col-md-6">
+            <label for="">Password</label>
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", required = "required" })
+        </div>
+        <div class="col-md-12 text-center mt-3">
+            <label class="checkbox-wrap checkbox-primary">
+                Remember Me
+                <input type="checkbox" checked>
+                <span class="checkmark"></span>
+            </label>
+        </div>
+
+        <div class="col-md-12 text-center mt-3">
+            <button type="submit" class="btn btn-default" value="Register">Log IN</button>
+        </div>
+        <br /><br />
+              <h4 style="color:green;"> Don't have an account? </h4>
+        <a href="@Url.Action("Register", "Account")" style="color:black; text-decoration:none;"> Register as a user.</a><br />
+        <a href="@Url.Action("RegisterOwner", "Account")" style="color:black; text-decoration:none;"> Register as a owner.</a>
+
+    </div>
+}
+
+    </div>
+    </div>
+
+</body>
+</html>

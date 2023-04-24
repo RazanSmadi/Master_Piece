@@ -1,0 +1,336 @@
+﻿@model razansmadi.Models.Feature
+@{
+    Layout = "~/Views/Shared/_OwnersLayout.cshtml";
+}
+<!DOCTYPE html>
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item active"> Add Features</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.Carpark, new { htmlAttributes = new { @class = "form-control", min = 0, PlaceHolder = "Car park", required = "required" } })
+                @Html.ValidationMessageFor(model => model.Carpark, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="datatable table table-hover table-center mb-0">
+                                <tr></tr>
+
+                                <tr class="col-3">
+                                    <th>
+                                        Air conditioning
+                                    </th>
+                                    <td>
+                                        <div class="checkbox">
+                                            <select class="form-control" name="Air_conditioning">
+                                                <option value="false">Not Available</option>
+                                                <option value="true">Available</option>
+                                            </select>
+                                        </div>
+
+                                    </td>
+                                </tr>
+
+                                <tr class="col-3">
+                                    <th>
+                                        Laundry
+                                    </th>
+                                    <td>
+                                        <div class="checkbox">
+                                            <select name="Laundry" class="form-control">
+                                                <option value="false">
+                                                    Not Available
+                                                </option>
+                                                <option value="true">
+                                                    Available
+                                                </option>
+
+                                            </select>
+                                        </div>
+
+                                    </td>
+                                </tr>
+
+                                <tr class="col-3">
+                                    <th>
+                                        Refrigerator
+                                    </th>
+                                    <td>
+                                        <div class="checkbox">
+                                            <select name="Refrigerator" class="form-control">
+                                                <option value="false">
+                                                    Not Available
+                                                </option>
+                                                <option value="true">
+                                                    Available
+                                                </option>
+
+                                            </select>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                <tr class="col-3">
+                                    <th>
+                                        Washer
+                                    </th>
+                                    <td>
+                                        <div class="checkbox">
+                                            <select name="Washer" class="form-control">
+                                                <option value="false">
+                                                    Not Available
+
+                                                </option>
+                                                <option value="true">
+                                                    Available
+                                                </option>
+
+                                            </select>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                <tr class="col-3">
+                                    <th>
+                                        Barbeque
+                                    </th>
+                                    <td>
+                                        <div class="checkbox">
+                                            <select name="Barbeque" class="form-control">
+                                                <option value="false">
+                                                    Not Available
+                                                </option>
+                                                <option value="true">
+                                                    Available
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="col-3">
+                                    <th>
+                                        Sauna
+                                    </th>
+                                    <td>
+                                        <div class="checkbox">
+                                            <select name="Sauna" class="form-control">
+                                                <option value="false">
+                                                    Not Available
+
+                                                </option>
+                                                <option value="true">
+                                                    Available
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="col-3">
+                                    <th>
+                                        Wifi
+                                    </th>
+                                    <td>
+                                        <div class="checkbox">
+                                            <select name="Wifi" class="form-control">
+                                                <option value="false">
+                                                    Not Available
+                                                </option>
+                                                <option value="true">
+                                                    Available
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="datatable table table-hover table-center mb-0">
+                                <tr></tr>
+
+                                <tr class="col-3">
+                                    <th>
+                                        Indoor Pool
+                                    </th>
+                                    <td>
+                                        <div class="checkbox">
+                                            <select name="indoorSwimmingPool" class="form-control">
+                                                <option value="false">
+                                                    Not Available
+                                                </option>
+                                                <option value="true">
+                                                    Available
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr class="col-3">
+                                    <th>
+                                        Microwave
+                                    </th>
+                                    <td>
+                                        <div class="checkbox">
+                                            <select name="Microwave" class="form-control">
+                                                <option value="false">
+                                                    Not Available
+                                                </option>
+                                                <option value="true">
+                                                    Available
+                                                </option>
+
+                                            </select>
+                                        </div>
+
+                                    </td>
+                                </tr>
+
+                                <tr class="col-3">
+                                    <th>
+                                        Outdoor Pool
+                                    </th>
+                                    <td>
+                                        <div class="checkbox">
+                                            <select name="SwimmingPool" class="form-control">
+                                                <option value="false">
+                                                    Not Available
+                                                </option>
+                                                <option value="true">
+                                                    Available
+                                                </option>
+
+                                            </select>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                <tr class="col-3">
+                                    <th>
+                                        Youth Games
+                                    </th>
+                                    <td>
+
+                                        <div class="checkbox">
+                                            <select name="YouthGames" class="form-control">
+                                                <option value="false">
+                                                    Not Available
+                                                </option>
+                                                <option value="true">
+                                                    Available
+                                                </option>
+
+                                            </select>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                <tr class="col-3">
+                                    <th>
+                                        Kids Games
+                                    </th>
+                                    <td>
+                                        <div class="checkbox">
+                                            <select name="KidsGames" class="form-control">
+                                                <option value="false">
+                                                    Not Available
+                                                </option>
+                                                <option value="true">
+                                                    Available
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="col-3">
+                                    <th>
+                                        Outdoor Shower
+                                    </th>
+                                    <td>
+                                        <div class="checkbox">
+                                            <select name="OutdoorShower" class="form-control">
+                                                <option value="false">
+                                                    Not Available
+                                                </option>
+                                                <option value="true">
+                                                    Available
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="col-3">
+                                    <th>
+                                        Tv Cable
+                                    </th>
+                                    <td>
+                                        <div class="checkbox">
+                                            <select name="Tv_Cable" class="form-control">
+                                                <option value="false">
+                                                    Not Available
+                                                </option>
+                                                <option value="true">
+                                                    Available
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add" class="btn btn-success"/>
+            </div>
+        </div>
+    </div>
+        }
+
+    <div>
+        <a href="~/SubAdminChalets/Index">Back to list</a>
+    </div>
+    </div>
+</div>

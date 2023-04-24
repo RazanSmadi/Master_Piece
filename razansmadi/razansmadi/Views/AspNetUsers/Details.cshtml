@@ -1,0 +1,61 @@
+﻿@model razansmadi.Models.AspNetUser
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <h2>Details</h2>
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Owners</a></li>
+                        <li class="breadcrumb-item active">Details</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="page-wrapper">
+            <div>
+                <dl class="dl-horizontal">
+                    <dt>
+                       Email
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+                    <dt>
+                        First Name
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.FirstName)
+                    </dd>
+
+                    <dt>
+                     Last Name
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.LastName)
+                    </dd>
+
+                    <dt>
+                       Image
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Customer_Img)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                <a href="~/AspNetUsers/Index">Back to list</a>
+            </p>
+        </div>
+    </div>
+</div>

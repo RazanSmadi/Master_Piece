@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c50d994b6e0244f28a12f40652bc9278" Name="Diagram1" ZoomLevel="66">
+        <EntityTypeShape EntityType="MasterPieceModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MasterPieceModel.AspNetRole" Width="1.5" PointX="3.75" PointY="9.25" />
+        <EntityTypeShape EntityType="MasterPieceModel.AspNetUserClaim" Width="1.5" PointX="3" PointY="26.625" />
+        <EntityTypeShape EntityType="MasterPieceModel.AspNetUserLogin" Width="1.5" PointX="3" PointY="29.375" />
+        <EntityTypeShape EntityType="MasterPieceModel.AspNetUserRole" Width="1.5" PointX="6" PointY="10.125" />
+        <EntityTypeShape EntityType="MasterPieceModel.AspNetUser" Width="1.5" PointX="0.75" PointY="12.125" />
+        <EntityTypeShape EntityType="MasterPieceModel.Booking" Width="1.5" PointX="5.25" PointY="13.375" />
+        <EntityTypeShape EntityType="MasterPieceModel.Category" Width="1.5" PointX="6" PointY="7.125" />
+        <EntityTypeShape EntityType="MasterPieceModel.CategoriesChalet" Width="1.5" PointX="8.25" PointY="14" />
+        <EntityTypeShape EntityType="MasterPieceModel.Chalet" Width="1.5" PointX="3" PointY="12" />
+        <EntityTypeShape EntityType="MasterPieceModel.Comment" Width="1.5" PointX="8.25" PointY="10.875" />
+        <EntityTypeShape EntityType="MasterPieceModel.Fave" Width="1.5" PointX="8.25" PointY="8.125" />
+        <EntityTypeShape EntityType="MasterPieceModel.Feature" Width="1.5" PointX="0.75" PointY="18.75" />
+        <EntityTypeShape EntityType="MasterPieceModel.Image" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="MasterPieceModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MasterPieceModel.transaction" Width="1.5" PointX="5.25" PointY="18" />
+        <EntityTypeShape EntityType="MasterPieceModel.vote" Width="1.5" PointX="8.25" PointY="17" />
+        <AssociationConnector Association="MasterPieceModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" />
+        <AssociationConnector Association="MasterPieceModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="MasterPieceModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="MasterPieceModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="MasterPieceModel.FK__Bookings__id__04E4BC85" />
+        <AssociationConnector Association="MasterPieceModel.FK__Chalets__userid__73BA3083" />
+        <AssociationConnector Association="MasterPieceModel.FK__Comments__userid__07C12930" />
+        <AssociationConnector Association="MasterPieceModel.FK__Faves__userid__7C4F7684" />
+        <AssociationConnector Association="MasterPieceModel.FK__transacti__useri__0A9D95DB" />
+        <AssociationConnector Association="MasterPieceModel.FK__votes__userid__797309D9" />
+        <AssociationConnector Association="MasterPieceModel.FK__Bookings__Chalet__03F0984C" />
+        <AssociationConnector Association="MasterPieceModel.FK__Categorie__Categ__00200768" />
+        <AssociationConnector Association="MasterPieceModel.FK__Categorie__Chale__01142BA1" />
+        <AssociationConnector Association="MasterPieceModel.FK__Chalets__Feature__75A278F5" />
+        <AssociationConnector Association="MasterPieceModel.FK__Chalets__Images___74AE54BC" />
+        <AssociationConnector Association="MasterPieceModel.FK__Comments__Chalet__17F790F9" />
+        <AssociationConnector Association="MasterPieceModel.FK__Faves__ChaletID__7D439ABD" />
+        <AssociationConnector Association="MasterPieceModel.FK__transacti__Chale__0B91BA14" />
+        <AssociationConnector Association="MasterPieceModel.FK__votes__ChaletID__787EE5A0" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
