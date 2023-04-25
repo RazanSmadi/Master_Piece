@@ -9,111 +9,111 @@
 <div class="page-wrapper">
     <div class="content container-fluid">
 
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Create", "Images", FormMethod.Post, new { role = "form", enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <h4>Add Images</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                <label class="control-label col-md-2">Main Image</label>
-                <div class="col-md-10">
-                    <input class="form-control text-box single-line" id="MainImage" name="MainImage" type="file" value="" accept="image/*" required />
-                    <span class="field-validation-valid text-danger" data-valmsg-for="MainImage" data-valmsg-replace="true"></span>
+            <div class="form-horizontal">
+                <h4>Add Images</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <label class="control-label col-md-2">Main Image</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" id="MainImage" name="MainImage" type="file" value="" accept="image/*" required />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="MainImage" data-valmsg-replace="true"></span>
 
+                    </div>
                 </div>
-            </div>
-            <br />
-            <div class="form-group">
-                <label class="control-label col-md-2">Pool Image</label>
-                <div class="col-md-10">
-                    <input class="form-control text-box single-line" id="poolImage" name="poolImage" type="file" value="" accept="image/*" required />
-                    <span class="field-validation-valid text-danger" data-valmsg-for="poolImage" data-valmsg-replace="true"></span>
+                <br />
+                <div class="form-group">
+                    <label class="control-label col-md-2">Pool Image</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" id="poolImage" name="poolImage" type="file" value="" accept="image/*" required />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="poolImage" data-valmsg-replace="true"></span>
 
+                    </div>
                 </div>
-            </div>
-            <br />
-            <div class="form-group">
-                <label class="control-label col-md-2">Garden Image</label>
-                <div class="col-md-10">
-                    <input class="form-control text-box single-line" id="gardenImage" name="gardenImage" type="file" value="" accept="image/*" required />
-                    <span class="field-validation-valid text-danger" data-valmsg-for="gardenImage" data-valmsg-replace="true"></span>
+                <br />
+                <div class="form-group">
+                    <label class="control-label col-md-2">Garden Image</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" id="gardenImage" name="gardenImage" type="file" value="" accept="image/*" required />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="gardenImage" data-valmsg-replace="true"></span>
 
+                    </div>
                 </div>
-            </div>
-            <br />
-            <div class="form-group">
-                <label class="control-label col-md-2">PlayGround Image</label>
-                <div class="col-md-10">
-                    <input class="form-control text-box single-line" id="playGroundImage" name="playGroundImage" type="file" value="" accept="image/*" required />
-                    <span class="field-validation-valid text-danger" data-valmsg-for="playGroundImage" data-valmsg-replace="true"></span>
+                <br />
+                <div class="form-group">
+                    <label class="control-label col-md-2">PlayGround Image</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" id="playGroundImage" name="playGroundImage" type="file" value="" accept="image/*" required />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="playGroundImage" data-valmsg-replace="true"></span>
+                    </div>
                 </div>
-            </div>
-            <br />
-            <div class="form-group">
-                <label class="control-label col-md-2">Room Image</label>
-                <div class="col-md-10">
-                    <input class="form-control text-box single-line" id="roomImage" name="roomImage" type="file" value="" accept="image/*" required />
-                    <span class="field-validation-valid text-danger" data-valmsg-for="roomImage" data-valmsg-replace="true"></span>
+                <br />
+                <div class="form-group">
+                    <label class="control-label col-md-2">Room Image</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" id="roomImage" name="roomImage" type="file" value="" accept="image/*" required />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="roomImage" data-valmsg-replace="true"></span>
+                    </div>
                 </div>
-            </div>
-            <br />
-            <div class="form-group">
-                <label class="control-label col-md-2">Kitchen Image</label>
-                <div class="col-md-10">
-                    <input class="form-control text-box single-line" id="kitchenImage" name="kitchenImage" type="file" value="" accept="image/*" required />
-                    <span class="field-validation-valid text-danger" data-valmsg-for="kitchenImage" data-valmsg-replace="true"></span>
+                <br />
+                <div class="form-group">
+                    <label class="control-label col-md-2">Kitchen Image</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" id="kitchenImage" name="kitchenImage" type="file" value="" accept="image/*" required />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="kitchenImage" data-valmsg-replace="true"></span>
 
+                    </div>
                 </div>
-            </div>
-            <br />
-            <div class="form-group">
-                <label class="control-label col-md-2">Living Room Image</label>
-                <div class="col-md-10">
-                    <input class="form-control text-box single-line" id="livingRoomImage" name="livingRoomImage" type="file" value="" accept="image/*" required />
-                    <span class="field-validation-valid text-danger" data-valmsg-for="livingRoomImage" data-valmsg-replace="true"></span>
+                <br />
+                <div class="form-group">
+                    <label class="control-label col-md-2">Living Room Image</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" id="livingRoomImage" name="livingRoomImage" type="file" value="" accept="image/*" required />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="livingRoomImage" data-valmsg-replace="true"></span>
 
+                    </div>
                 </div>
-            </div>
-            <br />
-            <div class="form-group">
-                <label class="control-label col-md-2">Bathroom Image</label>
-                <div class="col-md-10">
-                    <input class="form-control text-box single-line" id="bathroomImage" name="bathroomImage" type="file" value="" accept="image/*" required />
-                    <span class="field-validation-valid text-danger" data-valmsg-for="bathroomImage" data-valmsg-replace="true"></span>
+                <br />
+                <div class="form-group">
+                    <label class="control-label col-md-2">Bathroom Image</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" id="bathroomImage" name="bathroomImage" type="file" value="" accept="image/*" required />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="bathroomImage" data-valmsg-replace="true"></span>
 
+                    </div>
                 </div>
-            </div>
-            <br />
-            <div class="form-group">
-                <label class="control-label col-md-2">View Image</label>
-                <div class="col-md-10">
-                    <input class="form-control text-box single-line" id="viewImage" name="viewImage" type="file" value="" accept="image/*" required />
-                    <span class="field-validation-valid text-danger" data-valmsg-for="viewImage" data-valmsg-replace="true"></span>
+                <br />
+                <div class="form-group">
+                    <label class="control-label col-md-2">View Image</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" id="viewImage" name="viewImage" type="file" value="" accept="image/*" required />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="viewImage" data-valmsg-replace="true"></span>
 
+                    </div>
                 </div>
-            </div>
-            <br />
-            <div class="form-group">
-                <label class="control-label col-md-2">Random Image</label>
-                <div class="col-md-10">
-                    <input class="form-control text-box single-line" id="randomImage" name="randomImage" type="file" value="" accept="image/*" required />
-                    <span class="field-validation-valid text-danger" data-valmsg-for="randomImage" data-valmsg-replace="true"></span>
+                <br />
+                <div class="form-group">
+                    <label class="control-label col-md-2">Random Image</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" id="randomImage" name="randomImage" type="file" value="" accept="image/*" required />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="randomImage" data-valmsg-replace="true"></span>
+                    </div>
                 </div>
-            </div>
-                <br>  
+                <br>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Add" class="btn btn-success" />
                     </div>
                 </div>
             </div>
-            }
+        }
 
-    <div>
-        <a href="~/SubAdminChalets/Index">Back to list</a>
-    </div>
+        <div>
+            <a href="~/SubAdminChalets/Index">Back to list</a>
         </div>
+    </div>
 </div>

@@ -77,7 +77,7 @@
     <Property Name="CheckOutDate" Type="date" />
     <Property Name="CheckInTime" Type="int" />
     <Property Name="TotalPrice" Type="decimal" Precision="10" Scale="2" />
-    <Property Name="PaymentStatus" Type="varchar" MaxLength="50" />
+    <Property Name="PaymentStatus" Type="bit" />
     <Property Name="NumOfAdult" Type="int" />
     <Property Name="NumOfKids" Type="int" />
   </EntityType>
@@ -197,6 +197,7 @@
     <Property Name="userid" Type="nvarchar" MaxLength="128" />
     <Property Name="ChaletID" Type="int" />
     <Property Name="amount" Type="float" />
+    <Property Name="totalpay" Type="float" />
   </EntityType>
   <EntityType Name="votes">
     <Key>

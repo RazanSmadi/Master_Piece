@@ -3,6 +3,26 @@
 @{
     Layout = "~/Views/Shared/_OwnersLayout.cshtml";
 }
+<style>
+    .thumbnail {
+        top: -50px;
+        left: -35px;
+        display: block;
+        z-index: 999;
+        cursor: pointer;
+        -webkit-transition-property: all;
+        -webkit-transition-duration: 0.7s;
+        -webkit-transition-timing-function: ease;
+    }
+        /*change the number below to scale to the appropriate size*/
+        .thumbnail:hover {
+            transform: scale(2);
+        }
+
+    td {
+        text-align: center;
+    }
+</style>
 
 <div class="page-wrapper">
     <div class="content container-fluid">
@@ -26,31 +46,31 @@
 
                                 <tr>
                                     <th>
-                                        Main 
+                                        Main
                                     </th>
                                     <th>
-                                        pool 
+                                        pool
                                     </th>
                                     <th>
-                                        Garden 
+                                        Garden
                                     </th>
                                     <th>
-                                        PlayGround 
+                                        PlayGround
                                     </th>
                                     <th>
-                                        Room 
+                                        Room
                                     </th>
                                     <th>
-                                        Kitchen 
+                                        Kitchen
                                     </th>
                                     <th>
-                                        Livingroom 
+                                        Livingroom
                                     </th>
                                     <th>
-                                        bathroom 
+                                        bathroom
                                     </th>
                                     <th>
-                                        view 
+                                        view
                                     </th>
                                     <th>
 
@@ -61,37 +81,38 @@
                                 {
                                     <tr>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.MainImage)
+                                            <img src="~/img/MainImage/@item.MainImage" class="thumbnail" style="width:50px; height:50px; " />
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.poolImage)
+                                            <img src="~/img/poolImage/@item.poolImage" class="thumbnail" style="width:50px; height:50px; " />
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.gardenImage)
+                                            <img src="~/img/gardenImage/@item.gardenImage" class="thumbnail" style="width:50px; height:50px; " />
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.playGroundImage)
+                                            <img src="~/img/playGroundImage/@item.playGroundImage" class="thumbnail" style="width:50px; height:50px; " />
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.roomImage)
+                                            <img src="~/img/roomImage/@item.roomImage" class="thumbnail" style="width:50px; height:50px; " />
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.kitchenImage)
+                                            <img src="~/img/kitchenImage/@item.kitchenImage" class="thumbnail" style="width:50px; height:50px; " />
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.livingRoomImage)
+                                            <img src="~/img/livingRoomImage/@item.livingRoomImage" class="thumbnail" style="width:50px; height:50px; " />
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.bathroomImage)
+                                            <img src="~/img/bathroomImage/@item.bathroomImage" class="thumbnail" style="width:50px; height:50px; " />
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.viewImage)
+                                            <img src="~/img/viewImage/@item.viewImage" class="thumbnail" style="width:50px; height:50px; " />
                                         </td>
                                         <td>
                                             @Html.ActionLink("Edit", "Edit", new { id = item.Images_ID }, new { @class = "btn btn-primary" })
 
                                         </td>
                                     </tr>
+
                                 }
 
                             </table>

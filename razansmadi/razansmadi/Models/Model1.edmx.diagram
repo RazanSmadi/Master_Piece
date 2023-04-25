@@ -6,22 +6,22 @@
     <edmx:Diagrams>
       <Diagram DiagramId="c50d994b6e0244f28a12f40652bc9278" Name="Diagram1" ZoomLevel="66">
         <EntityTypeShape EntityType="MasterPieceModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="MasterPieceModel.AspNetRole" Width="1.5" PointX="3.75" PointY="9.25" />
-        <EntityTypeShape EntityType="MasterPieceModel.AspNetUserClaim" Width="1.5" PointX="3" PointY="26.625" />
-        <EntityTypeShape EntityType="MasterPieceModel.AspNetUserLogin" Width="1.5" PointX="3" PointY="29.375" />
-        <EntityTypeShape EntityType="MasterPieceModel.AspNetUserRole" Width="1.5" PointX="6" PointY="10.125" />
-        <EntityTypeShape EntityType="MasterPieceModel.AspNetUser" Width="1.5" PointX="0.75" PointY="12.125" />
-        <EntityTypeShape EntityType="MasterPieceModel.Booking" Width="1.5" PointX="5.25" PointY="13.375" />
-        <EntityTypeShape EntityType="MasterPieceModel.Category" Width="1.5" PointX="6" PointY="7.125" />
-        <EntityTypeShape EntityType="MasterPieceModel.CategoriesChalet" Width="1.5" PointX="8.25" PointY="14" />
-        <EntityTypeShape EntityType="MasterPieceModel.Chalet" Width="1.5" PointX="3" PointY="12" />
-        <EntityTypeShape EntityType="MasterPieceModel.Comment" Width="1.5" PointX="8.25" PointY="10.875" />
-        <EntityTypeShape EntityType="MasterPieceModel.Fave" Width="1.5" PointX="8.25" PointY="8.125" />
-        <EntityTypeShape EntityType="MasterPieceModel.Feature" Width="1.5" PointX="0.75" PointY="18.75" />
-        <EntityTypeShape EntityType="MasterPieceModel.Image" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="MasterPieceModel.AspNetRole" Width="1.5" PointX="3.75" PointY="9.375" />
+        <EntityTypeShape EntityType="MasterPieceModel.AspNetUserClaim" Width="1.5" PointX="3" PointY="29.25" />
+        <EntityTypeShape EntityType="MasterPieceModel.AspNetUserLogin" Width="1.5" PointX="3" PointY="26.75" />
+        <EntityTypeShape EntityType="MasterPieceModel.AspNetUserRole" Width="1.5" PointX="6" PointY="10.25" />
+        <EntityTypeShape EntityType="MasterPieceModel.AspNetUser" Width="1.5" PointX="0.75" PointY="12.25" />
+        <EntityTypeShape EntityType="MasterPieceModel.Booking" Width="1.5" PointX="5.25" PointY="13.5" />
+        <EntityTypeShape EntityType="MasterPieceModel.Category" Width="1.5" PointX="6" PointY="7.25" />
+        <EntityTypeShape EntityType="MasterPieceModel.CategoriesChalet" Width="1.5" PointX="8.25" PointY="14.125" />
+        <EntityTypeShape EntityType="MasterPieceModel.Chalet" Width="1.5" PointX="3" PointY="12.125" />
+        <EntityTypeShape EntityType="MasterPieceModel.Comment" Width="1.5" PointX="8.25" PointY="8" />
+        <EntityTypeShape EntityType="MasterPieceModel.Fave" Width="1.5" PointX="8.25" PointY="11.25" />
+        <EntityTypeShape EntityType="MasterPieceModel.Feature" Width="1.5" PointX="0.75" PointY="6.875" />
+        <EntityTypeShape EntityType="MasterPieceModel.Image" Width="1.5" PointX="0.75" PointY="19.25" />
         <EntityTypeShape EntityType="MasterPieceModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="MasterPieceModel.transaction" Width="1.5" PointX="5.25" PointY="18" />
-        <EntityTypeShape EntityType="MasterPieceModel.vote" Width="1.5" PointX="8.25" PointY="17" />
+        <EntityTypeShape EntityType="MasterPieceModel.transaction" Width="1.5" PointX="8.25" PointY="17" />
+        <EntityTypeShape EntityType="MasterPieceModel.vote" Width="1.5" PointX="5.25" PointY="18.125" />
         <AssociationConnector Association="MasterPieceModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" />
         <AssociationConnector Association="MasterPieceModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="MasterPieceModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />

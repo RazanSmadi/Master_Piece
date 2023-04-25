@@ -76,7 +76,7 @@
                         }
                         @using (Html.BeginForm("Register", "Account", FormMethod.Post))
                         {
-                            <button class="button_header">Renting your Chalets</button>
+                            <button class="button_header">Post your Chalets</button>
                         }
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                     }
                     @using (Html.BeginForm("Register", "Account", FormMethod.Post))
                     {
-                        <button class="button_header">Renting your Chalets</button>
+                        <button class="button_header">Post your Chalets</button>
                     }
                 </div>
                 <div class="hs-item set-bg" data-setbg="@Url.Content("~/img/Capture.PNG")">
@@ -97,7 +97,7 @@
                     }
                     @using (Html.BeginForm("Register", "Account", FormMethod.Post))
                     {
-                        <button class="button_header">Renting your Chalets</button>
+                        <button class="button_header">Post your Chalets</button>
                     }
                 </div>
             </div>
@@ -108,9 +108,16 @@
     <section class="property-section latest-property-section spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-5">
+                <div class="col-lg-8 col-md-8">
                     <div class="section-title">
-                        <h4>The most recommended chalets</h4>
+                        <h4>Our Recommended Chalets</h4>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="team-btn d-flex justify-content-center p-1 button_header" style="width:40%;">
+                        <a href="@Url.Action("AllChalet", "Chalets")">
+                            <i class='fas fa-house-user ' style='font-size:100%;color:white'></i> <span style="color:white;"> ALL chalets</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -120,8 +127,14 @@
 
                     <div class="col-lg-4 col-md-6 mix all house">
                         <div class="property-item">
-                            <div class="pi-pic set-bg" data-setbg="@Url.Content("~/img/farm2.PNG")">
-                            </div>
+                            @foreach (var img in Model.Item3)
+                            {
+                                if (img.Images_ID == item.Images_ID)
+                                {
+                                    <img src="~/img/MainImage/@img.MainImage" class="pi-pic set-bg" />
+
+                                }
+                            }
                             <div class="pi-text">
                                 <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                                 <div class="pt-price">Start From @item.PricePerNight JD /Day </div>
@@ -134,34 +147,30 @@
 
                                     @foreach (var items in Model.Item4)
                                     {
-                                        <li><i class="fa fa-automobile"></i> @items.Carpark</li>
+                                        if (items.Features_ID == item.Features_ID)
+                                        {
+                                            <li><i class="fa fa-automobile"></i> @items.Carpark</li>
+
+                                        }
                                     }
                                 </ul>
-                                <!--<div class="pi-agent">
-                                <div class="pa-item">
-                                    <div class="pa-info">
-                                        <img src="img/property/posted-by/pb-1.jpg" alt="">-->
-                                @*<h6>@item.AspNetUser.UserName</h6>*@
-                                <!--</div>
-                                <div class="pa-text">-->
-                                @*@item.AspNetUser.PhoneNumber*@
-                                <!--</div>
-                                    </div>
-                                </div>-->
+                                <br /><br />
+                                <a href="@Url.Action("ChaletDetails", "Chalets", new { id = item.ChaletID })" class="button_header">View More Details</a>
+
                             </div>
                         </div>
                     </div>
+
+
                 }
-                <div style="display:flex;justify-content:center ">
-                    @using (Html.BeginForm("AllChalet", "Chalets", FormMethod.Post))
-                    {
-                        <button class="button_header">Show All</button>
-                    }
-                </div>
+
+
             </div>
+
+
         </div>
 
-    </section>
+</section>
     <!-- Property Section End -->
     <!-- Chooseus Section Begin -->
     <section class="chooseus-section spad set-bg" data-setbg="@Url.Content("~/img/why.jpg")">
@@ -172,7 +181,7 @@
                         <div class="section-title">
                             <h4>Why choose us</h4>
                         </div>
-                        <p>Chalet rentals are one of the top choices for family holidaymakers. Rent out 1, 2, 3-bedroom suites in most heigh areas, rent out whole chalets for larger groups. Comfortable and convenient to Enjoy the beauty of Jerash's stunning nature.</p>
+                        <p>Chalet rentals are one of the top choices for family holidaymakers.We collected Jerash chalets in one website so make it easier and save time for you to Enjoy the beauty of Jerash's stunning nature.</p>
                     </div>
                     <div class="chooseus-features">
 
@@ -181,7 +190,7 @@
                                 <img src="~/img/chooseus/chooseus-icon-3.png" alt="">
                             </div>
                             <div class="cf-text">
-                                <h5>booking Chalets</h5>
+                                <h5>view Chalets</h5>
                                 <p>Chalets in your favourite cities</p>
                             </div>
                         </div>
@@ -191,7 +200,7 @@
                             </div>
                             <div class="cf-text">
                                 <h5>List your own Chalet</h5>
-                                <p>Sign up now and rent your own Chalet</p>
+                                <p>Sign up now and post your own Chalet</p>
                             </div>
                         </div>
 

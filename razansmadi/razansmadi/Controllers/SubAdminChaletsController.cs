@@ -171,13 +171,22 @@ namespace razansmadi.Controllers
             {
                 db.Chalets.Add(chalet);
                 db.SaveChanges();
+
+                // add the ID value to the view model
+                chalet.ChaletID = db.Entry(chalet).Entity.ChaletID;
+
+                // store the ID in the session
                 Session["ChaletID"] = chalet.ChaletID;
-                return RedirectToAction("Create", new { ChaletID = chalet.ChaletID });
+
+                return RedirectToAction("ADD", new { Id = chalet.ChaletID });
             }
+
             chalet.DateOfReg = DateTime.Today;
             ViewBag.userid = new SelectList(db.AspNetUsers, "Id", "Email", chalet.userid);
+
             return View(chalet);
         }
+
         // GET: SubAdminChalets/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -216,32 +225,61 @@ namespace razansmadi.Controllers
         }
 
 
-        public ActionResult ADD(int id)
+        public ActionResult ADD(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             Chalet chalet = db.Chalets.Find(id);
             if (chalet == null)
             {
                 return HttpNotFound();
             }
-            if (ModelState.IsValid)
-            {
-                int? Features_ID = Session["Features_ID"] as int?;
-
-                chalet.Features_ID = Features_ID;
-
-                int? Images_ID = Session["Images_ID"] as int?;
-                chalet.Images_ID = Images_ID;
-                db.Entry(chalet).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("/Index");
-            }
-           
-
             ViewBag.userid = new SelectList(db.AspNetUsers, "Id", "Email", chalet.userid);
             ViewBag.Features_ID = new SelectList(db.Features, "Features_ID", "Features_ID", chalet.Features_ID);
             ViewBag.Images_ID = new SelectList(db.Images, "Images_ID", "MainImage", chalet.Images_ID);
             return View(chalet);
         }
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ADD(int ChaletId)
+        {
+            Chalet chalet = db.Chalets.Find(ChaletId);
+            if (chalet == null)
+            {
+                return HttpNotFound();
+            }
+
+            int? featuresId = Session["Features_ID"] as int?;
+            if (featuresId != null)
+            {
+                chalet.Features_ID = featuresId;
+            }
+
+            int? imagesId = Session["Images_ID"] as int?;
+            if (imagesId != null)
+            {
+                chalet.Images_ID = imagesId;
+            }
+
+            if (ModelState.IsValid)
+            {
+                //db.Entry(chalet).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.userid = new SelectList(db.AspNetUsers, "Id", "Email", chalet.userid);
+            ViewBag.Features_ID = new SelectList(db.Features, "Features_ID", "Features_ID", chalet.Features_ID);
+            ViewBag.Images_ID = new SelectList(db.Images, "Images_ID", "MainImage", chalet.Images_ID);
+
+            return View(chalet);
+        }
+
 
 
 

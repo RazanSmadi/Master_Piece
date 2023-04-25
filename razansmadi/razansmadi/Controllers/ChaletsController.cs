@@ -26,7 +26,7 @@ namespace razansmadi.Controllers
         public ActionResult Home()
         {
             var cate = db.Categories.ToList();
-            var chalets = db.Chalets.Include(c => c.AspNetUser).Include(c => c.Feature).Include(c => c.Image).Where(x => x.super == true).ToList();
+            var chalets = db.Chalets.Include(c => c.AspNetUser).Include(c => c.Feature).Include(c => c.Image).Where(x => x.super == true && x.isAccepted==true).ToList();
             var images = (from c in chalets
                           join i in db.Images on c.Images_ID equals i.Images_ID
                           select i).ToList();

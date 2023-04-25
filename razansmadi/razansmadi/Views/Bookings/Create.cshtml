@@ -3,6 +3,8 @@
 @{
     Layout = null;
 }
+@using razansmadi.Models
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,6 +33,20 @@
                         <div class="form-header">
                             <h1>Make your reservation</h1>
                         </div>
+                        @{
+                            var db = new MasterPieceEntities();
+                            int id = 1;
+                            var chalet = db.Chalets.FirstOrDefault(i => i.ChaletID == id);
+                            var price = chalet.PricePerNight;
+
+
+
+                        }
+
+
+
+
+
                         @using (Html.BeginForm())
                         {
                             @Html.AntiForgeryToken()
@@ -39,31 +55,31 @@
                             @Html.HiddenFor(model => model.ChaletID)
                             @Html.HiddenFor(model => model.id)
 
-                            <div class="row">
+                            <div class="d-flex">
+
                                 <div class="col-md-6">
+                                    <div style="color:white;" class="col-3"> Check In Date</div>
                                     <div class="form-group">
                                         @Html.EditorFor(model => model.CheckInDate, new { htmlAttributes = new { @class = "form-control", required = "required", type = "date", min = DateTime.Now.ToString("yyyy-MM-dd") } })
                                         @Html.ValidationMessageFor(model => model.CheckInDate, "", new { @class = "text-danger" })
-                                        <span class="form-label">Check In</span>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        @Html.DropDownList("CheckInTime", null, htmlAttributes: new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.CheckInTime, "", new { @class = "text-danger" })
-                                        <span class="select-arrow"></span>
-                                        <span class="form-label">CheckIn Time</span>
-                                    </div>
-                                </div>
-                            </div>
 
+                                <div class="col-md-6">
+                                    <div style="color:white;"> Check Out Date</div>
+                                    <div class="form-group">
+                                        @Html.EditorFor(model => model.CheckInDate, new { htmlAttributes = new { @class = "form-control", required = "required", type = "date", min = DateTime.Now.ToString("yyyy-MM-dd") } })
+                                        @Html.ValidationMessageFor(model => model.CheckOutDate, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                            </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         @Html.DropDownList("NumOfAdult", null, htmlAttributes: new { @class = "form-control" })
                                         @Html.ValidationMessageFor(model => model.NumOfAdult, "", new { @class = "text-danger" })
-                                        <span class="select-arrow"></span>
-                                        <span class="form-label">Adults</span>
+
                                     </div>
                                 </div>
 
@@ -72,8 +88,7 @@
 
                                         @Html.DropDownList("NumOfKids", null, htmlAttributes: new { @class = "form-control" })
                                         @Html.ValidationMessageFor(model => model.NumOfKids, "", new { @class = "text-danger" })
-                                        <span class="select-arrow"></span>
-                                        <span class="form-label">Kids</span>
+
                                     </div>
                                 </div>
                             </div>
@@ -81,7 +96,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        @Html.EditorFor(model => model.TotalPrice, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Total Price" } })
+                                        @Html.EditorFor(model => model.TotalPrice, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Total Price", min = @price } })
                                         @Html.ValidationMessageFor(model => model.TotalPrice, "", new { @class = "text-danger" })
                                         <span class="form-label"> Total Price </span>
                                     </div>
@@ -102,13 +117,13 @@
                                     <input type="submit" value="Book Now" class="submit-btn" />
                                 </div>
                             </div>
-                        }
 
+
+                        }
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
+       </div>
+     </div>
 </body>
 </html>

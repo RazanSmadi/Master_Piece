@@ -73,61 +73,62 @@ namespace razansmadi.Controllers
             {
                 Guid guid = Guid.NewGuid();
                 string pathMainImage = guid + MainImage.FileName;
-                MainImage.SaveAs(Server.MapPath("../MainImage/" + pathMainImage));
+                MainImage.SaveAs(Server.MapPath("../img/MainImage/" + pathMainImage));
                 image.MainImage = pathMainImage;
 
                 Guid guid1 = Guid.NewGuid();
                 string pathpoolImage = guid1 + poolImage.FileName;
-                poolImage.SaveAs(Server.MapPath("../poolImage/" + pathpoolImage));
+                poolImage.SaveAs(Server.MapPath("../img/poolImage/" + pathpoolImage));
                 image.poolImage = pathpoolImage;
 
                 Guid guid3 = Guid.NewGuid();
                 string pathgardenImage = guid3 + gardenImage.FileName;
-                gardenImage.SaveAs(Server.MapPath("../gardenImage/" + pathgardenImage));
+                gardenImage.SaveAs(Server.MapPath("../img/gardenImage/" + pathgardenImage));
                 image.gardenImage = pathgardenImage;
 
                 Guid guid4 = Guid.NewGuid();
                 string pathplayGroundImage = guid4 + playGroundImage.FileName;
-                playGroundImage.SaveAs(Server.MapPath("../playGroundImage/" + pathplayGroundImage));
+                playGroundImage.SaveAs(Server.MapPath("../img/playGroundImage/" + pathplayGroundImage));
                 image.playGroundImage = pathplayGroundImage;
 
                 Guid guid5 = Guid.NewGuid();
                 string pathroomImage = guid5 + roomImage.FileName;
-                roomImage.SaveAs(Server.MapPath("../roomImage/" + pathroomImage));
+                roomImage.SaveAs(Server.MapPath("../img/roomImage/" + pathroomImage));
                 image.roomImage = pathroomImage;
 
                 Guid guid6 = Guid.NewGuid();
                 string pathkitchenImage = guid6 + kitchenImage.FileName;
-                kitchenImage.SaveAs(Server.MapPath("../kitchenImage/" + pathkitchenImage));
+                kitchenImage.SaveAs(Server.MapPath("../img/kitchenImage/" + pathkitchenImage));
                 image.kitchenImage = pathkitchenImage;
          
           
 
                 Guid guid7 = Guid.NewGuid();
                 string pathlivingRoomImage = guid7 + livingRoomImage.FileName;
-                livingRoomImage.SaveAs(Server.MapPath("../livingRoomImage/" + pathlivingRoomImage));
+                livingRoomImage.SaveAs(Server.MapPath("../img/livingRoomImage/" + pathlivingRoomImage));
                 image.livingRoomImage = pathlivingRoomImage;
 
                 Guid guid8 = Guid.NewGuid();
                 string pathbathroomImage = guid8 + bathroomImage.FileName;
-                bathroomImage.SaveAs(Server.MapPath("../bathroomImage/" + pathbathroomImage));
+                bathroomImage.SaveAs(Server.MapPath("../img/bathroomImage/" + pathbathroomImage));
                 image.bathroomImage = pathbathroomImage;
 
                 Guid guid9 = Guid.NewGuid();
                 string pathrandomImage = guid9 + randomImage.FileName;
-                randomImage.SaveAs(Server.MapPath("../randomImage/" + pathrandomImage));
+                randomImage.SaveAs(Server.MapPath("../img/randomImage/" + pathrandomImage));
                 image.randomImage = pathrandomImage;
 
                 Guid guid10 = Guid.NewGuid();
                 string pathviewImage = guid10 + viewImage.FileName;
-                viewImage.SaveAs(Server.MapPath("../viewImage/" + pathviewImage));
+                viewImage.SaveAs(Server.MapPath("../img/viewImage/" + pathviewImage));
                 image.viewImage = pathviewImage;
 
 
                 db.Images.Add(image);
                 db.SaveChanges();
                 Session["Images_ID"] = image.Images_ID;
-                return RedirectToAction("Create", "SubAdminChalets");
+                var ChaletID = Session["ChaletID"];
+                return RedirectToAction("ADD", "SubAdminChalets", new { Id = ChaletID });
 
             }
 
@@ -153,11 +154,11 @@ namespace razansmadi.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult OwnerAllImages(int id)
+        public ActionResult OwnerAllImages()
         {
 
-            Image img = db.Images.Find(id);
-            List<Image> imges = db.Images.Where(f => f.Images_ID == id).ToList();
+            Image img = db.Images.Find(22);
+            List<Image> imges = db.Images.Where(f => f.Images_ID == 20).ToList();
             return View(imges);
 
         }

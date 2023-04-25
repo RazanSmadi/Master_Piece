@@ -937,10 +937,19 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="img\bathroomImage\" />
     <Folder Include="img\Chalet\" />
     <Folder Include="img\Customers\" />
+    <Folder Include="img\gardenImage\" />
+    <Folder Include="img\kitchenImage\" />
+    <Folder Include="img\livingRoomImage\" />
+    <Folder Include="img\MainImage\" />
+    <Folder Include="img\playGroundImage\" />
+    <Folder Include="img\poolImage\" />
+    <Folder Include="img\randomImage\" />
+    <Folder Include="img\roomImage\" />
+    <Folder Include="img\viewImage\" />
     <Folder Include="template\.vs\aler-master\v17\" />
-    <Folder Include="Views\Images\img\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

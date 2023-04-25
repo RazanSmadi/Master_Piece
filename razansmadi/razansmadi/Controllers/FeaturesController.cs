@@ -72,7 +72,8 @@ namespace razansmadi.Controllers
                 db.Features.Add(feature);
                 db.SaveChanges();
                 Session["Features_ID"] = feature.Features_ID;
-                return RedirectToAction("Create", "SubAdminChalets", new { Features_ID = feature.Features_ID });
+                 var ChaletID= Session["ChaletID"];
+                return RedirectToAction("ADD", "SubAdminChalets", new {Id = ChaletID });
             }
 
             return View(feature);

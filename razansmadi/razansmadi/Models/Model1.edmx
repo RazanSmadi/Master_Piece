@@ -82,7 +82,7 @@
           <Property Name="CheckOutDate" Type="date" />
           <Property Name="CheckInTime" Type="int" />
           <Property Name="TotalPrice" Type="decimal" Precision="10" Scale="2" />
-          <Property Name="PaymentStatus" Type="varchar" MaxLength="50" />
+          <Property Name="PaymentStatus" Type="bit" />
           <Property Name="NumOfAdult" Type="int" />
           <Property Name="NumOfKids" Type="int" />
         </EntityType>
@@ -202,6 +202,7 @@
           <Property Name="userid" Type="nvarchar" MaxLength="128" />
           <Property Name="ChaletID" Type="int" />
           <Property Name="amount" Type="float" />
+          <Property Name="totalpay" Type="float" />
         </EntityType>
         <EntityType Name="votes">
           <Key>
@@ -743,7 +744,7 @@
           <Property Name="CheckOutDate" Type="DateTime" Precision="0" />
           <Property Name="CheckInTime" Type="Int32" />
           <Property Name="TotalPrice" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="PaymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentStatus" Type="Boolean" />
           <Property Name="NumOfAdult" Type="Int32" />
           <Property Name="NumOfKids" Type="Int32" />
           <NavigationProperty Name="AspNetUser" Relationship="MasterPieceModel.FK__Bookings__id__04E4BC85" FromRole="Booking" ToRole="AspNetUser" />
@@ -883,6 +884,7 @@
           <Property Name="userid" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="ChaletID" Type="Int32" />
           <Property Name="amount" Type="Double" />
+          <Property Name="totalpay" Type="Double" />
           <NavigationProperty Name="AspNetUser" Relationship="MasterPieceModel.FK__transacti__useri__0A9D95DB" FromRole="transaction" ToRole="AspNetUser" />
           <NavigationProperty Name="Chalet" Relationship="MasterPieceModel.FK__transacti__Chale__0B91BA14" FromRole="transaction" ToRole="Chalet" />
         </EntityType>
@@ -1352,6 +1354,7 @@
           <EntitySetMapping Name="transactions">
             <EntityTypeMapping TypeName="MasterPieceModel.transaction">
               <MappingFragment StoreEntitySet="transactions">
+                <ScalarProperty Name="totalpay" ColumnName="totalpay" />
                 <ScalarProperty Name="amount" ColumnName="amount" />
                 <ScalarProperty Name="ChaletID" ColumnName="ChaletID" />
                 <ScalarProperty Name="userid" ColumnName="userid" />

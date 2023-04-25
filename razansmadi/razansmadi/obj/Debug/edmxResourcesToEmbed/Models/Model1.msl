@@ -204,6 +204,7 @@
     <EntitySetMapping Name="transactions">
       <EntityTypeMapping TypeName="MasterPieceModel.transaction">
         <MappingFragment StoreEntitySet="transactions">
+          <ScalarProperty Name="totalpay" ColumnName="totalpay" />
           <ScalarProperty Name="amount" ColumnName="amount" />
           <ScalarProperty Name="ChaletID" ColumnName="ChaletID" />
           <ScalarProperty Name="userid" ColumnName="userid" />

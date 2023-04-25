@@ -41,23 +41,15 @@ namespace razansmadi.Controllers
         {
             ViewBag.id = new SelectList(db.AspNetUsers, "Id", "Email");
             ViewBag.ChaletID = new SelectList(db.Chalets, "ChaletID", "userid");
-            ViewData["CheckInTime"] = new List<SelectListItem>
-    {
-        new SelectListItem { Text = "Duration", Value = "" },
-        new SelectListItem { Text = "10AM-9PM", Value = "1" },
-        new SelectListItem { Text = "10PM-9AM", Value = "2" },
-        new SelectListItem { Text = "Full Day", Value = "3" }
-    };
+   
 
             ViewData["NumOfAdult"] = new List<SelectListItem>
     {
-        new SelectListItem { Text = "Number Of Adult", Value = "" },
         new SelectListItem { Text = "Less than 20 adults", Value = "1" },
         new SelectListItem { Text = "more than 20 adults", Value = "2" }
     };
             ViewData["NumOfKids"] = new List<SelectListItem>
     {
-        new SelectListItem { Text = "Number Of Kids", Value = "" },
         new SelectListItem { Text = "Less than 20 Kids", Value = "1" },
         new SelectListItem { Text = "more than 20 Kids", Value = "2" }
     };

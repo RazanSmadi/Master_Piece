@@ -80,10 +80,12 @@
                             <div class="row">
                                 @foreach (var item in Model.Item4)
                                 {
-                                    string main = item.MainImage;
+
                                     <div class="col-lg-12 p-0">
-                                        <div class="ps-item-inner large-item set-bg" data-setbg="@Url.Content("~/img/Chalet/main")"></div>
+                                        <img src="~/img/MainImage/@item.MainImage" class="ps-item-inner large-item set-bg" style="width:960px;height:645px"/>
+
                                     </div>
+
                                 }
 
                             </div>
@@ -92,22 +94,21 @@
                             <div class="row">
                                 @foreach (var item in Model.Item4)
                                 {
-                                    string garden = item.gardenImage;
-                                    string pool = item.poolImage;
-                                    string play = item.playGroundImage;
-                                    string living = item.livingRoomImage;
+                                  
 
                                     <div class="col-sm-6 p-0">
-                                        <div class="ps-item-inner set-bg" data-setbg="@Url.Content("~/img/property/slider/garden")"></div>
+                                        <img src="~/img/gardenImage/@item.gardenImage" class="ps-item-inner large-item set-bg" style="width:475px;height:317px"  />
+
                                     </div>
                                     <div class="col-sm-6 p-0">
-                                        <div class="ps-item-inner set-bg" data-setbg="@Url.Content("~/img/property/slider/pool")"></div>
+                                        <img src="~/img/poolImage/@item.poolImage" class=" ps-item-inner large-item set-bg" style="width:475px;height:317px"  />
+
                                     </div>
                                     <div class="col-sm-6 p-0">
-                                        <div class="ps-item-inner set-bg" data-setbg="@Url.Content("~/img/property/slider/play")"></div>
+                                        <img src="~/img/playGroundImage/@item.playGroundImage" class=" ps-item-inner large-item set-bg" style="width:475px;height:317px" />
                                     </div>
                                     <div class="col-sm-6 p-0">
-                                        <div class="ps-item-inner set-bg" data-setbg="@Url.Content("~/img/property/slider/living")"></div>
+                                        <img src="~/img/playGroundImage/@item.livingRoomImage" class=" ps-item-inner large-item set-bg" style="width:475px;height:317px" />
                                     </div>
                                 }
                             </div>
@@ -122,10 +123,10 @@
                             <div class="row">
                                 @foreach (var item in Model.Item4)
                                 {
-                                    string random = item.randomImage;
 
                                     <div class="col-lg-12 p-0">
-                                        <div class="ps-item-inner large-item set-bg" data-setbg="@Url.Content("~/img/property/slider/random")"></div>
+                                        <img src="~/img/viewImage/@item.viewImage" class=" ps-item-inner large-item set-bg" style="width:960px;height:645px"/>
+
                                     </div>
                                 }
                             </div>
@@ -134,22 +135,18 @@
                             <div class="row">
                                 @foreach (var item in Model.Item4)
                                 {
-                                    string room = item.roomImage;
-                                    string kitchen = item.kitchenImage;
-                                    string bathroom = item.bathroomImage;
-                                    string view = item.viewImage;
+                                    <div class="col-sm-6 p-0">
+                                        <img src="~/img/roomImage/@item.roomImage" class=" ps-item-inner large-item set-bg" style="width:475px;height:317px" />
+                                    </div>
+                                    <div class="col-sm-6 p-0">
+                                        <img src="~/img/kitchenImage/@item.kitchenImage" class=" ps-item-inner large-item set-bg" style="width:475px;height:317px" />
+                                    </div>
+                                    <div class="col-sm-6 p-0">
+                                        <img src="~/img/bathroomImage/@item.bathroomImage" class=" ps-item-inner large-item set-bg" style="width:475px;height:317px" />
+                                    </div>
+                                    <div class="col-sm-6 p-0">
+                                        <img src="~/img/randomImage/@item.randomImage" class=" ps-item-inner large-item set-bg" style="width:475px;height:317px" />
 
-                                    <div class="col-sm-6 p-0">
-                                        <div class="ps-item-inner set-bg" data-setbg="@Url.Content("~/img/property/slider/room")"></div>
-                                    </div>
-                                    <div class="col-sm-6 p-0">
-                                        <div class="ps-item-inner set-bg" data-setbg="@Url.Content("~/img/property/slider/kitchen")"></div>
-                                    </div>
-                                    <div class="col-sm-6 p-0">
-                                        <div class="ps-item-inner set-bg" data-setbg="@Url.Content("~/img/property/slider/bathroom")"></div>
-                                    </div>
-                                    <div class="col-sm-6 p-0">
-                                        <div class="ps-item-inner set-bg" data-setbg="@Url.Content("~/img/property/slider/view")"></div>
                                     </div>
                                 }
                             </div>
@@ -461,7 +458,8 @@
                             </div>
 
                         }
-
+                        <br />
+                        <br />
                         <div class="pd-widget">
                             <h4>Location</h4>
                             <div class="map">
@@ -496,14 +494,21 @@
 
                             }
                         </div>
-                        <div style="display:flex;justify-content:center">
 
-                            @using (Html.BeginForm("Create", "Bookings"))
-                            {
-                                @Html.Hidden("chaletId", @Model.Item2.ChaletID)
-                                <button class="button_header" type="submit">Book Now</button>
+                        <div>
+                            @{ 
+                                var dbs = new MasterPieceEntities();
+                                var user = dbs.AspNetUsers.Where(i => i.Id == Model.Item2.userid);
+                                var number = user.FirstOrDefault().Phone;
+                                var phoneNumberWithZero = "0" + number;
+                                var name = user.FirstOrDefault().FirstName +" " + user.FirstOrDefault().LastName;
 
                             }
+                            You can contact the owner <span style="color:forestgreen;"> @name</span>of the chalet with this number <span style="color:forestgreen;"> @phoneNumberWithZero </span> to reserve it
+</div>
+                        <div style="display:flex;justify-content:center">
+
+                        
 
                             @using (Html.BeginForm("AllChalet", "Chalets", FormMethod.Post))
                             {
@@ -514,34 +519,34 @@
                         <br />
 
                         @using (Html.BeginForm("AddComment", "Chalets", FormMethod.Post, new { @class = "addComment", @id = "algin-form" }))
-                        { 
-                       <input name="ChaletID" id="ChaletID" value="@Model.Item2.ChaletID" style="visibility:hidden;" />
-                       <div class="pd-widget">
-                           <div class="form-group">
-                               <div class="leaveCommentTitle">Leave a comment</div>
-                               <br/>
-                               <label for="message">Message</label>
-                               <textarea name="comment1" required msg cols="30" rows="5" class="form-control" style="background-color: white;"></textarea>
-                           </div>
-                           @if (User.Identity.IsAuthenticated)
-                           {
-                           <div class="form-group">
-                               <button type="submit" id="post" class="btn">Post Comment</button>
-                           </div>
-                           }
-                           else
-                           {
-                       <div class="form-group">
-                           <button type="submit" id="post" class="btn" disabled>Post Comment</button>
-                           <span style="color:red">*Please Login to Add a comment</span>
+                        {
+                            <input name="ChaletID" id="ChaletID" value="@Model.Item2.ChaletID" style="visibility:hidden;" />
+                            <div class="pd-widget">
+                                <div class="form-group">
+                                    <div class="leaveCommentTitle">Leave a comment</div>
+                                    <br />
+                                    <label for="message">Message</label>
+                                    <textarea name="comment1" required msg cols="30" rows="5" class="form-control" style="background-color: white;"></textarea>
+                                </div>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <div class="form-group">
+                                        <button type="submit" id="post" class="btn">Post Comment</button>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="form-group">
+                                        <button type="submit" id="post" class="btn" disabled>Post Comment</button>
+                                        <span style="color:red">*Please Login to Add a comment</span>
 
-                       </div>
-                           }
-                       </div>
+                                    </div>
+                                }
+                            </div>
                         }
 
 
-                       
+
 
 
                     </div>
@@ -635,3 +640,15 @@
 </body>
 
 </html>
+
+<!--<div class="pi-agent">
+               <div class="pa-item">
+                   <div class="pa-info">
+                       <img src="img/property/posted-by/pb-1.jpg" alt="">-->
+@*<h6>@item.AspNetUser.UserName</h6>*@
+<!--</div>
+<div class="pa-text">-->
+@*@item.AspNetUser.PhoneNumber*@
+<!--</div>
+    </div>
+</div>-->

@@ -21,7 +21,7 @@ namespace razansmadi.Models
         public Nullable<System.DateTime> CheckOutDate { get; set; }
         public Nullable<int> CheckInTime { get; set; }
         public Nullable<decimal> TotalPrice { get; set; }
-        public string PaymentStatus { get; set; }
+        public Nullable<bool> PaymentStatus { get; set; }
         public Nullable<int> NumOfAdult { get; set; }
         public Nullable<int> NumOfKids { get; set; }
     
