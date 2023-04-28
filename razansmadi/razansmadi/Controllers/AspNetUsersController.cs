@@ -40,7 +40,8 @@ namespace razansmadi.Controllers
         }
         public ActionResult OwnersProfile()
         {
-            string ownerId = Session["Loggedowner"].ToString();
+            string ownerId = "0dfcd31a-12ff-430c-a1a0-a24170377bc9";
+                /*Session["Loggedowner"].ToString();*/
 
             if (ownerId == null)
             {
@@ -71,10 +72,23 @@ namespace razansmadi.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditOwnersProfile([Bind(Include = "Id, Email, EmailConfirmed, PasswordHash, SecurityStamp, PhoneNumber, PhoneNumberConfirmed, TwoFactorEnabled, LockoutEndDateUtc, LockoutEnabled, AccessFailedCount, UserName, FirstName, LastName,Phone, Customer_Img")] AspNetUser aspNetUser)
+        public ActionResult EditOwnersProfile(string id,[Bind(Include = "Id, Email, EmailConfirmed, PasswordHash, SecurityStamp, PhoneNumber, PhoneNumberConfirmed, TwoFactorEnabled, LockoutEndDateUtc, LockoutEnabled, AccessFailedCount, UserName, FirstName, LastName,Phone, Customer_Img")] AspNetUser aspNetUser, HttpPostedFileBase Customer_Img)
         {
             if (ModelState.IsValid)
             {
+                if (Customer_Img != null)
+                {
+                    Guid guid = Guid.NewGuid();
+                    string path = guid + Customer_Img.FileName;
+                    Customer_Img.SaveAs(Server.MapPath("../img/Customer_Img/" + path));
+                    aspNetUser.Customer_Img = path;
+                }
+                else
+                {
+                    var existingModel = db.AspNetUsers.AsNoTracking().FirstOrDefault(x => x.Id == id);
+                    aspNetUser.Customer_Img = existingModel.Customer_Img;
+                }
+
                 db.Entry(aspNetUser).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("/OwnersProfile", new { id = aspNetUser.Id});
@@ -154,10 +168,23 @@ namespace razansmadi.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditUserProfile([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,FirstName,LastName,Phone,Customer_Img")] AspNetUser aspNetUser)
+        public ActionResult EditUserProfile(string id ,[Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,FirstName,LastName,Phone,Customer_Img")] AspNetUser aspNetUser, HttpPostedFileBase Customer_Img)
         {
             if (ModelState.IsValid)
             {
+                if (Customer_Img != null)
+                {
+                    Guid guid = Guid.NewGuid();
+                    string path = guid + Customer_Img.FileName;
+                    Customer_Img.SaveAs(Server.MapPath("../img/Customer_Img/" + path));
+                    aspNetUser.Customer_Img = path;
+                }
+                else
+                {
+                    var existingModel = db.AspNetUsers.AsNoTracking().FirstOrDefault(x => x.Id == id);
+                    aspNetUser.Customer_Img = existingModel.Customer_Img;
+                }
+
                 db.Entry(aspNetUser).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("OwnersProfile");
@@ -184,6 +211,21 @@ namespace razansmadi.Controllers
             return View(aspNetUser);
         }
 
+        public ActionResult OwnerDitals(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            AspNetUser aspNetUser = db.AspNetUsers.Find(id);
+            if (aspNetUser == null)
+            {
+                return HttpNotFound();
+            }
+            return View(aspNetUser);
+        }
+
+
         // GET: AspNetUsers/Create
         public ActionResult Create()
         {
@@ -195,10 +237,16 @@ namespace razansmadi.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,FirstName,LastName,Customer_Img")] AspNetUser aspNetUser)
+        public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,FirstName,LastName,Customer_Img")] AspNetUser aspNetUser, HttpPostedFileBase Customer_Img)
         {
             if (ModelState.IsValid)
             {
+                Guid guid = Guid.NewGuid();
+                string pathMainImage = guid + Customer_Img.FileName;
+                Customer_Img.SaveAs(Server.MapPath("../img/Customer_Img/" + pathMainImage));
+                aspNetUser.Customer_Img = pathMainImage;
+
+
                 db.AspNetUsers.Add(aspNetUser);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -227,10 +275,23 @@ namespace razansmadi.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,FirstName,LastName,Phone,Customer_Img")] AspNetUser aspNetUser)
+        public ActionResult Edit(string id,[Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,FirstName,LastName,Phone,Customer_Img")] AspNetUser aspNetUser , HttpPostedFileBase Customer_Img)
         {
             if (ModelState.IsValid)
             {
+                if (Customer_Img != null)
+                {
+                    Guid guid = Guid.NewGuid();
+                    string path = guid + Customer_Img.FileName;
+                    Customer_Img.SaveAs(Server.MapPath("../img/Customer_Img/" + path));
+                    aspNetUser.Customer_Img = path;
+                }
+                else
+                {
+                    var existingModel = db.AspNetUsers.AsNoTracking().FirstOrDefault(x => x.Id == id);
+                    aspNetUser.Customer_Img = existingModel.Customer_Img;
+                }
+
                 db.Entry(aspNetUser).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("OwnersProfile");
@@ -242,10 +303,23 @@ namespace razansmadi.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editowner([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,FirstName,LastName,Customer_Img")] AspNetUser aspNetUser)
+        public ActionResult Editowner(string id,[Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,FirstName,LastName,Customer_Img")] AspNetUser aspNetUser, HttpPostedFileBase Customer_Img)
         {
             if (ModelState.IsValid)
             {
+                if (Customer_Img != null)
+                {
+                    Guid guid = Guid.NewGuid();
+                    string path = guid + Customer_Img.FileName;
+                    Customer_Img.SaveAs(Server.MapPath("../img/Customer_Img/" + path));
+                    aspNetUser.Customer_Img = path;
+                }
+                else
+                {
+                    var existingModel = db.AspNetUsers.AsNoTracking().FirstOrDefault(x => x.Id == id);
+                    aspNetUser.Customer_Img = existingModel.Customer_Img;
+                }
+
                 db.Entry(aspNetUser).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

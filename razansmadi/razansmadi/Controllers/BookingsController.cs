@@ -140,7 +140,7 @@ namespace razansmadi.Controllers
             Booking booking = db.Bookings.Find(id);
             if (booking == null)
             {
-                return HttpNotFound();
+                return HttpNotFound("/Index");
             }
             return View(booking);
         }
@@ -153,7 +153,7 @@ namespace razansmadi.Controllers
             Booking booking = db.Bookings.Find(id);
             db.Bookings.Remove(booking);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("/Index");
         }
 
         protected override void Dispose(bool disposing)

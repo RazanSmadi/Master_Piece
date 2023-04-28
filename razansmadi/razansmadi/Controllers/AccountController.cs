@@ -87,9 +87,6 @@ namespace razansmadi.Controllers
                 case SignInStatus.Success:
                     if (role == "1") // admin
                     {
-                        //AspNetUser Admin = db.AspNetUsers.Find(id);
-                        //Session["LoggedAdmin"] = Admin;
-
                         return RedirectToAction("Statistics", "AspNetUsers");
                      }
                     else if(role == "2") //subadmin 
@@ -179,13 +176,15 @@ return View(model);
                     string userID = db.AspNetUsers.Where(x => x.Email == model.Email).Select(x => x.Id).FirstOrDefault();
                     AspNetUser newUser = db.AspNetUsers.Find(userID);
                     string customerImgPath = null;
+
                     if (Customer_Img != null)
                     {
-                        string fileName = Path.GetFileName(Customer_Img.FileName);
-                        string path = Path.Combine(Server.MapPath("~/img/Customers"), fileName);
-                        Customer_Img.SaveAs(path);
-                        customerImgPath = fileName;
+                        Guid guid = Guid.NewGuid();
+                        customerImgPath = guid + Customer_Img.FileName;
+                        Customer_Img.SaveAs(Server.MapPath("../img/Customer_Img/" + customerImgPath));
+                        newUser.Customer_Img = customerImgPath;
                     }
+
 
                     newUser.Customer_Img = customerImgPath;
 
@@ -230,23 +229,23 @@ return View(model);
                     string userID = db.AspNetUsers.Where(x => x.Email == model.Email).Select(x => x.Id).FirstOrDefault();
                     AspNetUser newUser = db.AspNetUsers.Find(userID);
                     string customerImgPath = null;
+
                     if (Customer_Img != null)
                     {
-                        string fileName = Path.GetFileName(Customer_Img.FileName);
-                        string path = Path.Combine(Server.MapPath("~/img/Customers"), fileName);
-                        Customer_Img.SaveAs(path);
-                        customerImgPath = fileName;
+                        Guid guid = Guid.NewGuid();
+                        customerImgPath = guid + Customer_Img.FileName;
+                        Customer_Img.SaveAs(Server.MapPath("../img/Customer_Img/" + customerImgPath));
+                        newUser.Customer_Img = customerImgPath;
                     }
-
-                    newUser.Customer_Img = customerImgPath;
+                
 
                     newUser.FirstName = FirstName;
                     newUser.LastName = LastName;
                     newUser.Phone = Phone;
 
-                  //  Check if RoleId exists in AspNetRoles table before creating AspNetUserRole object
-                  
-                        AspNetUserRole newRole = new AspNetUserRole();
+                    //  Check if RoleId exists in AspNetRoles table before creating AspNetUserRole object
+
+                    AspNetUserRole newRole = new AspNetUserRole();
                         newRole.RoleId = "2";
                         newRole.UserId = userID;
                         db.AspNetUserRoles.Add(newRole);

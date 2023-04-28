@@ -1,58 +1,42 @@
 ﻿@model razansmadi.Models.Comment
 
 @{
-    Layout = null;
-}
 
-<!DOCTYPE html>
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>Comment</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.comment1)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.comment1)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Comment_Date)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Comment_Date)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.AspNetUser.Email)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.AspNetUser.Email)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Chalet.userid)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Chalet.userid)
-            </dd>
-    
-        </dl>
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="table-responsive">
+            <h2>Details</h2>
+
+            <table class="table table-hover">
+                <tr>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>Comment</th>
+                    <td>@Html.DisplayFor(model => model.comment1)</td>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <td>@Html.DisplayFor(model => model.Comment_Date)</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>@Html.DisplayFor(model => model.AspNetUser.Email)</td>
+                </tr>
+                <tr>
+                    <th>Chalet Nmae </th>
+                    <td>@Html.DisplayFor(model => model.Chalet.Chalet_Name)</td>
+                </tr>
+                <tr>
+                    <th></th>
+                </tr>
+            </table>
+        </div>
+        <p>
+            <a href="~/Comments/Index" class="btn btn-default">Back to list</a>
+        </p>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Comment_ID }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</body>
-</html>
+</div>

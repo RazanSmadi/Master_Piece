@@ -4,6 +4,28 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+@using razansmadi.Models
+
+
+<style>
+    .thumbnail {
+        top: -50px;
+        left: -35px;
+        display: block;
+        z-index: 999;
+        cursor: pointer;
+        -webkit-transition-property: all;
+        -webkit-transition-duration: 0.7s;
+        -webkit-transition-timing-function: ease;
+    }
+        /*change the number below to scale to the appropriate size*/
+        .thumbnail:hover {
+            transform: scale(1.4);
+        }
+
+   
+</style>
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -16,7 +38,7 @@
                     <h3 class="page-title"> Chalets Requests </h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Chalets</li>
+                        <li class="breadcrumb-item active">Chalets Requests</li>
                     </ul>
                 </div>
             </div>
@@ -71,34 +93,37 @@
                                             @Html.DisplayFor(modelItem => item.PricePerNight)
                                         </td>
                                         @{
-                                            if (Convert.ToBoolean(item.isAccepted))
+                                            if (item.isAccepted == null)
                                             {
-                                                <td style="color:green">Accepted </td>
-                                            }
-                                            else if (item.isAccepted == null)
-                                            {
-                                                <td style="color:tomato">Under Review </td>
+                                                <td style="color:orange">Under Review </td>
                                             }
                                             else
                                             {
-                                                <td style="color:black"> not Accepted </td>
+                                                <td style="color:tomato"> not Accepted </td>
                                             }
                                         }
 
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.AspNetUser.FirstName)  @Html.DisplayFor(modelItem => item.AspNetUser.LastName)
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.AspNetUser.FirstName)  @Html.DisplayFor(modelItem => item.AspNetUser.LastName)
 
 
-                                    </td>
-
-                                    <td>
-                                   <img  src="~/images/@Html.DisplayFor(modelItem => item.Image.MainImage)" height:"50px" width:"60px" />
-
-                                    </td>
+                                        </td>
 
                                         <td>
-                                            @Html.ActionLink("Edit", "Edit", new { id = item.ChaletID })  
-                                            @Html.ActionLink("Details", "Details", new { id = item.ChaletID }) 
+                                            @{
+                                                var db = new MasterPieceEntities();
+                                                var image = item.Images_ID != null ? db.Images.FirstOrDefault(i => i.Images_ID == item.Images_ID) : null;
+                                            }
+                                            @if (image != null)
+                                            {
+                                                <img src="~/img/MainImage/@image.MainImage" class="thumbnail" style="width:55px; height:55px; " />
+                                            }
+                                        </td>
+
+
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.ChaletID }, new { @class = "btn btn-warning" })
+                                            @Html.ActionLink("Details", "Details", new { id = item.ChaletID }, new { @class = "btn btn-primary" })
                                         </td>
                                     </tr>
                                 }

@@ -1,5 +1,4 @@
-﻿@model Tuple<List<razansmadi.Models.Chalet>, List<razansmadi.Models.Category>, List<razansmadi.Models.Image>, List<razansmadi.Models.Feature>>
-
+﻿
 @{
     Layout = null;
 }
@@ -48,10 +47,10 @@
 
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <div class="navbar-nav">
-                        <a href="./index.html" class="nav-link" style="color: #0A6506; border-bottom: 2px solid #0A6506; ">Home</a>
+                        <a href="./index.html" class="nav-link ">Home</a>
                         <a href="./Our Chalets.html" class="nav-link" style="color: #0A6506;">Chalets</a>
                         <a href="./profile.html" class="nav-link" style="color: #0A6506;">Profile</a>
-                        <a href="./about.html" class="nav-link" style="color: #0A6506;">About</a>
+                        <a href="./about.html" class="nav-link" style="color: #0A6506; border-bottom: 2px solid #0A6506;">About</a>
                         <a href="./contact.html" class="nav-link" style="color: #0A6506;">Contact</a>
                         @Html.Partial("_LoginPartial")
                     </div>
@@ -61,198 +60,181 @@
     </header>
 
 
-
     <!-- Header End -->
-    <!--Hero Section Begin ---->
-    <br />
-    <section class="hero-section">
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section spad set-bg" data-setbg="@Url.Content("~/img/beautiful-park.jpg")">
         <div class="container">
-            <div class="hs-slider owl-carousel">
-                <div class="hs-item set-bg" data-setbg="@Url.Content("~/img/Category/family.jpg")">
-                    <div style="display:flex;justify-content:center">
-                        @using (Html.BeginForm("AllChalet", "Chalets", FormMethod.Post))
-                        {
-                            <button class="button_header">Our Chalets</button>
-                        }
-                        @using (Html.BeginForm("Register", "Account", FormMethod.Post))
-                        {
-                            <button class="button_header">Post your Chalets</button>
-                        }
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <h4>About us</h4>
+                        <div class="bt-option">
+                            <a href="Home"><i class="fa fa-home"></i> Home</a>
+                            <span>About</span>
+                        </div>
                     </div>
-                </div>
-                <div class="hs-item set-bg" data-setbg="@Url.Content("~/img/farm2.PNG")">
-                    @using (Html.BeginForm("AllChalet", "Chalets", FormMethod.Post))
-                    {
-                        <button class="button_header">Our Chalets</button>
-                    }
-                    @using (Html.BeginForm("Register", "Account", FormMethod.Post))
-                    {
-                        <button class="button_header">Post your Chalets</button>
-                    }
-                </div>
-                <div class="hs-item set-bg" data-setbg="@Url.Content("~/img/Capture.PNG")">
-                    @using (Html.BeginForm("AllChalet", "Chalets", FormMethod.Post))
-                    {
-                        <button class="button_header">Our Chalets</button>
-                    }
-                    @using (Html.BeginForm("Register", "Account", FormMethod.Post))
-                    {
-                        <button class="button_header">Post your Chalets</button>
-                    }
                 </div>
             </div>
         </div>
     </section>
-    <!--Hero Section End-->
-    <!-- Property Section Begin -->
-    <section class="property-section latest-property-section spad">
+    <!-- Breadcrumb Section End -->
+    <!-- About Section Begin -->
+    <section class="about-section spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-md-8">
-                    <div class="section-title">
-                        <h4>Our Recommended Chalets</h4>
+                <div class="col-lg-6">
+                    <div class="about-text">
+                        <div class="at-title">
+                            <h3>Welcom to Royal Chaltes</h3>
+                            <br />
+                            <p>
+                                Chalet rentals are one of the top choices for family holidaymakers.<br /> In Royal Chalets  We gathered all Jerash Chalets in one webApplication to provide the best service until you find the best chalet in comfortable and more speed  way so that you can choose where you want your vacation to be 
+                                to Enjoy the beauty of Jerash's stunning nature.
+                            </p>
+                        </div>
+                        <br />
+                        <div class="at-feature">
+                            <div class="af-item">
+                                <div class="af-icon">
+                                    <img src="~/img/chooseus/chooseus-icon-3.png" alt="">
+                                </div>
+                                <div class="af-text">
+                                    <h6>
+                                        view Chalets
+                                    </h6>
+                                    <p>
+                                        Chalets in your favourite city Jerash
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="af-item">
+                                <div class="af-icon">
+                                    <img src="~/img/chooseus/chooseus-icon-4.png" alt="">
+                                </div>
+                                <div class="af-text">
+                                    <h6>
+                                        List your own Chalet
+                                    </h6>
+                                    <p>
+                                        Sign up now and post your own Chalet                                  
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="team-btn d-flex justify-content-center p-1 button_header" style="width:40%;">
-                        <a href="@Url.Action("AllChalet", "Chalets")">
-                            <i class='fas fa-house-user ' style='font-size:100%;color:white'></i> <span style="color:white;"> ALL chalets</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="row property-filter">
-                @foreach (var item in Model.Item1)
-                {
-
-                    <div class="col-lg-4 col-md-6 mix all house">
-                        <div class="property-item">
-                            @foreach (var img in Model.Item3)
-                            {
-                                if (img.Images_ID == item.Images_ID)
-                                {
-                                    <img src="~/img/MainImage/@img.MainImage" class="pi-pic set-bg" />
-
-                                }
-                            }
-                            <div class="pi-text">
-                                <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-                                <div class="pt-price">Start From @item.PricePerNight JD /Day </div>
-                                <h5><a href="#">@item.Chalet_Name</a></h5>
-                                <p><span class="icon_pin_alt"></span> @item.Chalet_Address</p>
-                                <ul>
-                                    <li><i class="fa fa-object-group"></i> @item.area</li>
-                                    <li><i class="fa fa-bathtub"></i> @item.bathroom</li>
-                                    <li><i class="fa fa-bed"></i> @item.bedroom</li>
-
-                                    @foreach (var items in Model.Item4)
-                                    {
-                                        if (items.Features_ID == item.Features_ID)
-                                        {
-                                            <li><i class="fa fa-automobile"></i> @items.Carpark</li>
-
-                                        }
-                                    }
-                                </ul>
-                                <br /><br />
-                                <a href="@Url.Action("ChaletDetails", "Chalets", new { id = item.ChaletID })" class="button_header">View More Details</a>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                }
-
-
-            </div>
-
-
-        </div>
-
-</section>
-    <!-- Property Section End -->
-    <!-- Chooseus Section Begin -->
-    <section class="chooseus-section spad set-bg" data-setbg="@Url.Content("~/img/why.jpg")">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="chooseus-text">
-                        <div class="section-title">
-                            <h4>Why choose us</h4>
-                        </div>
-                        <p>Chalet rentals are one of the top choices for family holidaymakers.We collected Jerash chalets in one website so make it easier and save time for you to Enjoy the beauty of Jerash's stunning nature.</p>
-                    </div>
-                    <div class="chooseus-features">
-
-                        <div class="cf-item">
-                            <div class="cf-pic">
-                                <img src="~/img/chooseus/chooseus-icon-3.png" alt="">
-                            </div>
-                            <div class="cf-text">
-                                <h5>view Chalets</h5>
-                                <p>Chalets in your favourite cities</p>
-                            </div>
-                        </div>
-                        <div class="cf-item">
-                            <div class="cf-pic">
-                                <img src="~/img/chooseus/chooseus-icon-4.png" alt="">
-                            </div>
-                            <div class="cf-text">
-                                <h5>List your own Chalet</h5>
-                                <p>Sign up now and post your own Chalet</p>
-                            </div>
-                        </div>
+                <div class="col-lg-6">
+                    <div class="about-pic set-bg" data-setbg="@Url.Content("~/img/home-page-social-photo.jpg")">
 
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Chooseus Section End -->
-    <!-- Team Categories Begin -->
-
+    <!-- About Section End -->
+    <!-- Team Section Begin -->
     <section class="team-section spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-8">
                     <div class="section-title">
-                        <h4>Our Categories</h4>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="team-btn">
-
-                        <a href="@Url.Action("AllChalet", "Chalets")">
-                            <i class='fas fa-house-user' style='font-size:24px'></i> ALL chalets
-                        </a>
-
-
+                        <h4>Our Team</h4>
                     </div>
                 </div>
             </div>
             <div class="row">
-
-                @foreach (var item in Model.Item2)
-                {
-                    <div class="col-md-4">
-                        <div class="ts-item">
-                            <div class="ts-text">
-                                <img src="~/img/Category/@item.Category_Img" alt="family">
-                                <h5>  @item.Category_Name </h5>
-                                <p>@item.Category_Description</p>
+                <div class="col-md-4">
+                    <div class="ts-item">
+                        <div class="ts-text">
+                            <img src="~/img/mypic.JPG" alt="">
+                            <h5>Razan Smadi</h5>
+                            <span>0778097754</span>
+                            <p>Full-Stack Web Developer || .NET </p>
                                 <div class="ts-social">
-                                    <a href="@Url.Action("AllChalet", "Chalets")">Click Here </a>
+                                    <a href="https://www.facebook.com/razan.smadi.99?mibextid=ZbWKwL"><i class="fa fa-facebook"></i></a>
+                                    <a href="https://twitter.com/Razanali333?t=RRXCjJe95BWj5pjsu5nxsQ&s=08"><i class="fa fa-twitter"></i></a>
                                 </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="ts-item">
+                        <div class="ts-text">
+                            <img src="~/img/mypic.JPG" alt="">
+                            <h5>Razan Smadi</h5>
+                            <span>0778097754</span>
+                            <p>Full-Stack Web Developer || .NET </p>
+                            <div class="ts-social">
+                                <a href="https://www.facebook.com/razan.smadi.99?mibextid=ZbWKwL"><i class="fa fa-facebook"></i></a>
+                                <a href="https://twitter.com/Razanali333?t=RRXCjJe95BWj5pjsu5nxsQ&s=08"><i class="fa fa-twitter"></i></a>
                             </div>
                         </div>
                     </div>
-                }
-
+                </div> <div class="col-md-4">
+                    <div class="ts-item">
+                        <div class="ts-text">
+                            <img src="~/img/mypic.JPG" alt="">
+                            <h5>Razan Smadi</h5>
+                            <span>0778097754</span>
+                            <p>Full-Stack Web Developer || .NET </p>
+                            <div class="ts-social">
+                                <a href="https://www.facebook.com/razan.smadi.99?mibextid=ZbWKwL"><i class="fa fa-facebook"></i></a>
+                                <a href="https://twitter.com/Razanali333?t=RRXCjJe95BWj5pjsu5nxsQ&s=08"><i class="fa fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    <!-- Team Categories End -->
+    <!-- Team Section End -->
+   
+    <!-- Contact Section Begin -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="contact-info">
+                        <div class="ci-item">
+                            <div class="ci-icon">
+                                <i class="fa fa-map-marker"></i>
+                            </div>
+                            <div class="ci-text">
+                                <h5>Address</h5>
+                                <p>Jerash-Hordan</p>
+                            </div>
+                        </div>
+                        <div class="ci-item">
+                            <div class="ci-icon">
+                                <i class="fa fa-mobile"></i>
+                            </div>
+                            <div class="ci-text">
+                                <h5>Phone</h5>
+                                <ul>
+                                    <li>0772267702</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ci-item">
+                            <div class="ci-icon">
+                                <i class="fa fa-headphones"></i>
+                            </div>
+                            <div class="ci-text">
+                                <h5>Support</h5>
+                                <p>Support.royal@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cs-map">
+            <iframe                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d735515.5813275519!2d-80.41163541934742!3d43.93644386501528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882a55bbf3de23d7%3A0x3ada5af229b47375!2sMono%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sbd!4v1583262687289!5m2!1sen!2sbd"
+
+                    height="450" style="border:0;" allowfullscreen=""></iframe>
+        </div>
+    </section>
+    <!-- Contact Section End -->
     <!-- Footer Section Begin -->
     <footer class="footer-section">
         <div class="container">
@@ -320,6 +302,7 @@
     </footer>
     <!-- Footer Section End -->
     <!-- Js Plugins -->
+
     <script src="~/template/js/jquery-3.3.1.min.js"></script>
     <script src="~/template/js/bootstrap.min.js"></script>
     <script src="~/template/js/jquery.magnific-popup.min.js"></script>

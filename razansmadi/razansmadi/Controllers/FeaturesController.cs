@@ -26,6 +26,18 @@ namespace razansmadi.Controllers
             return View(features);
         }
 
+
+        public ActionResult Admin_Features(int? id , int? FeatureID)
+        {
+            Session["id"] = id;
+            if (FeatureID == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Feature feature = db.Features.Find(FeatureID);
+            List<Feature> features = db.Features.Where(f => f.Features_ID == FeatureID).ToList();
+            return View(features);
+        }
         public ActionResult FeatureFORchalet(int? id)
         {
             if (id == null)

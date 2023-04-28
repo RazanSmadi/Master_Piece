@@ -154,17 +154,28 @@ namespace razansmadi.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult OwnerAllImages()
+        public ActionResult OwnerAllImages( int id)
         {
 
-            Image img = db.Images.Find(22);
+            Image img = db.Images.Find(id);
             List<Image> imges = db.Images.Where(f => f.Images_ID == 20).ToList();
             return View(imges);
 
         }
 
 
-     
+        public ActionResult Admin_Images(int id, int? imgId)
+        {
+            Session["id"] = id;
+            
+
+                Image img = db.Images.Find(imgId);
+                List<Image> imges = db.Images.Where(f => f.Images_ID == imgId).ToList();
+                return View(imges);
+
+            
+        }
+
 
         // POST: Images/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 

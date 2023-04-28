@@ -369,6 +369,8 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="HtmlPage1.html" />
+    <Content Include="error500.html" />
+    <Content Include="error404.html" />
     <Content Include="img\about-us.jpg" />
     <Content Include="img\agents\agent-1%281%29.jpg" />
     <Content Include="img\agents\agent-1.jpg" />
@@ -444,6 +446,12 @@
     <Content Include="img\chooseus\chooseus-icon-3.png" />
     <Content Include="img\chooseus\chooseus-icon-4%281%29.png" />
     <Content Include="img\chooseus\chooseus-icon-4.png" />
+    <Content Include="img\Customer_Img\image %281%29.png" />
+    <Content Include="img\Customer_Img\njkjkljkl.png" />
+    <Content Include="img\Customer_Img\north2.jpg" />
+    <Content Include="img\Customer_Img\north5.jpg" />
+    <Content Include="img\Customer_Img\pic.jfif" />
+    <Content Include="img\Customer_Img\uy.png" />
     <Content Include="img\f-logo.png" />
     <Content Include="img\farm2.PNG" />
     <Content Include="img\feature-property\fp-1%281%29.jpg" />
@@ -925,7 +933,6 @@
     <Content Include="Views\contact.cshtml" />
     <Content Include="Views\AspNetUsers\EditUserProfile.cshtml" />
     <Content Include="Views\AspNetUsers\OwnersProfile.cshtml" />
-    <Content Include="Views\SubAdminChalets\Statistics.cshtml" />
     <Content Include="Views\AspNetUsers\Statistics.cshtml" />
     <Content Include="Views\transactions\Create.cshtml" />
     <Content Include="Views\transactions\Delete.cshtml" />
@@ -934,6 +941,11 @@
     <Content Include="Views\transactions\Index.cshtml" />
     <Content Include="Views\SubAdminChalets\CreateDetails.cshtml" />
     <Content Include="Views\SubAdminChalets\ADD.cshtml" />
+    <Content Include="Views\AspNetUsers\OwnerDitals.cshtml" />
+    <Content Include="Views\Features\Admin_Features.cshtml" />
+    <Content Include="Views\Images\Admin_Images.cshtml" />
+    <Content Include="Views\Chalets\about.cshtml" />
+    <Content Include="Views\Chalets\contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,64 +1,127 @@
 ﻿@model razansmadi.Models.Comment
 
 @{
-    Layout = null;
-}
+
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="table-responsive">
+
+            <h3>Are you sure you want to delete this comment?</h3>
+
+            <table class="table table-hover">
+                <tr>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>Comment</th>
+                    <td>@Html.DisplayFor(model => model.comment1)</td>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <td>@Html.DisplayFor(model => model.Comment_Date)</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>@Html.DisplayFor(model => model.AspNetUser.Email)</td>
+                </tr>
+                <tr>
+                    <th>Chalet Nmae </th>
+                    <td>@Html.DisplayFor(model => model.Chalet.Chalet_Name)</td>
+                </tr>
+                <tr>
+                    <th></th>
+                </tr>
+            </table>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+
+
+                </div><br />
+                <a href="~/Comments/Index" class="btn btn-default">Back to list</a>
+
+
+            }
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
 
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Delete</title>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-    <h3>Are you sure you want to delete this?</h3>
-    <div>
-        <h4>Comment</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.comment1)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.comment1)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Comment_Date)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Comment_Date)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.AspNetUser.Email)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.AspNetUser.Email)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Chalet.userid)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Chalet.userid)
-            </dd>
-    
-        </dl>
-    
-        @using (Html.BeginForm()) {
-            @Html.AntiForgeryToken()
-    
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "Index")
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+        Delete
+    </button>-->
+
+    <!-- The Modal -->
+    <!--<div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">-->
+
+                <!-- Modal Header -->
+                <!--<div class="modal-header">
+                    <h4 class="modal-title">Warning</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+                </div>-->
+
+                <!-- Modal body -->
+                <!--<div class="modal-body">
+                    Are you sure about delete this comment
+                </div>-->
+
+                <!-- Modal footer -->
+                <!--<div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
             </div>
-        }
+        </div>
     </div>
+
+
 </body>
 </html>
+
+<script>
+    function confirmDelete() {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'OK',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If the user confirms, submit the form manually
+                document.getElementById('delete-form').submit();
+            }
+            else {
+                window.location.href = '~/Comments/Index';
+            });
+    }
+</script>-->

@@ -40,6 +40,11 @@ namespace razansmadi.Controllers
             return View(data);
         }
 
+
+        public ActionResult about() { return View(); }
+        public ActionResult contact() { return View(); }
+
+
         public ActionResult AllChalet(string sortOrder, string address, string category)
         {
             var chalets = db.Chalets.Include(c => c.AspNetUser).Include(c => c.Feature).Include(c => c.Image);
@@ -243,7 +248,7 @@ namespace razansmadi.Controllers
             {
                 db.Entry(chalet).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("/Index");
             }
             ViewBag.userid = new SelectList(db.AspNetUsers, "Id", "Email", chalet.userid);
             ViewBag.Features_ID = new SelectList(db.Features, "Features_ID", "Features_ID", chalet.Features_ID);

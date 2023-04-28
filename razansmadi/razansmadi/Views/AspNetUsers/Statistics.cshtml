@@ -1,17 +1,134 @@
 ﻿
+
+@model IEnumerable<razansmadi.Models.AspNetUser>
+
 @{
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<!DOCTYPE html>
+@using razansmadi.Models
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="row">
+            <div class="col-xl-4 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon text-primary border-primary">
+                                <i class="fe fe-users"></i>
+                            </span>
+                            <div class="dash-count">
+                                <h3>
+                                    @{
+                                        var db = new MasterPieceEntities();
+                                        int count = db.AspNetUserRoles.Where(i => i.RoleId == 3.ToString()).Count();
+                                    }
+                                    @count Users
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon text-primary border-primary">
+                                <i class="fe fe-users"></i>
+                            </span>
+                            <div class="dash-count">
+                                <h3>
+                                    @{
+                                        int owners = db.AspNetUserRoles.Where(i => i.RoleId == 2.ToString()).Count();
+                                    }
+                                    @owners Owners
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon text-success">
+                                <i class="fe fe-money"></i>
+                            </span>
+                            <div class="dash-count">
+                                <h3>
+                                    @{
+                                        float amount = db.transactions.Sum(i => (float)i.amount);
+                                    }
+                                    @amount JD Revenue
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Statistics</title>
-</head>
-<body>
-    <div> 
+            <div class="col-xl-4 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon text-success border-success">
+                                <i class="fa-solid fa-house-chimney"></i>                       
+                            </span>
+                            <div class="dash-count">
+                                <h3>
+                                    @{
+                                        int chalets = db.Chalets.Count(i => i.isAccepted == true);
+                                    }
+                                    @chalets Chalets Accepted
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon text-warning border-warning">
+                                <i class="fa-solid fa-house-chimney"></i>
+                            </span>
+                            <div class="dash-count">
+                                <h3>
+                                    @{
+                                        int chalet = db.Chalets.Count(i => i.isAccepted == false);
+                                    }
+                                    @chalet Chalets rejected
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon text-danger border-danger">
+                                <i class="fa-solid fa-house-chimney"></i>
+                            </span>
+                            <div class="dash-count">
+                                <h3>
+                                    @{
+                                        int ch = db.Chalets.Count(i => i.isAccepted == null);
+                                    }
+                                    @ch Chalets Under Review
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-</body>
-</html>
+</div>

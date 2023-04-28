@@ -1,0 +1,131 @@
+﻿@model IEnumerable<razansmadi.Models.Image>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    .thumbnail {
+        top: -50px;
+        left: -35px;
+        display: block;
+        z-index: 999;
+        cursor: pointer;
+        -webkit-transition-property: all;
+        -webkit-transition-duration: 0.7s;
+        -webkit-transition-timing-function: ease;
+    }
+        /*change the number below to scale to the appropriate size*/
+        .thumbnail:hover {
+            transform: scale(1.5);
+        }
+
+    td {
+        text-align: center;
+    }
+</style>
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title"> Chalet </h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item active">All Images</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="datatable table table-hover table-center mb-0">
+
+                                <tr>
+                                    <th>
+                                        Main
+                                    </th>
+                                    <th>
+                                        pool
+                                    </th>
+                                    <th>
+                                        Garden
+                                    </th>
+                                    <th>
+                                        PlayGround
+                                    </th>
+                                    <th>
+                                        Room
+                                    </th>
+                                    <th>
+                                        Kitchen
+                                    </th>
+                                    <th>
+                                        Livingroom
+                                    </th>
+                                    <th>
+                                        bathroom
+                                    </th>
+                                    <th>
+                                        view
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                </tr>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img src="~/img/MainImage/@item.MainImage" class="thumbnail" style="width:50px; height:50px; " />
+                                        </td>
+                                        <td>
+                                            <img src="~/img/poolImage/@item.poolImage" class="thumbnail" style="width:50px; height:50px; " />
+                                        </td>
+                                        <td>
+                                            <img src="~/img/gardenImage/@item.gardenImage" class="thumbnail" style="width:50px; height:50px; " />
+                                        </td>
+                                        <td>
+                                            <img src="~/img/playGroundImage/@item.playGroundImage" class="thumbnail" style="width:50px; height:50px; " />
+                                        </td>
+                                        <td>
+                                            <img src="~/img/roomImage/@item.roomImage" class="thumbnail" style="width:50px; height:50px; " />
+                                        </td>
+                                        <td>
+                                            <img src="~/img/kitchenImage/@item.kitchenImage" class="thumbnail" style="width:50px; height:50px; " />
+                                        </td>
+                                        <td>
+                                            <img src="~/img/livingRoomImage/@item.livingRoomImage" class="thumbnail" style="width:50px; height:50px; " />
+                                        </td>
+                                        <td>
+                                            <img src="~/img/bathroomImage/@item.bathroomImage" class="thumbnail" style="width:50px; height:50px; " />
+                                        </td>
+                                        <td>
+                                            <img src="~/img/viewImage/@item.viewImage" class="thumbnail" style="width:50px; height:50px; " />
+                                        </td>
+                                       
+                                    </tr>
+                                    <tr> </tr>
+
+                                }
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row col-12 justify-content-center">
+        @{
+            int id = (int)Session["id"];
+        }
+        <a href="@Url.Action("Details", "Chalets", new { id = id })" class="btn btn-secondary">Back to list</a>
+    </div>
+
+</div>
+

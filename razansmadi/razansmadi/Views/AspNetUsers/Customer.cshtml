@@ -5,13 +5,34 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+<style>
+    .thumbnail {
+        top: -50px;
+        left: -35px;
+        display: block;
+        z-index: 999;
+        cursor: pointer;
+        -webkit-transition-property: all;
+        -webkit-transition-duration: 0.7s;
+        -webkit-transition-timing-function: ease;
+    }
+        /*change the number below to scale to the appropriate size*/
+        .thumbnail:hover {
+            transform: scale(2);
+        }
+
+    td {
+        text-align: center;
+    }
+</style>
+
 <div class="page-wrapper">
     <div class="content container-fluid">
         <div class="page-header">
             <div class="row">
                 <div class="col-sm-12">
-                    <h3 class="page-title">Customers</h3>
-                   
+                    <h3 class="page-title">Users</h3>
+
                 </div>
             </div>
         </div>
@@ -23,11 +44,11 @@
                             <table class="datatable table table-hover table-center mb-0">
                                 <thead>
                                     <tr>
+                                        <th>Image</th>
                                         <th>First Name</th>
                                         <th>Last Name</th>
                                         <th>Email</th>
                                         <th>Phone Number</th>
-                                        <th>Image</th>
                                         <th class="text-right"> </th>
                                     </tr>
                                 </thead>
@@ -35,6 +56,9 @@
                                 @foreach (var item in Model)
                                 {
                                     <tr>
+                                        <td>
+                                            <img src="~/img/Customer_Img/@item.Customer_Img" class="thumbnail" style="width:50px; height:50px; " />
+                                        </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.FirstName)
                                         </td>
@@ -45,14 +69,14 @@
                                             @Html.DisplayFor(modelItem => item.Email)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                            @Html.DisplayFor(modelItem => item.Phone)
                                         </td>
+
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Customer_Img)
+                                            @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-primary" })
+
                                         </td>
-                                        <td>
-                                            @Html.ActionLink("Details", "Details", new { id = item.Id })
-                                        </td>
+
                                     </tr>
                                 }
                             </table>
