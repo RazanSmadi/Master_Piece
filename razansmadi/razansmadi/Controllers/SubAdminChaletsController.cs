@@ -17,6 +17,11 @@ namespace razansmadi.Controllers
         // GET: SubAdminChalets
         public ActionResult Index(string id)
         {
+            TempData["title"] = "Done";
+            TempData["swal_message"] = "Item Added to your cart Successfully";
+            TempData["icon"] = "success";
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

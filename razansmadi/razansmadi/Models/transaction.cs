@@ -16,11 +16,11 @@ namespace razansmadi.Models
     {
         public int transactionId { get; set; }
         public string userid { get; set; }
-        public Nullable<int> ChaletID { get; set; }
         public Nullable<double> amount { get; set; }
         public Nullable<double> totalpay { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
-        public virtual Chalet Chalet { get; set; }
+        public virtual AspNetUser AspNetUser1 { get; set; }
     }
 }

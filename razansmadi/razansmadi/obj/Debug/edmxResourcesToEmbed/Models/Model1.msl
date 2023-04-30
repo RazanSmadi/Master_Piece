@@ -50,6 +50,7 @@
     <EntitySetMapping Name="AspNetUsers">
       <EntityTypeMapping TypeName="MasterPieceModel.AspNetUser">
         <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="donePay" ColumnName="donePay" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="Customer_Img" ColumnName="Customer_Img" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -204,9 +205,9 @@
     <EntitySetMapping Name="transactions">
       <EntityTypeMapping TypeName="MasterPieceModel.transaction">
         <MappingFragment StoreEntitySet="transactions">
+          <ScalarProperty Name="date" ColumnName="date" />
           <ScalarProperty Name="totalpay" ColumnName="totalpay" />
           <ScalarProperty Name="amount" ColumnName="amount" />
-          <ScalarProperty Name="ChaletID" ColumnName="ChaletID" />
           <ScalarProperty Name="userid" ColumnName="userid" />
           <ScalarProperty Name="transactionId" ColumnName="transactionId" />
         </MappingFragment>

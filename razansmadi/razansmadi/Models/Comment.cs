@@ -17,11 +17,11 @@ namespace razansmadi.Models
         public int Comment_ID { get; set; }
         public string userid { get; set; }
         public string comment1 { get; set; }
-
         public Nullable<System.DateTime> Comment_Date { get; set; }
         public Nullable<int> ChaletID { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual Chalet Chalet { get; set; }
+        public virtual Chalet Chalet1 { get; set; }
     }
 }

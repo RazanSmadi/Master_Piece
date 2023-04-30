@@ -4,6 +4,9 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_OwnersLayout.cshtml";
 }
+@using razansmadi.Models
+@using Microsoft.AspNet.Identity
+
 
 <div class="page-wrapper">
     <div class="content container-fluid">
@@ -20,96 +23,151 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <p>
-                    @Html.ActionLink("Create New", "Create")
-                </p>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="datatable table table-hover table-center mb-0">
-                                <thead>
-                                    <tr>
-                                        <th>Main Image </th>
-                                        <th>Name</th>
-                                        <th>Description</th>
-                                        <th>Address</th>
-                                        <th># Of Adult</th>
-                                        <th># Of kid</th>
-                                        <th>Price <br />Start From</th>
-                                        <th>Expiration <br /> Status  </th>
-                                        <th> </th>
-                                        <th> </th>
-                                        <th> </th>
-                                        <th> </th>
 
-                                    </tr>
-                                </thead>
 
-                                @foreach (var item in Model.Item1)
-                                {
-                                    <tr>
-                                        @foreach (var item2 in Model.Item2)
-                                        {
-                                            <td>
-                                                <img src="@item2.MainImage" width:150px" height:"150px" />
-                                            </td>
-                                        }
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Chalet_Name)
-                                        </td>
-                                        <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                                            @Html.DisplayFor(modelItem => item.Chalet_Description)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Chalet_Address)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.NnmberOfAdult)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.NnmberOfkid)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.PricePerNight)
-                                        </td>
-                                        <td>
-                                            @{
-                                                DateTime registrationDate = Convert.ToDateTime(item.DateOfReg);
-                                                DateTime currentDate = DateTime.Today;
-                                                TimeSpan timeSinceRegistration = currentDate - registrationDate;
-                                                int subscriptionPeriodInDays = 90; // Change this to match your subscription period
-                                                if (timeSinceRegistration.TotalDays > subscriptionPeriodInDays)
-                                                {
-                                                    <span style="color:red;">Expired</span>
-                                                }
-                                                else
-                                                {
-                                                    <span style="color:green;">Active</span>
-                                                }
+                @{
+                    var db = new MasterPieceEntities();
+                    string Uid = User.Identity.GetUserId();
+                    var chalets = db.Chalets.Where(u => u.userid == Uid);
+                    var user = db.AspNetUsers.FirstOrDefault(u => u.Id == Uid);
+                    if (user != null)
+                    {
+
+
+
+                        var ispay = user.donePay;
+                        <p>
+                            @if (Convert.ToBoolean(ispay))
+                            {
+                                @Html.ActionLink("Create New", "Create")
+                            }
+                        </p>
+
+                        else
+                {
+
+                }
+
+
+
+                    }
+
+                }
+
+
+
+
+
+                @if (chalets.Any())
+
+                {
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="datatable table table-hover table-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Main Image </th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                            <th>Address</th>
+                                            <th># Of Adult</th>
+                                            <th># Of kid</th>
+                                            <th>Price <br />Start From</th>
+                                            <th>Expiration <br /> Status  </th>
+                                            <th> </th>
+                                            <th> </th>
+                                            <th> </th>
+                                            <th> </th>
+
+                                        </tr>
+                                    </thead>
+
+                                    @foreach (var item in Model.Item1)
+                                    {
+                                        <tr>
+                                            @foreach (var item2 in Model.Item2)
+                                            {
+                                                <td>
+                                                    <img src="@item2.MainImage" width:150px" height:"150px" />
+                                                </td>
                                             }
-                                        </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Chalet_Name)
+                                            </td>
+                                            <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                                @Html.DisplayFor(modelItem => item.Chalet_Description)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Chalet_Address)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.NnmberOfAdult)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.NnmberOfkid)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PricePerNight)
+                                            </td>
+                                            <td>
+                                                @{
+                                                    DateTime registrationDate = Convert.ToDateTime(item.DateOfReg);
+                                                    DateTime currentDate = DateTime.Today;
+                                                    TimeSpan timeSinceRegistration = currentDate - registrationDate;
+                                                    int subscriptionPeriodInDays = 90; // Change this to match your subscription period
+                                                    if (timeSinceRegistration.TotalDays > subscriptionPeriodInDays)
+                                                    {
+                                                        <span style="color:red;">Expired</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span style="color:green;">Active</span>
+                                                    }
+                                                }
+                                            </td>
 
-                                        <td>
-                                            @Html.ActionLink("All Feature", "index", "Features", new { id = item.Features_ID }, null)
-                                        </td>
+                                            <td>
+                                                @Html.ActionLink("All Feature", "index", "Features", new { id = item.Features_ID }, null)
+                                            </td>
 
-                                        <td>
-                                            @Html.ActionLink("All Imeges", "OwnerAllImages", "Images", new { id = item.Images_ID }, null)
-                                        </td>
+                                            <td>
+                                                @Html.ActionLink("All Imeges", "OwnerAllImages", "Images", new { id = item.Images_ID }, null)
+                                            </td>
 
-                                        <td>
-                                            @Html.ActionLink("Edit", "Edit", new { id = item.ChaletID }) |
-                                            @Html.ActionLink("Details", "Details", new { id = item.ChaletID }) 
-                                        </td>
-                                    </tr>
+                                            <td>
+                                                @Html.ActionLink("Edit", "Edit", new { id = item.ChaletID }) |
+                                                @Html.ActionLink("Details", "Details", new { id = item.ChaletID })
+                                            </td>
+                                        </tr>
 
-                                }
+                                    }
 
-                            </table>
+                                </table>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    </div>}
+
+
+                else
+                {
+                    <div> No Data To show </div>
+                }
             </div>
         </div>
     </div>
 </div>
+
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+@if (TempData["swal_message"] != null)
+{
+    <script>
+    swal({
+      title: "@TempData["title"]",
+      text: "@TempData["swal_message"]",
+      icon: "@TempData["icon"]"
+    });
+    </script>
+}

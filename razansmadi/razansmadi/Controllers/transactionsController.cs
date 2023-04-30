@@ -4,12 +4,9 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Security.Policy;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
 using razansmadi.Models;
-using System.Net.Mail;
 
 namespace razansmadi.Controllers
 {
@@ -20,58 +17,11 @@ namespace razansmadi.Controllers
         // GET: transactions
         public ActionResult Index()
         {
-            var transactions = db.transactions.Include(t => t.AspNetUser).Include(t => t.Chalet);
+            var transactions = db.transactions.Include(t => t.AspNetUser).Include(t => t.AspNetUser1);
             return View(transactions.ToList());
         }
 
-        [HttpPost, ActionName("Pay")]
-        [ValidateAntiForgeryToken]
-        //public ActionResult Pay([Bind(Include = "transactionId,userid,ChaletID,amount,totalpay")] transaction transaction)
-        //{
-        //    var user = User.Identity.GetUserName().ToString();
-           
-        //    string id = db.AspNetUsers.FirstOrDefault(d => d.Email == user).Id;
-
-             
-        //    transaction PY = new transaction
-        //    {
-        //        userid = id,
-        //        amount = 
-        //        totalpay = int.Parse(Session["totalpay"].ToString()),
-
-        //    };
-
-        //    float t = float.Parse(Session["totalpay"].ToString());
-        //    float down= float.Parse(Session["downPayment"].ToString());
-       
-        //    if (ModelState.IsValid)
-        //    {
-
-        //        db.transactions.Add(PY);
-        //        db.SaveChanges();
-        //        string Email = db.AspNetUsers.Where(x => x.Id == id).Select(x=>x.Email).Single();
-        //        MailMessage mail = new MailMessage();
-        //        mail.To.Add(Email);
-        //        mail.From = new MailAddress("RoyalChalets@gmail.com");
-        //        mail.Subject = "booking chalets";
-        //        mail.Body = $"Your Payment of {down} JD has been successfully done and your booking has been done";
-
-        //        mail.IsBodyHtml = true;
-        //        SmtpClient smtp = new SmtpClient();
-        //        smtp.Port = 587; // 25 465
-        //        smtp.EnableSsl = true;
-        //        smtp.UseDefaultCredentials = false;
-        //        smtp.Host = "smtp.gmail.com";
-        //        smtp.Credentials = new System.Net.NetworkCredential("RoyalChalets@gmail.com", "mbuyaativxrfntjx\r\n");
-        //        smtp.Send(mail);
-        //        return RedirectToAction("Home","Chalets");
-
-        //    }
-
-
-        //    return View(PY);
-        //}
-
+        // GET: transactions/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -90,7 +40,7 @@ namespace razansmadi.Controllers
         public ActionResult Create()
         {
             ViewBag.userid = new SelectList(db.AspNetUsers, "Id", "Email");
-            ViewBag.ChaletID = new SelectList(db.Chalets, "ChaletID", "userid");
+            ViewBag.userid = new SelectList(db.AspNetUsers, "Id", "Email");
             return View();
         }
 
@@ -99,17 +49,28 @@ namespace razansmadi.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "transactionId,userid,ChaletID,amount")] transaction transaction)
+        public ActionResult Create([Bind(Include = "transactionId,userid,amount,totalpay,date")] transaction transaction)
         {
             if (ModelState.IsValid)
             {
-                db.transactions.Add(transaction);
+                // Add the new transaction to the database
+                transaction.date = DateTime.Today;
+                db.transactions.Add(new transaction { userid = transaction.userid, amount = transaction.amount, totalpay = 120.0, date = DateTime.Today });
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                // Update the "donePay" column for the user
+                var user = db.AspNetUsers.FirstOrDefault(u => u.Id == transaction.userid);
+                if (user != null)
+                {
+                    user.donePay = true;
+                    db.SaveChanges();
+                }
+
+                return RedirectToAction("Index", "SubAdminChalets");
             }
 
             ViewBag.userid = new SelectList(db.AspNetUsers, "Id", "Email", transaction.userid);
-            ViewBag.ChaletID = new SelectList(db.Chalets, "ChaletID", "userid", transaction.ChaletID);
+            ViewBag.userid = new SelectList(db.AspNetUsers, "Id", "Email", transaction.userid);
             return View(transaction);
         }
 
@@ -126,7 +87,7 @@ namespace razansmadi.Controllers
                 return HttpNotFound();
             }
             ViewBag.userid = new SelectList(db.AspNetUsers, "Id", "Email", transaction.userid);
-            ViewBag.ChaletID = new SelectList(db.Chalets, "ChaletID", "userid", transaction.ChaletID);
+            ViewBag.userid = new SelectList(db.AspNetUsers, "Id", "Email", transaction.userid);
             return View(transaction);
         }
 
@@ -135,7 +96,7 @@ namespace razansmadi.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "transactionId,userid,ChaletID,amount")] transaction transaction)
+        public ActionResult Edit([Bind(Include = "transactionId,userid,amount,totalpay,date")] transaction transaction)
         {
             if (ModelState.IsValid)
             {
@@ -144,7 +105,7 @@ namespace razansmadi.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.userid = new SelectList(db.AspNetUsers, "Id", "Email", transaction.userid);
-            ViewBag.ChaletID = new SelectList(db.Chalets, "ChaletID", "userid", transaction.ChaletID);
+            ViewBag.userid = new SelectList(db.AspNetUsers, "Id", "Email", transaction.userid);
             return View(transaction);
         }
 

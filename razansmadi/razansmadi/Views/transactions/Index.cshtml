@@ -21,10 +21,16 @@
                 @Html.DisplayNameFor(model => model.amount)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.totalpay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.date)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.AspNetUser.Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Chalet.userid)
+                @Html.DisplayNameFor(model => model.AspNetUser1.Email)
             </th>
             <th></th>
         </tr>
@@ -35,10 +41,16 @@
                 @Html.DisplayFor(modelItem => item.amount)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.totalpay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.AspNetUser.Email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Chalet.userid)
+                @Html.DisplayFor(modelItem => item.AspNetUser1.Email)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.transactionId }) |

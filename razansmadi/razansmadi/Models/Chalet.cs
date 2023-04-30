@@ -19,10 +19,13 @@ namespace razansmadi.Models
         {
             this.Bookings = new HashSet<Booking>();
             this.CategoriesChalets = new HashSet<CategoriesChalet>();
+            this.CategoriesChalets1 = new HashSet<CategoriesChalet>();
             this.Comments = new HashSet<Comment>();
+            this.Comments1 = new HashSet<Comment>();
             this.Faves = new HashSet<Fave>();
-            this.transactions = new HashSet<transaction>();
+            this.Faves1 = new HashSet<Fave>();
             this.votes = new HashSet<vote>();
+            this.votes1 = new HashSet<vote>();
         }
     
         public int ChaletID { get; set; }
@@ -49,15 +52,21 @@ namespace razansmadi.Models
         public virtual ICollection<Booking> Bookings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CategoriesChalet> CategoriesChalets { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CategoriesChalet> CategoriesChalets1 { get; set; }
         public virtual Feature Feature { get; set; }
         public virtual Image Image { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Comment> Comments1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Fave> Faves { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<transaction> transactions { get; set; }
+        public virtual ICollection<Fave> Faves1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<vote> votes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<vote> votes1 { get; set; }
     }
 }

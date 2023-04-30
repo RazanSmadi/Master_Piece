@@ -20,5 +20,6 @@ namespace razansmadi.Models
     
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual Chalet Chalet { get; set; }
+        public virtual Chalet Chalet1 { get; set; }
     }
 }

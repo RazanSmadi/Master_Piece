@@ -70,6 +70,7 @@
           <Property Name="LastName" Type="varchar" MaxLength="50" />
           <Property Name="Customer_Img" Type="varchar" MaxLength="255" />
           <Property Name="Phone" Type="int" />
+          <Property Name="donePay" Type="bit" />
         </EntityType>
         <EntityType Name="Bookings">
           <Key>
@@ -200,9 +201,9 @@
           </Key>
           <Property Name="transactionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="userid" Type="nvarchar" MaxLength="128" />
-          <Property Name="ChaletID" Type="int" />
           <Property Name="amount" Type="float" />
           <Property Name="totalpay" Type="float" />
+          <Property Name="date" Type="date" />
         </EntityType>
         <EntityType Name="votes">
           <Key>
@@ -227,7 +228,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Bookings__id__04E4BC85">
+        <Association Name="FK__Bookings__id__607251E5">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
           <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
           <ReferentialConstraint>
@@ -254,6 +255,18 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Categorie__Chale__01142BA1">
+          <End Role="Chalets" Type="Self.Chalets" Multiplicity="0..1" />
+          <End Role="CategoriesChalets" Type="Self.CategoriesChalets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chalets">
+              <PropertyRef Name="ChaletID" />
+            </Principal>
+            <Dependent Role="CategoriesChalets">
+              <PropertyRef Name="ChaletID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Categorie__Chale__625A9A57">
           <End Role="Chalets" Type="Self.Chalets" Multiplicity="0..1" />
           <End Role="CategoriesChalets" Type="Self.CategoriesChalets" Multiplicity="*" />
           <ReferentialConstraint>
@@ -319,7 +332,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Comments__userid__07C12930">
+        <Association Name="FK__Comments__Chalet__662B2B3B">
+          <End Role="Chalets" Type="Self.Chalets" Multiplicity="0..1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chalets">
+              <PropertyRef Name="ChaletID" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="ChaletID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comments__userid__671F4F74">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
           <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
           <ReferentialConstraint>
@@ -328,6 +353,18 @@
             </Principal>
             <Dependent Role="Comments">
               <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Faves__ChaletID__681373AD">
+          <End Role="Chalets" Type="Self.Chalets" Multiplicity="0..1" />
+          <End Role="Faves" Type="Self.Faves" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chalets">
+              <PropertyRef Name="ChaletID" />
+            </Principal>
+            <Dependent Role="Faves">
+              <PropertyRef Name="ChaletID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -343,7 +380,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Faves__userid__7C4F7684">
+        <Association Name="FK__Faves__userid__690797E6">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
           <End Role="Faves" Type="Self.Faves" Multiplicity="*" />
           <ReferentialConstraint>
@@ -355,19 +392,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__transacti__Chale__0B91BA14">
-          <End Role="Chalets" Type="Self.Chalets" Multiplicity="0..1" />
-          <End Role="transactions" Type="Self.transactions" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Chalets">
-              <PropertyRef Name="ChaletID" />
-            </Principal>
-            <Dependent Role="transactions">
-              <PropertyRef Name="ChaletID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__transacti__useri__0A9D95DB">
+        <Association Name="FK__transacti__useri__69FBBC1F">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
           <End Role="transactions" Type="Self.transactions" Multiplicity="*" />
           <ReferentialConstraint>
@@ -376,6 +401,18 @@
             </Principal>
             <Dependent Role="transactions">
               <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__votes__ChaletID__6AEFE058">
+          <End Role="Chalets" Type="Self.Chalets" Multiplicity="0..1" />
+          <End Role="votes" Type="Self.votes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chalets">
+              <PropertyRef Name="ChaletID" />
+            </Principal>
+            <Dependent Role="votes">
+              <PropertyRef Name="ChaletID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -391,7 +428,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__votes__userid__797309D9">
+        <Association Name="FK__votes__userid__6BE40491">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
           <End Role="votes" Type="Self.votes" Multiplicity="*" />
           <ReferentialConstraint>
@@ -459,6 +496,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_transactions_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="transactions" Type="Self.transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="transactions">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="MasterPieceModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
@@ -481,7 +530,7 @@
             <End Role="Chalets" EntitySet="Chalets" />
             <End Role="Bookings" EntitySet="Bookings" />
           </AssociationSet>
-          <AssociationSet Name="FK__Bookings__id__04E4BC85" Association="Self.FK__Bookings__id__04E4BC85">
+          <AssociationSet Name="FK__Bookings__id__607251E5" Association="Self.FK__Bookings__id__607251E5">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Bookings" EntitySet="Bookings" />
           </AssociationSet>
@@ -490,6 +539,10 @@
             <End Role="CategoriesChalets" EntitySet="CategoriesChalets" />
           </AssociationSet>
           <AssociationSet Name="FK__Categorie__Chale__01142BA1" Association="Self.FK__Categorie__Chale__01142BA1">
+            <End Role="Chalets" EntitySet="Chalets" />
+            <End Role="CategoriesChalets" EntitySet="CategoriesChalets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Categorie__Chale__625A9A57" Association="Self.FK__Categorie__Chale__625A9A57">
             <End Role="Chalets" EntitySet="Chalets" />
             <End Role="CategoriesChalets" EntitySet="CategoriesChalets" />
           </AssociationSet>
@@ -509,31 +562,39 @@
             <End Role="Chalets" EntitySet="Chalets" />
             <End Role="Comments" EntitySet="Comments" />
           </AssociationSet>
-          <AssociationSet Name="FK__Comments__userid__07C12930" Association="Self.FK__Comments__userid__07C12930">
+          <AssociationSet Name="FK__Comments__Chalet__662B2B3B" Association="Self.FK__Comments__Chalet__662B2B3B">
+            <End Role="Chalets" EntitySet="Chalets" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comments__userid__671F4F74" Association="Self.FK__Comments__userid__671F4F74">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Faves__ChaletID__681373AD" Association="Self.FK__Faves__ChaletID__681373AD">
+            <End Role="Chalets" EntitySet="Chalets" />
+            <End Role="Faves" EntitySet="Faves" />
           </AssociationSet>
           <AssociationSet Name="FK__Faves__ChaletID__7D439ABD" Association="Self.FK__Faves__ChaletID__7D439ABD">
             <End Role="Chalets" EntitySet="Chalets" />
             <End Role="Faves" EntitySet="Faves" />
           </AssociationSet>
-          <AssociationSet Name="FK__Faves__userid__7C4F7684" Association="Self.FK__Faves__userid__7C4F7684">
+          <AssociationSet Name="FK__Faves__userid__690797E6" Association="Self.FK__Faves__userid__690797E6">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Faves" EntitySet="Faves" />
           </AssociationSet>
-          <AssociationSet Name="FK__transacti__Chale__0B91BA14" Association="Self.FK__transacti__Chale__0B91BA14">
-            <End Role="Chalets" EntitySet="Chalets" />
-            <End Role="transactions" EntitySet="transactions" />
-          </AssociationSet>
-          <AssociationSet Name="FK__transacti__useri__0A9D95DB" Association="Self.FK__transacti__useri__0A9D95DB">
+          <AssociationSet Name="FK__transacti__useri__69FBBC1F" Association="Self.FK__transacti__useri__69FBBC1F">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="transactions" EntitySet="transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__votes__ChaletID__6AEFE058" Association="Self.FK__votes__ChaletID__6AEFE058">
+            <End Role="Chalets" EntitySet="Chalets" />
+            <End Role="votes" EntitySet="votes" />
           </AssociationSet>
           <AssociationSet Name="FK__votes__ChaletID__787EE5A0" Association="Self.FK__votes__ChaletID__787EE5A0">
             <End Role="Chalets" EntitySet="Chalets" />
             <End Role="votes" EntitySet="votes" />
           </AssociationSet>
-          <AssociationSet Name="FK__votes__userid__797309D9" Association="Self.FK__votes__userid__797309D9">
+          <AssociationSet Name="FK__votes__userid__6BE40491" Association="Self.FK__votes__userid__6BE40491">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="votes" EntitySet="votes" />
           </AssociationSet>
@@ -552,6 +613,10 @@
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_transactions_AspNetUsers" Association="Self.FK_transactions_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="transactions" EntitySet="transactions" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -592,7 +657,7 @@
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRole" EntitySet="AspNetUserRoles" />
           </AssociationSet>
-          <AssociationSet Name="FK__Bookings__id__04E4BC85" Association="MasterPieceModel.FK__Bookings__id__04E4BC85">
+          <AssociationSet Name="FK__Bookings__id__607251E5" Association="MasterPieceModel.FK__Bookings__id__607251E5">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="Booking" EntitySet="Bookings" />
           </AssociationSet>
@@ -600,21 +665,25 @@
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="Chalet" EntitySet="Chalets" />
           </AssociationSet>
-          <AssociationSet Name="FK__Comments__userid__07C12930" Association="MasterPieceModel.FK__Comments__userid__07C12930">
+          <AssociationSet Name="FK__Comments__userid__671F4F74" Association="MasterPieceModel.FK__Comments__userid__671F4F74">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="Comment" EntitySet="Comments" />
           </AssociationSet>
-          <AssociationSet Name="FK__Faves__userid__7C4F7684" Association="MasterPieceModel.FK__Faves__userid__7C4F7684">
+          <AssociationSet Name="FK__Faves__userid__690797E6" Association="MasterPieceModel.FK__Faves__userid__690797E6">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="Fave" EntitySet="Faves" />
           </AssociationSet>
-          <AssociationSet Name="FK__transacti__useri__0A9D95DB" Association="MasterPieceModel.FK__transacti__useri__0A9D95DB">
+          <AssociationSet Name="FK__transacti__useri__69FBBC1F" Association="MasterPieceModel.FK__transacti__useri__69FBBC1F">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="transaction" EntitySet="transactions" />
           </AssociationSet>
-          <AssociationSet Name="FK__votes__userid__797309D9" Association="MasterPieceModel.FK__votes__userid__797309D9">
+          <AssociationSet Name="FK__votes__userid__6BE40491" Association="MasterPieceModel.FK__votes__userid__6BE40491">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="vote" EntitySet="votes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_transactions_AspNetUsers" Association="MasterPieceModel.FK_transactions_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="transaction" EntitySet="transactions" />
           </AssociationSet>
           <AssociationSet Name="FK__Bookings__Chalet__03F0984C" Association="MasterPieceModel.FK__Bookings__Chalet__03F0984C">
             <End Role="Chalet" EntitySet="Chalets" />
@@ -625,6 +694,10 @@
             <End Role="CategoriesChalet" EntitySet="CategoriesChalets" />
           </AssociationSet>
           <AssociationSet Name="FK__Categorie__Chale__01142BA1" Association="MasterPieceModel.FK__Categorie__Chale__01142BA1">
+            <End Role="Chalet" EntitySet="Chalets" />
+            <End Role="CategoriesChalet" EntitySet="CategoriesChalets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Categorie__Chale__625A9A57" Association="MasterPieceModel.FK__Categorie__Chale__625A9A57">
             <End Role="Chalet" EntitySet="Chalets" />
             <End Role="CategoriesChalet" EntitySet="CategoriesChalets" />
           </AssociationSet>
@@ -640,13 +713,21 @@
             <End Role="Chalet" EntitySet="Chalets" />
             <End Role="Comment" EntitySet="Comments" />
           </AssociationSet>
+          <AssociationSet Name="FK__Comments__Chalet__662B2B3B" Association="MasterPieceModel.FK__Comments__Chalet__662B2B3B">
+            <End Role="Chalet" EntitySet="Chalets" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Faves__ChaletID__681373AD" Association="MasterPieceModel.FK__Faves__ChaletID__681373AD">
+            <End Role="Chalet" EntitySet="Chalets" />
+            <End Role="Fave" EntitySet="Faves" />
+          </AssociationSet>
           <AssociationSet Name="FK__Faves__ChaletID__7D439ABD" Association="MasterPieceModel.FK__Faves__ChaletID__7D439ABD">
             <End Role="Chalet" EntitySet="Chalets" />
             <End Role="Fave" EntitySet="Faves" />
           </AssociationSet>
-          <AssociationSet Name="FK__transacti__Chale__0B91BA14" Association="MasterPieceModel.FK__transacti__Chale__0B91BA14">
+          <AssociationSet Name="FK__votes__ChaletID__6AEFE058" Association="MasterPieceModel.FK__votes__ChaletID__6AEFE058">
             <End Role="Chalet" EntitySet="Chalets" />
-            <End Role="transaction" EntitySet="transactions" />
+            <End Role="vote" EntitySet="votes" />
           </AssociationSet>
           <AssociationSet Name="FK__votes__ChaletID__787EE5A0" Association="MasterPieceModel.FK__votes__ChaletID__787EE5A0">
             <End Role="Chalet" EntitySet="Chalets" />
@@ -723,15 +804,17 @@
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Customer_Img" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Phone" Type="Int32" />
+          <Property Name="donePay" Type="Boolean" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="MasterPieceModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="MasterPieceModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
           <NavigationProperty Name="AspNetUserRoles" Relationship="MasterPieceModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserRole" />
-          <NavigationProperty Name="Bookings" Relationship="MasterPieceModel.FK__Bookings__id__04E4BC85" FromRole="AspNetUser" ToRole="Booking" />
+          <NavigationProperty Name="Bookings" Relationship="MasterPieceModel.FK__Bookings__id__607251E5" FromRole="AspNetUser" ToRole="Booking" />
           <NavigationProperty Name="Chalets" Relationship="MasterPieceModel.FK__Chalets__userid__73BA3083" FromRole="AspNetUser" ToRole="Chalet" />
-          <NavigationProperty Name="Comments" Relationship="MasterPieceModel.FK__Comments__userid__07C12930" FromRole="AspNetUser" ToRole="Comment" />
-          <NavigationProperty Name="Faves" Relationship="MasterPieceModel.FK__Faves__userid__7C4F7684" FromRole="AspNetUser" ToRole="Fave" />
-          <NavigationProperty Name="transactions" Relationship="MasterPieceModel.FK__transacti__useri__0A9D95DB" FromRole="AspNetUser" ToRole="transaction" />
-          <NavigationProperty Name="votes" Relationship="MasterPieceModel.FK__votes__userid__797309D9" FromRole="AspNetUser" ToRole="vote" />
+          <NavigationProperty Name="Comments" Relationship="MasterPieceModel.FK__Comments__userid__671F4F74" FromRole="AspNetUser" ToRole="Comment" />
+          <NavigationProperty Name="Faves" Relationship="MasterPieceModel.FK__Faves__userid__690797E6" FromRole="AspNetUser" ToRole="Fave" />
+          <NavigationProperty Name="transactions" Relationship="MasterPieceModel.FK__transacti__useri__69FBBC1F" FromRole="AspNetUser" ToRole="transaction" />
+          <NavigationProperty Name="votes" Relationship="MasterPieceModel.FK__votes__userid__6BE40491" FromRole="AspNetUser" ToRole="vote" />
+          <NavigationProperty Name="transactions1" Relationship="MasterPieceModel.FK_transactions_AspNetUsers" FromRole="AspNetUser" ToRole="transaction" />
         </EntityType>
         <EntityType Name="Booking">
           <Key>
@@ -747,7 +830,7 @@
           <Property Name="PaymentStatus" Type="Boolean" />
           <Property Name="NumOfAdult" Type="Int32" />
           <Property Name="NumOfKids" Type="Int32" />
-          <NavigationProperty Name="AspNetUser" Relationship="MasterPieceModel.FK__Bookings__id__04E4BC85" FromRole="Booking" ToRole="AspNetUser" />
+          <NavigationProperty Name="AspNetUser" Relationship="MasterPieceModel.FK__Bookings__id__607251E5" FromRole="Booking" ToRole="AspNetUser" />
           <NavigationProperty Name="Chalet" Relationship="MasterPieceModel.FK__Bookings__Chalet__03F0984C" FromRole="Booking" ToRole="Chalet" />
         </EntityType>
         <EntityType Name="Category">
@@ -770,6 +853,7 @@
           <Property Name="note" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Category" Relationship="MasterPieceModel.FK__Categorie__Categ__00200768" FromRole="CategoriesChalet" ToRole="Category" />
           <NavigationProperty Name="Chalet" Relationship="MasterPieceModel.FK__Categorie__Chale__01142BA1" FromRole="CategoriesChalet" ToRole="Chalet" />
+          <NavigationProperty Name="Chalet1" Relationship="MasterPieceModel.FK__Categorie__Chale__625A9A57" FromRole="CategoriesChalet" ToRole="Chalet" />
         </EntityType>
         <EntityType Name="Chalet">
           <Key>
@@ -796,12 +880,15 @@
           <NavigationProperty Name="AspNetUser" Relationship="MasterPieceModel.FK__Chalets__userid__73BA3083" FromRole="Chalet" ToRole="AspNetUser" />
           <NavigationProperty Name="Bookings" Relationship="MasterPieceModel.FK__Bookings__Chalet__03F0984C" FromRole="Chalet" ToRole="Booking" />
           <NavigationProperty Name="CategoriesChalets" Relationship="MasterPieceModel.FK__Categorie__Chale__01142BA1" FromRole="Chalet" ToRole="CategoriesChalet" />
+          <NavigationProperty Name="CategoriesChalets1" Relationship="MasterPieceModel.FK__Categorie__Chale__625A9A57" FromRole="Chalet" ToRole="CategoriesChalet" />
           <NavigationProperty Name="Feature" Relationship="MasterPieceModel.FK__Chalets__Feature__75A278F5" FromRole="Chalet" ToRole="Feature" />
           <NavigationProperty Name="Image" Relationship="MasterPieceModel.FK__Chalets__Images___74AE54BC" FromRole="Chalet" ToRole="Image" />
           <NavigationProperty Name="Comments" Relationship="MasterPieceModel.FK__Comments__Chalet__17F790F9" FromRole="Chalet" ToRole="Comment" />
-          <NavigationProperty Name="Faves" Relationship="MasterPieceModel.FK__Faves__ChaletID__7D439ABD" FromRole="Chalet" ToRole="Fave" />
-          <NavigationProperty Name="transactions" Relationship="MasterPieceModel.FK__transacti__Chale__0B91BA14" FromRole="Chalet" ToRole="transaction" />
-          <NavigationProperty Name="votes" Relationship="MasterPieceModel.FK__votes__ChaletID__787EE5A0" FromRole="Chalet" ToRole="vote" />
+          <NavigationProperty Name="Comments1" Relationship="MasterPieceModel.FK__Comments__Chalet__662B2B3B" FromRole="Chalet" ToRole="Comment" />
+          <NavigationProperty Name="Faves" Relationship="MasterPieceModel.FK__Faves__ChaletID__681373AD" FromRole="Chalet" ToRole="Fave" />
+          <NavigationProperty Name="Faves1" Relationship="MasterPieceModel.FK__Faves__ChaletID__7D439ABD" FromRole="Chalet" ToRole="Fave" />
+          <NavigationProperty Name="votes" Relationship="MasterPieceModel.FK__votes__ChaletID__6AEFE058" FromRole="Chalet" ToRole="vote" />
+          <NavigationProperty Name="votes1" Relationship="MasterPieceModel.FK__votes__ChaletID__787EE5A0" FromRole="Chalet" ToRole="vote" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
@@ -812,8 +899,9 @@
           <Property Name="comment1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Comment_Date" Type="DateTime" Precision="0" />
           <Property Name="ChaletID" Type="Int32" />
-          <NavigationProperty Name="AspNetUser" Relationship="MasterPieceModel.FK__Comments__userid__07C12930" FromRole="Comment" ToRole="AspNetUser" />
+          <NavigationProperty Name="AspNetUser" Relationship="MasterPieceModel.FK__Comments__userid__671F4F74" FromRole="Comment" ToRole="AspNetUser" />
           <NavigationProperty Name="Chalet" Relationship="MasterPieceModel.FK__Comments__Chalet__17F790F9" FromRole="Comment" ToRole="Chalet" />
+          <NavigationProperty Name="Chalet1" Relationship="MasterPieceModel.FK__Comments__Chalet__662B2B3B" FromRole="Comment" ToRole="Chalet" />
         </EntityType>
         <EntityType Name="Fave">
           <Key>
@@ -822,8 +910,9 @@
           <Property Name="favID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="userid" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="ChaletID" Type="Int32" />
-          <NavigationProperty Name="AspNetUser" Relationship="MasterPieceModel.FK__Faves__userid__7C4F7684" FromRole="Fave" ToRole="AspNetUser" />
-          <NavigationProperty Name="Chalet" Relationship="MasterPieceModel.FK__Faves__ChaletID__7D439ABD" FromRole="Fave" ToRole="Chalet" />
+          <NavigationProperty Name="AspNetUser" Relationship="MasterPieceModel.FK__Faves__userid__690797E6" FromRole="Fave" ToRole="AspNetUser" />
+          <NavigationProperty Name="Chalet" Relationship="MasterPieceModel.FK__Faves__ChaletID__681373AD" FromRole="Fave" ToRole="Chalet" />
+          <NavigationProperty Name="Chalet1" Relationship="MasterPieceModel.FK__Faves__ChaletID__7D439ABD" FromRole="Fave" ToRole="Chalet" />
         </EntityType>
         <EntityType Name="Feature">
           <Key>
@@ -882,11 +971,11 @@
           </Key>
           <Property Name="transactionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="userid" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ChaletID" Type="Int32" />
           <Property Name="amount" Type="Double" />
           <Property Name="totalpay" Type="Double" />
-          <NavigationProperty Name="AspNetUser" Relationship="MasterPieceModel.FK__transacti__useri__0A9D95DB" FromRole="transaction" ToRole="AspNetUser" />
-          <NavigationProperty Name="Chalet" Relationship="MasterPieceModel.FK__transacti__Chale__0B91BA14" FromRole="transaction" ToRole="Chalet" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="AspNetUser" Relationship="MasterPieceModel.FK__transacti__useri__69FBBC1F" FromRole="transaction" ToRole="AspNetUser" />
+          <NavigationProperty Name="AspNetUser1" Relationship="MasterPieceModel.FK_transactions_AspNetUsers" FromRole="transaction" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="vote">
           <Key>
@@ -896,8 +985,9 @@
           <Property Name="ChaletID" Type="Int32" />
           <Property Name="vote_value" Type="Int32" />
           <Property Name="userid" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUser" Relationship="MasterPieceModel.FK__votes__userid__797309D9" FromRole="vote" ToRole="AspNetUser" />
-          <NavigationProperty Name="Chalet" Relationship="MasterPieceModel.FK__votes__ChaletID__787EE5A0" FromRole="vote" ToRole="Chalet" />
+          <NavigationProperty Name="AspNetUser" Relationship="MasterPieceModel.FK__votes__userid__6BE40491" FromRole="vote" ToRole="AspNetUser" />
+          <NavigationProperty Name="Chalet" Relationship="MasterPieceModel.FK__votes__ChaletID__6AEFE058" FromRole="vote" ToRole="Chalet" />
+          <NavigationProperty Name="Chalet1" Relationship="MasterPieceModel.FK__votes__ChaletID__787EE5A0" FromRole="vote" ToRole="Chalet" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
           <End Type="MasterPieceModel.AspNetRole" Role="AspNetRole" Multiplicity="1">
@@ -955,7 +1045,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Bookings__id__04E4BC85">
+        <Association Name="FK__Bookings__id__607251E5">
           <End Type="MasterPieceModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
           <End Type="MasterPieceModel.Booking" Role="Booking" Multiplicity="*" />
           <ReferentialConstraint>
@@ -981,7 +1071,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Comments__userid__07C12930">
+        <Association Name="FK__Comments__userid__671F4F74">
           <End Type="MasterPieceModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
           <End Type="MasterPieceModel.Comment" Role="Comment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -993,7 +1083,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Faves__userid__7C4F7684">
+        <Association Name="FK__Faves__userid__690797E6">
           <End Type="MasterPieceModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
           <End Type="MasterPieceModel.Fave" Role="Fave" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1005,7 +1095,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__transacti__useri__0A9D95DB">
+        <Association Name="FK__transacti__useri__69FBBC1F">
           <End Type="MasterPieceModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
           <End Type="MasterPieceModel.transaction" Role="transaction" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1017,7 +1107,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__votes__userid__797309D9">
+        <Association Name="FK__votes__userid__6BE40491">
           <End Type="MasterPieceModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
           <End Type="MasterPieceModel.vote" Role="vote" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1025,6 +1115,18 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="vote">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_transactions_AspNetUsers">
+          <End Type="MasterPieceModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="MasterPieceModel.transaction" Role="transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="transaction">
               <PropertyRef Name="userid" />
             </Dependent>
           </ReferentialConstraint>
@@ -1058,6 +1160,18 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Categorie__Chale__01142BA1">
+          <End Type="MasterPieceModel.Chalet" Role="Chalet" Multiplicity="0..1" />
+          <End Type="MasterPieceModel.CategoriesChalet" Role="CategoriesChalet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chalet">
+              <PropertyRef Name="ChaletID" />
+            </Principal>
+            <Dependent Role="CategoriesChalet">
+              <PropertyRef Name="ChaletID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Categorie__Chale__625A9A57">
           <End Type="MasterPieceModel.Chalet" Role="Chalet" Multiplicity="0..1" />
           <End Type="MasterPieceModel.CategoriesChalet" Role="CategoriesChalet" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1109,6 +1223,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Comments__Chalet__662B2B3B">
+          <End Type="MasterPieceModel.Chalet" Role="Chalet" Multiplicity="0..1" />
+          <End Type="MasterPieceModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chalet">
+              <PropertyRef Name="ChaletID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="ChaletID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Faves__ChaletID__681373AD">
+          <End Type="MasterPieceModel.Chalet" Role="Chalet" Multiplicity="0..1" />
+          <End Type="MasterPieceModel.Fave" Role="Fave" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chalet">
+              <PropertyRef Name="ChaletID" />
+            </Principal>
+            <Dependent Role="Fave">
+              <PropertyRef Name="ChaletID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Faves__ChaletID__7D439ABD">
           <End Type="MasterPieceModel.Chalet" Role="Chalet" Multiplicity="0..1" />
           <End Type="MasterPieceModel.Fave" Role="Fave" Multiplicity="*" />
@@ -1121,14 +1259,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__transacti__Chale__0B91BA14">
+        <Association Name="FK__votes__ChaletID__6AEFE058">
           <End Type="MasterPieceModel.Chalet" Role="Chalet" Multiplicity="0..1" />
-          <End Type="MasterPieceModel.transaction" Role="transaction" Multiplicity="*" />
+          <End Type="MasterPieceModel.vote" Role="vote" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Chalet">
               <PropertyRef Name="ChaletID" />
             </Principal>
-            <Dependent Role="transaction">
+            <Dependent Role="vote">
               <PropertyRef Name="ChaletID" />
             </Dependent>
           </ReferentialConstraint>
@@ -1200,6 +1338,7 @@
           <EntitySetMapping Name="AspNetUsers">
             <EntityTypeMapping TypeName="MasterPieceModel.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="donePay" ColumnName="donePay" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Customer_Img" ColumnName="Customer_Img" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -1354,9 +1493,9 @@
           <EntitySetMapping Name="transactions">
             <EntityTypeMapping TypeName="MasterPieceModel.transaction">
               <MappingFragment StoreEntitySet="transactions">
+                <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="totalpay" ColumnName="totalpay" />
                 <ScalarProperty Name="amount" ColumnName="amount" />
-                <ScalarProperty Name="ChaletID" ColumnName="ChaletID" />
                 <ScalarProperty Name="userid" ColumnName="userid" />
                 <ScalarProperty Name="transactionId" ColumnName="transactionId" />
               </MappingFragment>

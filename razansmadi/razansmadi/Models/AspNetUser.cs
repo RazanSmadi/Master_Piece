@@ -26,6 +26,7 @@ namespace razansmadi.Models
             this.Faves = new HashSet<Fave>();
             this.transactions = new HashSet<transaction>();
             this.votes = new HashSet<vote>();
+            this.transactions1 = new HashSet<transaction>();
         }
     
         public string Id { get; set; }
@@ -44,6 +45,7 @@ namespace razansmadi.Models
         public string LastName { get; set; }
         public string Customer_Img { get; set; }
         public Nullable<int> Phone { get; set; }
+        public Nullable<bool> donePay { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
@@ -63,5 +65,7 @@ namespace razansmadi.Models
         public virtual ICollection<transaction> transactions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<vote> votes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<transaction> transactions1 { get; set; }
     }
 }

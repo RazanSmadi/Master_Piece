@@ -1,193 +1,110 @@
 ﻿@model razansmadi.Models.transaction
 @{
-    ViewBag.Title = "PayBuyer";
-    Layout = null;
-
+    ViewBag.Title = "pay";
+    Layout = "~/Views/Shared/_OwnersLayout.cshtml";
 }
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-<script src="https://kit.fontawesome.com/a8b56cb52b.js" crossorigin="anonymous"></script>
-
-<style>
-    #con2 {
-        width: 50%;
-    }
-</style>
-
-@using razansmadi.Models
-@{
-
-
-    var db = new MasterPieceEntities();
-    //var chalet = db.Chalets.FirstOrDefault(i => i.ChaletID == Model.ChaletID);
-    var chalet = db.Chalets.FirstOrDefault(i => i.ChaletID == 1);
-
-    var price = chalet.PricePerNight;
-    //var booking = db.Bookings.FirstOrDefault(i => i.ChaletID == Model.ChaletID && i.id == Model.userid);
-    var booking = db.Bookings.FirstOrDefault(i => i.BookingID == 1);
-
-    var totalprice = price;
-    if (booking.NumOfAdult == 2 && booking.NumOfKids == 2)
-    {
-        totalprice = price + 30 / 100 * price;
-    }
-
-    else if (booking.NumOfAdult == 2 && booking.NumOfKids == 1)
-    {
-        totalprice = price + 10 / 100 * price;
-    }
-
-    else if (booking.NumOfAdult == 1 && booking.NumOfKids == 2)
-    {
-        totalprice = price + 10 / 100 * price;
-    }
-
-
-
-    DateTime checkInDate = booking.CheckInDate.Value;
-    DateTime checkOutDate = booking.CheckOutDate.Value;
-    TimeSpan timeSpan = checkOutDate - checkInDate;
-    int totalDays = (int)timeSpan.TotalDays;
-
-    totalprice = totalprice * totalDays;
-    Session["totalpay"] = totalprice;
-
-    var downPayment = totalprice - (totalprice * (70 / 100));
-
-    Session["downPayment"] = downPayment;
-
-    var PaymentStatus = booking.PaymentStatus;
-
-    if (PaymentStatus == null)
-    {
-        <div id="con2" class="container">
-            <div class="card mb-4 container">
-                <div class="card-header pb-0">
-                    <h6></h6>
-                </div>
-                <div id="table" class="card-body px-0 pt-0 pb-2">
-                    <div class="table-responsive p-0">
-                        <table class="table">
-                            <tr>
-                                <td>Total Price</td>
-                                <td>@totalprice JD</td>
-                            </tr>
-                            <tr>
-                                <td>You must pay at least 30% of Total Price </td>
-                                <td>@downPayment JD</td>
-                            </tr>
-                            <tr>
-                                <td>Pay Now</td>
-                                <td>
-                                    <button type="button" class="btn btn-success launch" data-toggle="modal" data-target="#staticBackdrop">
-                                        Add Card
-                                    </button>
-                                </td>
-                            </tr>
-
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    }
-    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="text-right"><i class="fa fa-close close" data-dismiss="modal"></i></div>
-                    <div class="tabs mt-3">
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link active" id="visa-tab" data-toggle="tab" href="#visa" role="tab" aria-controls="visa" aria-selected="true">
-                                    <img src="https://i.imgur.com/sB4jftM.png" width="80">
-                                </a>
-                            </li>
-
-                        </ul>
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="visa" role="tabpanel" aria-labelledby="visa-tab">
-                                <div class="mt-4 mx-4">
-                                    <div class="text-center">
-                                        <h5>Credit card</h5>
-                                    </div>
-                                    @using (Html.BeginForm("Pay", "transactions", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                                    {
-                                        @Html.AntiForgeryToken()
-                                        <div class="form mt-3">
-                                            <div class="inputbox">
-                                                <span>Cardholder Name</span>
-                                                <input type="text" name="name" class="form-control" required="required">
-
-                                            </div>
-                                            <div class="inputbox">
-                                                <span>Card Number</span>
-                                                <input type="text" name="name" min="1" max="999" class="form-control" required="required">
-
-                                            </div>
-                                            <div class="inputbox">
-                                                <span>Expiration Date</span>
-                                                <input type="text" name="name" min="1" max="999" class="form-control" required="required">
-
-                                            </div>
-                                            <div class="inputbox">
-                                                <span>CVV</span>
-                                                <input type="text" name="name" min="1" max="999" class="form-control" required="required">
-
-                                            </div>
-                                            <div class="inputbox">
-                                                <span>Amount</span>
-                                                <input type="number" name="amount" value="@downPayment" min="@downPayment" max="999" class="form-control" required="required">
-
-                                            </div>
-
-                                            <br />
-                                            <div style="color:tomato">* if you cancel the reservation your money is not returened</div>
-                                            <div class="px-9 pay">
-                                                <input type="submit" value="Pay" class="btn btn-success btn-block" data-toggle="modal" data- target="#staticBackdrop2" />
-
-                                            </div>
-                                        </div>
-                                    }
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="staticBackdrop2" data-backdrop="static" data-keyboard="false" tabindex="-2" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="text-right"><i class="fa fa-close close" data-dismiss="modal"></i></div>
-                    <div class="tabs mt-3">
-
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="visa" role="tabpanel" aria-labelledby="visa-tab">
-                                <div class="mt-4 mx-4">
-                                    <div class="text-center">
-                                        <h5>Your booking has been done </h5>
-                                        <h6>Check your Email</h6>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="page-wrapper">
     <br />
     <br />
+    <div class=" d-flex justify-content-center ">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.totalpay)
+            @Html.HiddenFor(model => model.userid)
 
-}
+            <div class="row">
+                <div class="col-md-8 mb-4">
+                    <div class="card mb-4">
+                        <div class="card-header py-3">
+                            <h3 class="mb-0">Pay Details</h3>
+                        </div>
+                        <div class="card-body">
+                            <!-- 2 column grid layout with text inputs for the first and last names -->
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <div class="form-check">
+                                        <label type="text" id="form6Example1" class="form-check-label">
+                                            The subscription period is <b>3 months</b> with <b>120 JD</b> and you will get a <b>free month</b>.
+                                            you can post maximun <b> 3 Chalets</b>.
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+                            <hr class="my-4" />
+
+                            <div class="form-check">
+                                <label class="form-check-label" for="checkoutForm1" style="color:red">
+                                    *Once you have paid you are unable to recover the amount unless your chalet was rejected the amount will recover to you
+                                </label>
+                            </div>
+                            <hr class="my-4" />
+
+                            <h5 class="mb-4">Payment</h5>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="checkoutForm3"
+                                       checked />
+                                <label class="form-check-label" for="checkoutForm3">
+                                    Credit card
+                                </label>
+                            </div>
+
+                            <br />
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="text" name="name" class="form-control"  required="required">
+
+                                        <label class="form-label" for="formNameOnCard">Name on card</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="number"   id="formCardNumber" class="form-control" name="name" min="1" max="999" required="required">
+
+                                        <label class="form-label" for="formCardNumber">Credit card number</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-3">
+                                    <div class="form-outline">
+                                        <input type="number" name="name" min="1" max="999"  id="formExpiration" class="form-control" required="required">
+                                        <label class="form-label" for="formExpiration">Expiration</label>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-outline">
+                                        <input type="number" name="name" min="1" max="999" id="formCVV" class="form-control"  required="required">
+
+                                        <label class="form-label" for="formCVV">CVV</label>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-outline">
+                                        <input id="amount" class="form-control"  type="number" name="amount"  min="120" required="required"  />
+                                        <label class="form-label" for="Amount">Amount</label>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Continue to Confirme" class="btn btn-primary btn-lg btn-block" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>

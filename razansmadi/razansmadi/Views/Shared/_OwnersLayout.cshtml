@@ -49,12 +49,6 @@
                 <i class="fe fe-text-align-left"></i>
             </a>
 
-            <div class="top-nav-search">
-                <form>
-                    <input type="text" class="form-control" placeholder="Search here">
-                    <button class="btn" type="submit"><i class="fa fa-search"></i></button>
-                </form>
-            </div>
 
             <!-- Mobile Menu Toggle -->
             <a class="mobile_btn" id="mobile_btn">
@@ -75,10 +69,14 @@
                         </li>
 
                         <li>
-                            <a href="/SubAdminChalets/Index"><i class="fe fe-home"></i> <span>Chaletes</span></a>
+                            <a href="/SubAdminChalets/Index"><i class="fe fe-home"></i> <span> Your Chaletes</span></a>
                         </li>
-                        <li style="text-decoration:none; text-decoration-color:white;">
-                            @Html.Partial("_LoginPartial")
+                        <li>
+                            <a href="/transactions/Create"><i class="fa-solid fa-dollar-sign"></i><span>Subsecription</span></a>
+                        </li>
+                        <li>
+                            <a href="/Chalets/Home"><i class="fa-solid fa-house" style="font-size:medium"></i><span>Home</span></a>
+
                         </li>
                     </ul>
                 </div>

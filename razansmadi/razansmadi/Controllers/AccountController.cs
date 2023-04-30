@@ -93,7 +93,7 @@ namespace razansmadi.Controllers
                        {
                         //AspNetUser owner = db.AspNetUsers.Find(id);
                         //Session["Loggedowner"] = owner;
-                        return RedirectToAction("Statistics", "SubAdminChalets");
+                        return RedirectToAction("OwnersProfile", "AspNetUsers");
                     }
                     else
                     {

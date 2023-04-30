@@ -21,5 +21,6 @@ namespace razansmadi.Models
     
         public virtual Category Category { get; set; }
         public virtual Chalet Chalet { get; set; }
+        public virtual Chalet Chalet1 { get; set; }
     }
 }

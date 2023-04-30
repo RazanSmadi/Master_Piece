@@ -173,7 +173,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AspNetUserRolesController.cs" />
     <Compile Include="Controllers\AspNetUsersController.cs" />
-    <Compile Include="Controllers\BookingsController.cs" />
     <Compile Include="Controllers\ChaletsController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\FeaturesController.cs" />
@@ -934,11 +933,6 @@
     <Content Include="Views\AspNetUsers\EditUserProfile.cshtml" />
     <Content Include="Views\AspNetUsers\OwnersProfile.cshtml" />
     <Content Include="Views\AspNetUsers\Statistics.cshtml" />
-    <Content Include="Views\transactions\Create.cshtml" />
-    <Content Include="Views\transactions\Delete.cshtml" />
-    <Content Include="Views\transactions\Details.cshtml" />
-    <Content Include="Views\transactions\Edit.cshtml" />
-    <Content Include="Views\transactions\Index.cshtml" />
     <Content Include="Views\SubAdminChalets\CreateDetails.cshtml" />
     <Content Include="Views\SubAdminChalets\ADD.cshtml" />
     <Content Include="Views\AspNetUsers\OwnerDitals.cshtml" />
@@ -946,6 +940,11 @@
     <Content Include="Views\Images\Admin_Images.cshtml" />
     <Content Include="Views\Chalets\about.cshtml" />
     <Content Include="Views\Chalets\contact.cshtml" />
+    <Content Include="Views\transactions\Create.cshtml" />
+    <Content Include="Views\transactions\Delete.cshtml" />
+    <Content Include="Views\transactions\Details.cshtml" />
+    <Content Include="Views\transactions\Edit.cshtml" />
+    <Content Include="Views\transactions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
