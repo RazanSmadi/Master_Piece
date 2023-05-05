@@ -15,12 +15,11 @@ namespace razansmadi.Controllers
         private MasterPieceEntities db = new MasterPieceEntities();
 
         // GET: SubAdminChalets
-        public ActionResult Index(string id)
+        public ActionResult Index()
         {
-            TempData["title"] = "Done";
-            TempData["swal_message"] = "Item Added to your cart Successfully";
-            TempData["icon"] = "success";
-
+            Update();
+            string id= User.Identity.GetUserId();
+            ViewBag.OwnerID = id;
 
             if (id == null)
             {
@@ -34,18 +33,23 @@ namespace razansmadi.Controllers
                 .Where(c => c.userid == user.Id)
                 .ToList();
 
-            var ImgIds = chalets.Select(c => c.Images_ID).ToList();
-            var mainImages = db.Images.Where(i => ImgIds.Contains(i.Images_ID)).ToList();
-            var data = Tuple.Create(chalets, mainImages);
+            //var ImgIds = chalets.Select(c => c.Images_ID).ToList();
+            List<string> images = new List<string>();
+            foreach (var chal in chalets)
+            {
+                int chalId =Convert.ToInt32( chal.Images_ID);
+                var image = db.Images.Where(x => x.Images_ID == chalId).Select(x => x.MainImage).FirstOrDefault();
+                images.Add(image);
+            }
+          
+            
+            //var mainImages = db.Images.Where(i => ImgIds.Contains(i.Images_ID)).Select(i=>i.MainImage).ToList();
+            var data = Tuple.Create(chalets, images);
             return View(data);
 
         }
 
-        public ActionResult Statistics()
-        {
-       
-            return View();
-       }
+      
         //create images
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -174,6 +178,7 @@ namespace razansmadi.Controllers
         {
             if (ModelState.IsValid)
             {
+                chalet.userid= User.Identity.GetUserId();
                 db.Chalets.Add(chalet);
                 db.SaveChanges();
 
@@ -215,7 +220,7 @@ namespace razansmadi.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ChaletID,userid,Chalet_Name,Chalet_Description,Chalet_Address,AvailabilityFlag,NnmberOfAdult,NnmberOfkid,PricePerNight,Images_ID,Features_ID,isAccepted,bedroom,bathroom,area")] Chalet chalet)
+        public ActionResult Edit([Bind(Include = "ChaletID,userid,Chalet_Name,Chalet_Description,Chalet_Address,AvailabilityFlag,NnmberOfAdult,NnmberOfkid,PricePerNight,Images_ID,Features_ID,isAccepted,bedroom,bathroom,area,map")] Chalet chalet)
         {
             if (ModelState.IsValid)
             {
@@ -244,16 +249,14 @@ namespace razansmadi.Controllers
             ViewBag.userid = new SelectList(db.AspNetUsers, "Id", "Email", chalet.userid);
             ViewBag.Features_ID = new SelectList(db.Features, "Features_ID", "Features_ID", chalet.Features_ID);
             ViewBag.Images_ID = new SelectList(db.Images, "Images_ID", "MainImage", chalet.Images_ID);
+            
+
             return View(chalet);
         }
 
-
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult ADD(int ChaletId)
-        {
-            Chalet chalet = db.Chalets.Find(ChaletId);
+        public ActionResult BigAdd(int id)
+        { 
+            Chalet chalet = db.Chalets.Find(id);
             if (chalet == null)
             {
                 return HttpNotFound();
@@ -273,9 +276,29 @@ namespace razansmadi.Controllers
 
             if (ModelState.IsValid)
             {
-                //db.Entry(chalet).State = EntityState.Modified;
+                #region IndexData
+                Update();
+                string idd = User.Identity.GetUserId();
+                ViewBag.OwnerID = idd;
+
+                if (idd == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                AspNetUser user = db.AspNetUsers.Find(idd);
+
+                var chalets = db.Chalets
+                    .Include(c => c.Feature)
+                    .Include(c => c.Image)
+                    .Where(c => c.userid == user.Id)
+                    .ToList();
+
+                var ImgIds = chalets.Select(c => c.Images_ID).ToList();
+                var mainImages = db.Images.Where(i => ImgIds.Contains(i.Images_ID)).ToList();
+                var data = Tuple.Create(chalets, mainImages);
+                #endregion
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return  View("Index",data);
             }
 
             ViewBag.userid = new SelectList(db.AspNetUsers, "Id", "Email", chalet.userid);
@@ -287,8 +310,34 @@ namespace razansmadi.Controllers
 
 
 
+        public void Update()
+        {
+         
+            string id = User.Identity.GetUserId();
+            var x = db.transactions.Where(t => t.userid == id).OrderByDescending(t=>t.date).Select(t => t.date).ToList();
+            var hi = x[0];
 
+            if(DateTime.Compare(hi.Value, DateTime.Now) >= 100)
+            {
+                var user = db.AspNetUsers.Find(id);
+                if (user != null)
+                {
+                    user.donePay = false;
+                }
+            }
 
+            else
+            {
+                var user = db.AspNetUsers.Find(id);
+                if (user != null)
+                {
+                    user.donePay = true;
+                }
+            }
+       
+            db.SaveChanges();
+           
+        }
 
 
 

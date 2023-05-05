@@ -3,108 +3,145 @@
     ViewBag.Title = "pay";
     Layout = "~/Views/Shared/_OwnersLayout.cshtml";
 }
+@using razansmadi.Models
+@using Microsoft.AspNet.Identity
+
+
+@{
+    var db = new MasterPieceEntities();
+    string Uid = User.Identity.GetUserId();
+    var user = db.AspNetUsers.FirstOrDefault(u => u.Id == Uid);
+
+}
 <div class="page-wrapper">
     <br />
     <br />
-    <div class=" d-flex justify-content-center ">
-        @using (Html.BeginForm())
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.totalpay)
+        @Html.HiddenFor(model => model.userid)
+
+
+        if (user != null && user.donePay != true)
         {
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.totalpay)
-            @Html.HiddenFor(model => model.userid)
+            <div class=" d-flex justify-content-center ">
 
-            <div class="row">
-                <div class="col-md-8 mb-4">
-                    <div class="card mb-4">
-                        <div class="card-header py-3">
-                            <h3 class="mb-0">Pay Details</h3>
-                        </div>
-                        <div class="card-body">
-                            <!-- 2 column grid layout with text inputs for the first and last names -->
-                            <div class="row mb-4">
-                                <div class="col">
-                                    <div class="form-check">
-                                        <label type="text" id="form6Example1" class="form-check-label">
-                                            The subscription period is <b>3 months</b> with <b>120 JD</b> and you will get a <b>free month</b>.
-                                            you can post maximun <b> 3 Chalets</b>.
-                                        </label>
+                <div class="row">
+                    <div class="col-md-8 mb-4">
+                        <div class="card mb-4">
+                            <div class="card-header py-3">
+                                <h3 class="mb-0">Pay Details</h3>
+                            </div>
+                            <div class="card-body">
+                                <!-- 2 column grid layout with text inputs for the first and last names -->
+                                <div class="row mb-4">
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <label type="text" id="form6Example1" class="form-check-label">
+                                                The subscription period is <b>3 months</b> with <b>120 JD</b> and you will get a <b> Feee 10 Days</b>.
+                                                you can post maximun <b> 3 Chalets</b>.
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <hr class="my-4" />
+
+                                <div class="form-check">
+                                    <label class="form-check-label" for="checkoutForm1" style="color:red">
+                                        *Once you have paid you are unable to recover the amount unless your chalet was rejected the amount will recover to you
+                                    </label>
+                                </div>
+                                <hr class="my-4" />
+
+                                <h5 class="mb-4">Payment</h5>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="checkoutForm3"
+                                           checked />
+                                    <label class="form-check-label" for="checkoutForm3">
+                                        Credit card
+                                    </label>
+                                </div>
+
+                                <br />
+                                <div class="row mb-4">
+                                    <div class="col">
+                                        <div class="form-outline">
+                                            <input type="text" name="name" class="form-control" required="required">
+
+                                            <label class="form-label" for="formNameOnCard">Name on card</label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-outline">
+                                            <input type="number" id="formCardNumber" class="form-control" name="name" min="1" max="999" required="required">
+
+                                            <label class="form-label" for="formCardNumber">Credit card number</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-4">
+                                    <div class="col-3">
+                                        <div class="form-outline">
+                                            <input type="number" name="name" min="1" max="999" id="formExpiration" class="form-control" required="required">
+                                            <label class="form-label" for="formExpiration">Expiration</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="form-outline">
+                                            <input type="number" name="name" min="1" max="999" id="formCVV" class="form-control" required="required">
+
+                                            <label class="form-label" for="formCVV">CVV</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="form-outline">
+                                            <input id="amount" class="form-control" type="number" name="amount" min="120" required="required" />
+                                            <label class="form-label" for="Amount">Amount</label>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Continue to Confirme" class="btn btn-primary btn-lg btn-block" />
                                     </div>
                                 </div>
                             </div>
 
+                        </div>
+                    </div>
+                </div>
 
-                            <hr class="my-4" />
-
-                            <div class="form-check">
-                                <label class="form-check-label" for="checkoutForm1" style="color:red">
-                                    *Once you have paid you are unable to recover the amount unless your chalet was rejected the amount will recover to you
-                                </label>
-                            </div>
-                            <hr class="my-4" />
-
-                            <h5 class="mb-4">Payment</h5>
-
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="checkoutForm3"
-                                       checked />
-                                <label class="form-check-label" for="checkoutForm3">
-                                    Credit card
-                                </label>
-                            </div>
-
+            </div>
+        }
+        else
+        {
+            <div class="content container-fluid">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html"></a>Owner</li>
+                                <li class="breadcrumb-item active">Payment Details</li>
+                            </ul>
                             <br />
-                            <div class="row mb-4">
-                                <div class="col">
-                                    <div class="form-outline">
-                                        <input type="text" name="name" class="form-control"  required="required">
-
-                                        <label class="form-label" for="formNameOnCard">Name on card</label>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-outline">
-                                        <input type="number"   id="formCardNumber" class="form-control" name="name" min="1" max="999" required="required">
-
-                                        <label class="form-label" for="formCardNumber">Credit card number</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row mb-4">
-                                <div class="col-3">
-                                    <div class="form-outline">
-                                        <input type="number" name="name" min="1" max="999"  id="formExpiration" class="form-control" required="required">
-                                        <label class="form-label" for="formExpiration">Expiration</label>
-                                    </div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="form-outline">
-                                        <input type="number" name="name" min="1" max="999" id="formCVV" class="form-control"  required="required">
-
-                                        <label class="form-label" for="formCVV">CVV</label>
-                                    </div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="form-outline">
-                                        <input id="amount" class="form-control"  type="number" name="amount"  min="120" required="required"  />
-                                        <label class="form-label" for="Amount">Amount</label>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Continue to Confirme" class="btn btn-primary btn-lg btn-block" />
-                                </div>
-                            </div>
+                            <label class="form-control border-info" style="display:inline"> Your Payment Is Done and Your subscription is active </label>
                         </div>
-
                     </div>
                 </div>
             </div>
-        }
-    </div>
 
+        }
+
+
+    }
 </div>
+

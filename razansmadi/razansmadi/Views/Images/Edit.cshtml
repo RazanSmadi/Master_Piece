@@ -10,142 +10,110 @@
             <div class="row">
                 <div class="col-sm-12">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item active"> Edit Features</li>
+                        <li class="breadcrumb-item active"> Edit Imges</li>
                     </ul>
                 </div>
             </div>
         </div>
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Edit", "Images", FormMethod.Post, new { role = "form", enctype = "multipart/form-data" }))
         {
-            @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        <h4>Edit Image</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Images_ID)
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                   
 
-        <div class="form-group">
-            Main Image
-            <div class="col-md-10">
-                @if (!string.IsNullOrEmpty(Model.MainImage))
-                {
-                    <img src="@Url.Content(Model.MainImage)" alt="Main Image" width="200" />
-                }
-                @Html.TextBoxFor(model => model.MainImage, new { @class = "form-control", type = "file", accept = "image/*" })
-                @Html.ValidationMessageFor(model => model.MainImage, "", new { @class = "text-danger" })
-           
-            </div>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Images_ID)
+
+                    <div class="form-group">
+                        Main Image
+                        <div class="col-md-10">
+                            <input type="file" class="form-control" id="MainImage" name="MainImage" accept="image/*">
+
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        Pool Image
+                        <div class="col-md-10">
+
+                            <input type="file" class="form-control" id="poolImage" name="poolImage" accept="image/*">
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        garden Image
+                        <div class="col-md-10">
+                            <input type="file" class="form-control" id="gardenImage" name="gardenImage" accept="image/*">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        playGround Image
+                        <div class="col-md-10">
+
+                            <input type="file" class="form-control" id="playGroundImage" name="playGroundImage" accept="image/*">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        Room Image
+                        <div class="col-md-10">
+
+                            <input type="file" class="form-control" id="roomImage" name="roomImage" accept="image/*">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        kitchen Image
+                        <div class="col-md-10">
+
+                            <input type="file" class="form-control" id="kitchenImage" name="kitchenImage" accept="image/*">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        living Room Image
+                        <div class="col-md-10">
+
+                            <input type="file" class="form-control" id="livingRoomImage" name="livingRoomImage" accept="image/*">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        bathroom Image
+                        <div class="col-md-10">
+
+                            <input type="file" class="form-control" id="bathroomImage" name="bathroomImage" accept="image/*">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        view Image
+                        <div class="col-md-10">
+
+                            <input type="file" class="form-control" id="viewImage" name="viewImage" accept="image/*">
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <a href="~/Images/OwnerAllImages/@Model.Images_ID" class="btn btn-secondary p-2">Cancel</a>
+                            &nbsp; &nbsp;
+                            <input type="submit" value="Save" class="btn btn-success p-2" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+
         </div>
-
-
-
-
-        <div class="form-group">
-            Pool Image
-            <div class="col-md-10">
-                @if (!string.IsNullOrEmpty(Model.poolImage))
-                {
-                    <img src="@Url.Content(Model.poolImage)" alt="poolImage" width="200" />
-                }
-                @Html.TextBoxFor(model => model.poolImage, new { @class = "form-control", type = "file", accept = "image/*" })
-                @Html.ValidationMessageFor(model => model.poolImage, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            garden Image
-            <div class="col-md-10">
-                @if (!string.IsNullOrEmpty(Model.gardenImage))
-                {
-                    <img src="@Url.Content(Model.gardenImage)" alt="garden Image" width="200" />
-                }
-                @Html.TextBoxFor(model => model.gardenImage, new { @class = "form-control", type = "file", accept = "image/*" })
-                @Html.ValidationMessageFor(model => model.gardenImage, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            playGround Image
-            <div class="col-md-10">
-                @if (!string.IsNullOrEmpty(Model.playGroundImage))
-                {
-                    <img src="@Url.Content(Model.playGroundImage)" alt="playGround Image" width="200" />
-                }
-                @Html.TextBoxFor(model => model.playGroundImage, new { @class = "form-control", type = "file", accept = "image/*" })
-                @Html.ValidationMessageFor(model => model.playGroundImage, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            Room Image
-            <div class="col-md-10">
-                @if (!string.IsNullOrEmpty(Model.roomImage))
-                {
-                    <img src="@Url.Content(Model.roomImage)" alt="Room Image" width="200" />
-                }
-                @Html.TextBoxFor(model => model.roomImage, new { @class = "form-control", type = "file", accept = "image/*" })
-                @Html.ValidationMessageFor(model => model.roomImage, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            kitchen Image
-            <div class="col-md-10">
-                @if (!string.IsNullOrEmpty(Model.kitchenImage))
-                {
-                    <img src="@Url.Content(Model.kitchenImage)" alt="kitchenImage" width="200" />
-                }
-                @Html.TextBoxFor(model => model.kitchenImage, new { @class = "form-control", type = "file", accept = "image/*" })
-                @Html.ValidationMessageFor(model => model.kitchenImage, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            living Room Image
-            <div class="col-md-10">
-                @if (!string.IsNullOrEmpty(Model.livingRoomImage))
-                {
-                    <img src="@Url.Content(Model.livingRoomImage)" alt="livingRoomImage" width="200" />
-                }
-                @Html.TextBoxFor(model => model.livingRoomImage, new { @class = "form-control", type = "file", accept = "image/*" })
-                @Html.ValidationMessageFor(model => model.livingRoomImage, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            bathroom Image
-            <div class="col-md-10">
-                @if (!string.IsNullOrEmpty(Model.bathroomImage))
-                {
-                    <img src="@Url.Content(Model.bathroomImage)" alt="bathroomImage" width="200" />
-                }
-                @Html.TextBoxFor(model => model.bathroomImage, new { @class = "form-control", type = "file", accept = "image/*" })
-                @Html.ValidationMessageFor(model => model.bathroomImage, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            view Image
-            <div class="col-md-10">
-                @if (!string.IsNullOrEmpty(Model.viewImage))
-                {
-                    <img src="@Url.Content(Model.viewImage)" alt="viewImage" width="200" />
-                }
-                @Html.TextBoxFor(model => model.viewImage, new { @class = "form-control", type = "file", accept = "image/*" })
-                @Html.ValidationMessageFor(model => model.viewImage, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-    
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <a href="~/Images/OwnerAllImages/@Model.Images_ID" class="btn btn-primary p-2">Cancel</a>
-                &nbsp; &nbsp;
-                <input type="submit" value="Save" class="btn btn-success p-2" />
-            </div>
-        </div>
-    </div>
-        }
-
-        
-    </div>
 </div>

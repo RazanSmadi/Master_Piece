@@ -3,6 +3,8 @@
 @{
     Layout = null;
 }
+@using Microsoft.AspNet.Identity
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -50,26 +52,59 @@
                     <div class="navbar-nav">
                         <a href="./index.html" class="nav-link" style="color: #0A6506; border-bottom: 2px solid #0A6506; ">Home</a>
                         <a href="./Our Chalets.html" class="nav-link" style="color: #0A6506;">Chalets</a>
-                        <a href="./profile.html" class="nav-link" style="color: #0A6506;">Profile</a>
-                        <a href="./about.html" class="nav-link" style="color: #0A6506;">About</a>
-                        <a href="./contact.html" class="nav-link" style="color: #0A6506;">Contact</a>
-                        @Html.Partial("_LoginPartial")
+                        @if (User.Identity.GetUserId() != null)
+                        {
+                            if (User.IsInRole("User"))
+                            {
+                                <a href="./profile.html" class="nav-link" style="color: #0A6506;">Profile</a>
+                            }
+
+                            else if (User.IsInRole("Owner"))
+                            {
+                                <a href="../AspNetUsers/OwnersProfile" class="nav-link" style="color: #0A6506;">Dashboard</a>
+                            }
+                        }
+
+                            <a href="./about.html" class="nav-link" style="color: #0A6506;">About</a>
+                            <a href="./contact.html" class="nav-link" style="color: #0A6506;">Contact</a>
+                            @Html.Partial("_LoginPartial")
+                        </div>
                     </div>
                 </div>
-            </div>
-        </nav>
-    </header>
+            </nav>
+        </header>
 
 
 
-    <!-- Header End -->
-    <!--Hero Section Begin ---->
-    <br />
-    <section class="hero-section">
-        <div class="container">
-            <div class="hs-slider owl-carousel">
-                <div class="hs-item set-bg" data-setbg="@Url.Content("~/img/Category/family.jpg")">
-                    <div style="display:flex;justify-content:center">
+        <!-- Header End -->
+        <!--Hero Section Begin ---->
+        <br />
+        <section class="hero-section">
+            <div class="container">
+                <div class="hs-slider owl-carousel">
+                    <div class="hs-item set-bg" data-setbg="@Url.Content("~/img/Category/family.jpg")">
+                        <div style="display:flex;justify-content:center">
+                            @using (Html.BeginForm("AllChalet", "Chalets", FormMethod.Post))
+                            {
+                                <button class="button_header">Our Chalets</button>
+                            }
+                            @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+                            {
+                                <button class="button_header">Post your Chalets</button>
+                            }
+                        </div>
+                    </div>
+                    <div class="hs-item set-bg" data-setbg="@Url.Content("~/img/farm2.PNG")">
+                        @using (Html.BeginForm("AllChalet", "Chalets", FormMethod.Post))
+                        {
+                            <button class="button_header">Our Chalets</button>
+                        }
+                        @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+                        {
+                            <button class="button_header">Post your Chalets</button>
+                        }
+                    </div>
+                    <div class="hs-item set-bg" data-setbg="@Url.Content("~/img/Capture.PNG")">
                         @using (Html.BeginForm("AllChalet", "Chalets", FormMethod.Post))
                         {
                             <button class="button_header">Our Chalets</button>
@@ -80,257 +115,236 @@
                         }
                     </div>
                 </div>
-                <div class="hs-item set-bg" data-setbg="@Url.Content("~/img/farm2.PNG")">
-                    @using (Html.BeginForm("AllChalet", "Chalets", FormMethod.Post))
-                    {
-                        <button class="button_header">Our Chalets</button>
-                    }
-                    @using (Html.BeginForm("Register", "Account", FormMethod.Post))
-                    {
-                        <button class="button_header">Post your Chalets</button>
-                    }
-                </div>
-                <div class="hs-item set-bg" data-setbg="@Url.Content("~/img/Capture.PNG")">
-                    @using (Html.BeginForm("AllChalet", "Chalets", FormMethod.Post))
-                    {
-                        <button class="button_header">Our Chalets</button>
-                    }
-                    @using (Html.BeginForm("Register", "Account", FormMethod.Post))
-                    {
-                        <button class="button_header">Post your Chalets</button>
-                    }
-                </div>
             </div>
-        </div>
-    </section>
-    <!--Hero Section End-->
-    <!-- Property Section Begin -->
-    <section class="property-section latest-property-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-8">
-                    <div class="section-title">
-                        <h4>Our Recommended Chalets</h4>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="team-btn d-flex justify-content-center p-1 button_header" style="width:40%;">
-                        <a href="@Url.Action("AllChalet", "Chalets")">
-                            <i class='fas fa-house-user ' style='font-size:100%;color:white'></i> <span style="color:white;"> ALL chalets</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="row property-filter">
-                @foreach (var item in Model.Item1)
-                {
-
-                    <div class="col-lg-4 col-md-6 mix all house">
-                        <div class="property-item">
-                            @foreach (var img in Model.Item3)
-                            {
-                                if (img.Images_ID == item.Images_ID)
-                                {
-                                    <img src="~/img/MainImage/@img.MainImage" class="pi-pic set-bg" />
-
-                                }
-                            }
-                            <div class="pi-text">
-                                <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-                                <div class="pt-price">Start From @item.PricePerNight JD /Day </div>
-                                <h5><a href="#">@item.Chalet_Name</a></h5>
-                                <p><span class="icon_pin_alt"></span> @item.Chalet_Address</p>
-                                <ul>
-                                    <li><i class="fa fa-object-group"></i> @item.area</li>
-                                    <li><i class="fa fa-bathtub"></i> @item.bathroom</li>
-                                    <li><i class="fa fa-bed"></i> @item.bedroom</li>
-
-                                    @foreach (var items in Model.Item4)
-                                    {
-                                        if (items.Features_ID == item.Features_ID)
-                                        {
-                                            <li><i class="fa fa-automobile"></i> @items.Carpark</li>
-
-                                        }
-                                    }
-                                </ul>
-                                <br /><br />
-                                <a href="@Url.Action("ChaletDetails", "Chalets", new { id = item.ChaletID })" class="button_header">View More Details</a>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                }
-
-
-            </div>
-
-
-        </div>
-
-</section>
-    <!-- Property Section End -->
-    <!-- Chooseus Section Begin -->
-    <section class="chooseus-section spad set-bg" data-setbg="@Url.Content("~/img/why.jpg")">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="chooseus-text">
+        </section>
+        <!--Hero Section End-->
+        <!-- Property Section Begin -->
+        <section class="property-section latest-property-section spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8">
                         <div class="section-title">
-                            <h4>Why choose us</h4>
+                            <h4>Our Recommended Chalets</h4>
                         </div>
-                        <p>Chalet rentals are one of the top choices for family holidaymakers.We collected Jerash chalets in one website so make it easier and save time for you to Enjoy the beauty of Jerash's stunning nature.</p>
                     </div>
-                    <div class="chooseus-features">
-
-                        <div class="cf-item">
-                            <div class="cf-pic">
-                                <img src="~/img/chooseus/chooseus-icon-3.png" alt="">
-                            </div>
-                            <div class="cf-text">
-                                <h5>view Chalets</h5>
-                                <p>Chalets in your favourite cities</p>
-                            </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="team-btn d-flex justify-content-center p-1 button_header" style="width:40%;">
+                            <a href="@Url.Action("AllChalet", "Chalets")">
+                                <i class='fas fa-house-user ' style='font-size:100%;color:white'></i> <span style="color:white;"> ALL chalets</span>
+                            </a>
                         </div>
-                        <div class="cf-item">
-                            <div class="cf-pic">
-                                <img src="~/img/chooseus/chooseus-icon-4.png" alt="">
-                            </div>
-                            <div class="cf-text">
-                                <h5>List your own Chalet</h5>
-                                <p>Sign up now and post your own Chalet</p>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    <!-- Chooseus Section End -->
-    <!-- Team Categories Begin -->
+                <div class="row property-filter">
+                    @foreach (var item in Model.Item1)
+                    {
 
-    <section class="team-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-8">
-                    <div class="section-title">
-                        <h4>Our Categories</h4>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="team-btn">
+                        <div class="col-lg-4 col-md-6 mix all house">
+                            <div class="property-item">
+                                @foreach (var img in Model.Item3)
+                                {
+                                    if (img.Images_ID == item.Images_ID)
+                                    {
+                                        <img src="~/img/MainImage/@img.MainImage" class="pi-pic set-bg" />
 
-                        <a href="@Url.Action("AllChalet", "Chalets")">
-                            <i class='fas fa-house-user' style='font-size:24px'></i> ALL chalets
-                        </a>
+                                    }
+                                }
+                                <div class="pi-text">
+                                    <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                                    <div class="pt-price">Start From @item.PricePerNight JD /Day </div>
+                                    <h5><a href="#">@item.Chalet_Name</a></h5>
+                                    <p><span class="icon_pin_alt"></span> @item.Chalet_Address</p>
+                                    <ul>
+                                        <li><i class="fa fa-object-group"></i> @item.area</li>
+                                        <li><i class="fa fa-bathtub"></i> @item.bathroom</li>
+                                        <li><i class="fa fa-bed"></i> @item.bedroom</li>
 
+                                        @foreach (var items in Model.Item4)
+                                        {
+                                            if (items.Features_ID == item.Features_ID)
+                                            {
+                                                <li><i class="fa fa-automobile"></i> @items.Carpark</li>
 
-                    </div>
-                </div>
-            </div>
-            <div class="row">
+                                            }
+                                        }
+                                    </ul>
+                                    <br /><br />
+                                    <a href="@Url.Action("ChaletDetails", "Chalets", new { id = item.ChaletID })" class="button_header">View More Details</a>
 
-                @foreach (var item in Model.Item2)
-                {
-                    <div class="col-md-4">
-                        <div class="ts-item">
-                            <div class="ts-text">
-                                <img src="~/img/Category/@item.Category_Img" alt="family">
-                                <h5>  @item.Category_Name </h5>
-                                <p>@item.Category_Description</p>
-                                <div class="ts-social">
-                                    <a href="@Url.Action("AllChalet", "Chalets")">Click Here </a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                }
+
+
+                    }
+
+
+                </div>
+
 
             </div>
-        </div>
-    </section>
-    <!-- Team Categories End -->
-    <!-- Footer Section Begin -->
-    <footer class="footer-section">
-        <div class="container">
-            <div class="d-flex justify-content-between ">
-                <div class="col-lg-4 col-md-6">
-                    <div class="fs-about">
-                        <div class="fs-logo">
-                            <a href="#">
-                                <span style="font-family: 'Babylonica', cursive;font-weight: bolder;font-size:70px;color:#053503;">Royal Chalets</span>
+
+        </section>
+        <!-- Property Section End -->
+        <!-- Chooseus Section Begin -->
+        <section class="chooseus-section spad set-bg" data-setbg="@Url.Content("~/img/why.jpg")">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="chooseus-text">
+                            <div class="section-title">
+                                <h4>Why choose us</h4>
+                            </div>
+                            <p>Chalet rentals are one of the top choices for family holidaymakers.We collected Jerash chalets in one website so make it easier and save time for you to Enjoy the beauty of Jerash's stunning nature.</p>
+                        </div>
+                        <div class="chooseus-features">
+
+                            <div class="cf-item">
+                                <div class="cf-pic">
+                                    <img src="~/img/chooseus/chooseus-icon-3.png" alt="">
+                                </div>
+                                <div class="cf-text">
+                                    <h5>view Chalets</h5>
+                                    <p>Chalets in your favourite cities</p>
+                                </div>
+                            </div>
+                            <div class="cf-item">
+                                <div class="cf-pic">
+                                    <img src="~/img/chooseus/chooseus-icon-4.png" alt="">
+                                </div>
+                                <div class="cf-text">
+                                    <h5>List your own Chalet</h5>
+                                    <p>Sign up now and post your own Chalet</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Chooseus Section End -->
+        <!-- Team Categories Begin -->
+
+        <section class="team-section spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8">
+                        <div class="section-title">
+                            <h4>Our Categories</h4>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="team-btn">
+
+                            <a href="@Url.Action("AllChalet", "Chalets")">
+                                <i class='fas fa-house-user' style='font-size:24px'></i> ALL chalets
                             </a>
-                        </div>
-                        <p>
-                            Comfortable and convenient to Enjoy the beauty of Jerash's stunning nature
-                        </p>
-                        <div class="fs-social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 d-none d-md-block">
-                    <div class="fs-widget">
-                        <h5>Links</h5>
-                        <div class="d-flex">
-                            <ul class="col-6">
-                                <li><a href="#">Contact us</a></li>
-                                <li><a href="#">About us</a></li>
-                                <li><a href="#">Register</a></li>
-                            </ul>
-                            <ul class="col-6">
-                                <li><a href="#">All Chalets</a></li>
-                                <li><a href="#">Rent your Chalets</a></li>
-                                <li><a href="#">Login</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="d-block d-sm-none">
-                    <div class="fs-widget">
-                        <h5 class="d-flex justify-content-center">Links</h5>
-                        <div class="d-flex">
-                            <ul class="col-6">
-                                <li><a href="#">Contact</a></li>
-                                <li><a href="#">About</a></li>
-                                <li><a href="#">Register</a></li>
-                                <li><a href="#">Chalets</a></li>
-                                <li><a href="#">Login</a></li>
-                            </ul>
+
                         </div>
                     </div>
                 </div>
+                <div class="row">
 
+                    @foreach (var item in Model.Item2)
+                    {
+                        <div class="col-md-4">
+                            <div class="ts-item">
+                                <div class="ts-text">
+                                    <img src="~/img/Category/@item.Category_Img" alt="family">
+                                    <h5>  @item.Category_Name </h5>
+                                    <p>@item.Category_Description</p>
+                                    <div class="ts-social">
+                                        <a href="@Url.Action("AllChalet", "Chalets")">Click Here </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
             </div>
-            <div class="copyright-text">
-                <p>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;
-                    <script>document.write(new Date().getFullYear());</script> All rights reserved.
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                </p>
+        </section>
+        <!-- Team Categories End -->
+        <!-- Footer Section Begin -->
+        <footer class="footer-section">
+            <div class="container">
+                <div class="d-flex justify-content-between ">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="fs-about">
+                            <div class="fs-logo">
+                                <a href="#">
+                                    <span style="font-family: 'Babylonica', cursive;font-weight: bolder;font-size:70px;color:#053503;">Royal Chalets</span>
+                                </a>
+                            </div>
+                            <p>
+                                Comfortable and convenient to Enjoy the beauty of Jerash's stunning nature
+                            </p>
+                            <div class="fs-social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 d-none d-md-block">
+                        <div class="fs-widget">
+                            <h5>Links</h5>
+                            <div class="d-flex">
+                                <ul class="col-6">
+                                    <li><a href="#">Contact us</a></li>
+                                    <li><a href="#">About us</a></li>
+                                    <li><a href="#">Register</a></li>
+                                </ul>
+                                <ul class="col-6">
+                                    <li><a href="#">All Chalets</a></li>
+                                    <li><a href="#">Rent your Chalets</a></li>
+                                    <li><a href="#">Login</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-block d-sm-none">
+                        <div class="fs-widget">
+                            <h5 class="d-flex justify-content-center">Links</h5>
+                            <div class="d-flex">
+                                <ul class="col-6">
+                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Register</a></li>
+                                    <li><a href="#">Chalets</a></li>
+                                    <li><a href="#">Login</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="copyright-text">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved.
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
             </div>
-        </div>
-    </footer>
-    <!-- Footer Section End -->
-    <!-- Js Plugins -->
-    <script src="~/template/js/jquery-3.3.1.min.js"></script>
-    <script src="~/template/js/bootstrap.min.js"></script>
-    <script src="~/template/js/jquery.magnific-popup.min.js"></script>
-    <script src="~/template/js/mixitup.min.js"></script>
-    <script src="~/template/js/jquery-ui.min.js"></script>
-    <script src="~/template/js/jquery.nice-select.min.js"></script>
-    <script src="~/template/js/jquery.slicknav.js"></script>
-    <script src="~/template/js/owl.carousel.min.js"></script>
-    <script src="~/template/js/jquery.richtext.min.js"></script>
-    <script src="~/template/js/image-uploader.min.js"></script>
-    <script src="~/template/js/main.js"></script>
-</body>
+        </footer>
+        <!-- Footer Section End -->
+        <!-- Js Plugins -->
+        <script src="~/template/js/jquery-3.3.1.min.js"></script>
+        <script src="~/template/js/bootstrap.min.js"></script>
+        <script src="~/template/js/jquery.magnific-popup.min.js"></script>
+        <script src="~/template/js/mixitup.min.js"></script>
+        <script src="~/template/js/jquery-ui.min.js"></script>
+        <script src="~/template/js/jquery.nice-select.min.js"></script>
+        <script src="~/template/js/jquery.slicknav.js"></script>
+        <script src="~/template/js/owl.carousel.min.js"></script>
+        <script src="~/template/js/jquery.richtext.min.js"></script>
+        <script src="~/template/js/image-uploader.min.js"></script>
+        <script src="~/template/js/main.js"></script>
+    </body>
 
 </html>

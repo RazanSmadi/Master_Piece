@@ -231,7 +231,7 @@
                                     </tr>
                                     <tr>
                                         <th>
-                                            KidsGames
+                                            Kids Games
                                         </th>
                                         @{
                                             if (Convert.ToBoolean(item.KidsGames))
@@ -248,7 +248,7 @@
                                     </tr>
                                     <tr>
                                         <th>
-                                            OutdoorShower
+                                            Outdoor Shower
                                         </th>
                                         @{
                                             if (Convert.ToBoolean(item.OutdoorShower))
@@ -289,7 +289,7 @@
                 </div>
             </div>
             <div class="row col-12 justify-content-center">
-                <a href="~/SubAdminChalets/Index/0dfcd31a-12ff-430c-a1a0-a24170377bc9" class="btn btn-secondary">Back to list</a>
+                <a href="~/SubAdminChalets/Index/@item.Features_ID" class="btn btn-secondary">Back to list</a>
                 &nbsp; &nbsp;
                 @Html.ActionLink("Edit", "Edit", new { id = item.Features_ID }, new { @class = "btn btn-primary" })
             </div>

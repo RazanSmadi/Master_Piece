@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-
+<!-- your HTML code here -->
 <!-- Mirrored from dreamguys.co.in/demo/doccure/admin/appointment-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:46 GMT -->
 <head>
     <meta charset="utf-8">
@@ -26,8 +26,9 @@
         <script src="assets/js/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
 
+
+<body>
     <!-- Main Wrapper -->
     <div class="main-wrapper">
 
@@ -71,9 +72,13 @@
                         <li>
                             <a href="/SubAdminChalets/Index"><i class="fe fe-home"></i> <span> Your Chaletes</span></a>
                         </li>
-                        <li>
-                            <a href="/transactions/Create"><i class="fa-solid fa-dollar-sign"></i><span>Subsecription</span></a>
-                        </li>
+                        @if (true)
+                        {
+                            <li>
+                                <a href="/transactions/Create"><i class="fa-solid fa-dollar-sign"></i><span>Subsecription</span></a>
+                            </li>
+                        }
+
                         <li>
                             <a href="/Chalets/Home"><i class="fa-solid fa-house" style="font-size:medium"></i><span>Home</span></a>
 

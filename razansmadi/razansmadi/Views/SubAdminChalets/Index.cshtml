@@ -1,4 +1,4 @@
-﻿@model Tuple<List<razansmadi.Models.Chalet>, List<razansmadi.Models.Image>>
+﻿@model Tuple<List<razansmadi.Models.Chalet>, List<string>>
 
 @{
     ViewBag.Title = "Index";
@@ -9,6 +9,9 @@
 
 
 <div class="page-wrapper">
+
+
+
     <div class="content container-fluid">
         <div class="page-header">
             <div class="row">
@@ -21,48 +24,63 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
 
 
-                @{
-                    var db = new MasterPieceEntities();
-                    string Uid = User.Identity.GetUserId();
-                    var chalets = db.Chalets.Where(u => u.userid == Uid);
-                    var user = db.AspNetUsers.FirstOrDefault(u => u.Id == Uid);
-                    if (user != null)
+
+        @{
+            var db = new MasterPieceEntities();
+            string Uid = User.Identity.GetUserId();
+            //string Uid = "kols-pe98-kslo";
+            int numberOfChalets = db.Chalets.Count(u => u.userid == Uid);
+
+            var user = db.AspNetUsers.FirstOrDefault(u => u.Id == Uid);
+            if (user != null)
+            {
+
+
+
+                var ispay = user.donePay;
+                <p>
+                    @if (Convert.ToBoolean(ispay))
+                    {
+                        if (@numberOfChalets < 3)
+                        {
+                            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+                        }
+                    }
+
+                    else
                     {
 
-
-
-                        var ispay = user.donePay;
-                        <p>
-                            @if (Convert.ToBoolean(ispay))
-                            {
-                                @Html.ActionLink("Create New", "Create")
-                            }
-                        </p>
+                        if (!Convert.ToBoolean(ispay) && numberOfChalets >= 3)
+                        {
+                            @Html.ActionLink("Pay To activate Chalets", "Create", "transactions", null, new { @class = "btn btn-info" })
+                        }
 
                         else
-                {
-
-                }
-
+                        {
+                        @Html.ActionLink("Pay To post Chalet", "Create", "transactions", null, new { @class = "btn btn-info" })
+                        }
 
 
                     }
 
-                }
 
 
+                </p>
 
+            }
 
+        }
 
-                @if (chalets.Any())
-
-                {
+        @if (@numberOfChalets > 0)
+        {
+            <div class="row">
+                <div class="col-md-12">
                     <div class="card">
+
                         <div class="card-body">
+
                             <div class="table-responsive">
                                 <table class="datatable table table-hover table-center mb-0">
                                     <thead>
@@ -83,15 +101,17 @@
                                         </tr>
                                     </thead>
 
+
+
                                     @foreach (var item in Model.Item1)
                                     {
+                                        int counter = 0;
                                         <tr>
-                                            @foreach (var item2 in Model.Item2)
-                                            {
-                                                <td>
-                                                    <img src="@item2.MainImage" width:150px" height:"150px" />
-                                                </td>
-                                            }
+                                            <td>
+                                                <img src="~/img/MainImage/@Model.Item2[@counter]" style="width:50px; height:50px" />
+
+                                            </td>
+
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.Chalet_Name)
                                             </td>
@@ -108,15 +128,15 @@
                                                 @Html.DisplayFor(modelItem => item.NnmberOfkid)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.PricePerNight)
+                                                @Html.DisplayFor(modelItem => item.PricePerNight) JD
                                             </td>
                                             <td>
                                                 @{
-                                                    DateTime registrationDate = Convert.ToDateTime(item.DateOfReg);
-                                                    DateTime currentDate = DateTime.Today;
-                                                    TimeSpan timeSinceRegistration = currentDate - registrationDate;
-                                                    int subscriptionPeriodInDays = 90; // Change this to match your subscription period
-                                                    if (timeSinceRegistration.TotalDays > subscriptionPeriodInDays)
+
+                                                    string id = User.Identity.GetUserId();
+                                                    var u = db.AspNetUsers.Find(id);
+
+                                                    if (u.donePay == false)
                                                     {
                                                         <span style="color:red;">Expired</span>
                                                     }
@@ -124,6 +144,7 @@
                                                     {
                                                         <span style="color:green;">Active</span>
                                                     }
+
                                                 }
                                             </td>
 
@@ -139,35 +160,41 @@
                                                 @Html.ActionLink("Edit", "Edit", new { id = item.ChaletID }) |
                                                 @Html.ActionLink("Details", "Details", new { id = item.ChaletID })
                                             </td>
+                                            @counter= @counter+1;
+
                                         </tr>
 
-                                    }
+                                                    }
 
                                 </table>
                             </div>
+
+
                         </div>
-                    </div>}
 
 
-                else
-                {
-                    <div> No Data To show </div>
-                }
+
+
+                    </div>
+                </div>
             </div>
-        </div>
+
+                                                    }
+
+                                                    else
+                                                    {
+            <label class="form-control border-info" style="display: inline"> You don't post any chalet yet </label>
+        }
+
+
     </div>
+
+
+
+
+
+
 </div>
 
 
 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-@if (TempData["swal_message"] != null)
-{
-    <script>
-    swal({
-      title: "@TempData["title"]",
-      text: "@TempData["swal_message"]",
-      icon: "@TempData["icon"]"
-    });
-    </script>
-}

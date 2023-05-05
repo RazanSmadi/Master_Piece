@@ -120,7 +120,7 @@
         <div class="container">
             <div class="profile-agent-content">
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-5">
                         <div class="profile-agent-info">
                             <div class="pi-pic">
                                 <img src="~/img/agents/@Model.Item1.Customer_Img" alt="user Img">
@@ -131,7 +131,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-5">
                         <div class="profile-agent-widget">
                             <ul>
                                 <li>Email <span>@Model.Item1.Email  </span></li>
@@ -139,23 +139,20 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="profile-agent-newslatter">
-                            <h5>Send Message to Us </h5>
-                            <form action="#">
-                                <input type="text" placeholder="Email">
-                                <button type="submit"><i class="fa fa-send"></i></button>
-                            </form>
-                        </div>
+                    <div class="col-lg-2 text-center">
+                        @Html.ActionLink("Edit", "EditUserProfile", "AspNetUsers", new { id = 1 }, new { @class = "btn btn-success mt-3" })
                     </div>
+
                 </div>
             </div>
         </div>
     </section>
+    <br />
+    <br />
     <!-- Profile Section End -->
     <!-- Property Section Begin -->
 
-    <section class="property-section profile-page spad">
+    @*<section class="property-section profile-page spad">
         <div style="display:flex;justify-content:center"> <button type="button" class="btn btn-success">Your Previous Reservations</button> <br /><br /></div>
 
         <div class="container">
@@ -191,7 +188,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>*@
     <!-- Property Section End -->
     <!-- Footer Section Begin -->
     <footer class="footer-section">

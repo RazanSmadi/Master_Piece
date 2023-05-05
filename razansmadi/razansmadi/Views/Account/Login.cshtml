@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <div class="wrapper" style="background-image: url('../../img/Category/evet.jpg');">
+    <div class="wrapper" style="background-image: url('../../img/Category/login.png');">
         <div class="inner">
         @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { enctype = "multipart/form-data", @class = "my-form-class mx-auto" }))
 {
@@ -42,7 +42,6 @@
             <label class="checkbox-wrap checkbox-primary">
                 Remember Me
                 <input type="checkbox" checked>
-                <span class="checkmark"></span>
             </label>
         </div>
 
@@ -51,8 +50,7 @@
         </div>
         <br /><br />
               <h4 style="color:green;"> Don't have an account? </h4>
-        <a href="@Url.Action("Register", "Account")" style="color:black; text-decoration:none;"> Register as a user.</a><br />
-        <a href="@Url.Action("RegisterOwner", "Account")" style="color:black; text-decoration:none;"> Register as a owner.</a>
+        <a href="@Url.Action("RegisterOwner", "Account")" style="color:black; text-decoration:none;"> Register Now.</a>
 
     </div>
 }

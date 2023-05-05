@@ -91,9 +91,8 @@ namespace razansmadi.Controllers
                      }
                     else if(role == "2") //subadmin 
                        {
-                        //AspNetUser owner = db.AspNetUsers.Find(id);
-                        //Session["Loggedowner"] = owner;
-                        return RedirectToAction("OwnersProfile", "AspNetUsers");
+                        AspNetUser owner = db.AspNetUsers.Find(id);
+                        return RedirectToAction("OwnersProfile", "AspNetUsers", new { id = owner.Id });
                     }
                     else
                     {

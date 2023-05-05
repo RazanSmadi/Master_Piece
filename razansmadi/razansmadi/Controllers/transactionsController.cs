@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using razansmadi.Models;
 
 namespace razansmadi.Controllers
@@ -44,35 +45,33 @@ namespace razansmadi.Controllers
             return View();
         }
 
-        // POST: transactions/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "transactionId,userid,amount,totalpay,date")] transaction transaction)
         {
+           string id = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
-                // Add the new transaction to the database
                 transaction.date = DateTime.Today;
-                db.transactions.Add(new transaction { userid = transaction.userid, amount = transaction.amount, totalpay = 120.0, date = DateTime.Today });
+                db.transactions.Add(new transaction { userid = id, amount = transaction.amount, totalpay = 120.0, date = DateTime.Today });
                 db.SaveChanges();
 
                 // Update the "donePay" column for the user
-                var user = db.AspNetUsers.FirstOrDefault(u => u.Id == transaction.userid);
+                var user = db.AspNetUsers.FirstOrDefault(u => u.Id == id);
                 if (user != null)
                 {
                     user.donePay = true;
                     db.SaveChanges();
                 }
 
-                return RedirectToAction("Index", "SubAdminChalets");
+                return RedirectToAction("Create", "transactions");
             }
 
             ViewBag.userid = new SelectList(db.AspNetUsers, "Id", "Email", transaction.userid);
-            ViewBag.userid = new SelectList(db.AspNetUsers, "Id", "Email", transaction.userid);
             return View(transaction);
         }
+
+
 
         // GET: transactions/Edit/5
         public ActionResult Edit(int? id)

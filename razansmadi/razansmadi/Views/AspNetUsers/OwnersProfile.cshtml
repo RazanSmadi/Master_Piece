@@ -3,6 +3,23 @@
 @{
     Layout = "~/Views/Shared/_OwnersLayout.cshtml";
 }
+<style>
+    .thumbnail {
+        top: -50px;
+        left: -35px;
+        display: block;
+        z-index: 999;
+        cursor: pointer;
+        -webkit-transition-property: all;
+        -webkit-transition-duration: 0.7s;
+        -webkit-transition-timing-function: ease;
+    }
+        /*change the number below to scale to the appropriate size*/
+        .thumbnail:hover {
+            transform: scale(2.5);
+        }
+
+</style>
 
 <div class="page-wrapper">
     <div class="content container-fluid">
@@ -22,9 +39,10 @@
                 <tr>
                     <th></th>
                 </tr>
+
                 <tr>
                     <th>Iamge</th>
-                    <td><img src="@Model.Customer_Img" width:"150px" height:"150px" /></td>
+                    <td><img src="~/img/Customer_Img/@Model.Customer_Img" style="width:50px; height:50px;" class="thumbnail" /></td>
                 </tr>
                 <tr>
                     <th>Email</th>

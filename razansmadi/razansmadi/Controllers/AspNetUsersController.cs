@@ -40,8 +40,9 @@ namespace razansmadi.Controllers
         }
         public ActionResult OwnersProfile()
         {
-            string ownerId = "0dfcd31a-12ff-430c-a1a0-a24170377bc9";
-                /*Session["Loggedowner"].ToString();*/
+            string ownerId = User.Identity.GetUserId();
+            
+            /*Session["Loggedowner"].ToString();*/
 
             if (ownerId == null)
             {
@@ -59,6 +60,7 @@ namespace razansmadi.Controllers
 
         public ActionResult EditOwnersProfile(string id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -107,7 +109,7 @@ namespace razansmadi.Controllers
             return View(usersWithRoleId2.ToList());
         }
 
-        public ActionResult UserProfile(string id = "0dfcd31a-12ff-430c-a1a0-a24170377bc9")
+        public ActionResult UserProfile(string id )
         {
             if (id == null)
             {
@@ -187,7 +189,7 @@ namespace razansmadi.Controllers
 
                 db.Entry(aspNetUser).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("OwnersProfile");
+                return RedirectToAction("UserProfile");
             }
             return View(aspNetUser);
         }
